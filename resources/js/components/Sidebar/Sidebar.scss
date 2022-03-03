@@ -1,0 +1,99 @@
+@import '../../sass/imports/variables';
+
+.sidebar {
+    flex: none;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    width: 4rem;
+    display: grid;
+    gap: .125rem;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 4fr 1fr;
+    padding-block: 1.5rem;
+    height: 100vh;
+    background: $colorMain;
+    transition: 400ms;
+    color: $colorLight;
+
+    &.active {
+        width: 15rem;
+
+        h3 {
+
+            display: block;
+        }
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        display: none;
+        margin: 0;
+    }
+
+    ion-icon {
+        font-size: 2.5rem;
+    }
+
+    &__userInfo {
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        h3 {
+            white-space: nowrap;
+        }
+
+        img {
+            flex: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            background: $colorLight;
+        }
+    }
+
+    nav {
+        align-self: center;
+        
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            li {
+                width: 100%;
+                padding-block: .5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                &.active {
+                    background: $colorMainDark;
+                }
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    color: $colorLight;
+                    text-decoration: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    &__exit {
+        align-self: flex-end;
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
