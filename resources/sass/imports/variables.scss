@@ -1,0 +1,25 @@
+// fonts
+$fontSize3: 1.25rem;
+$fontSize2: 1.5rem;
+
+// colors
+$colorBg: black;
+$colorGray: #484C52;
+$colorLight: white;
+$colorMain: #317FF3;
+$colorMainDark: #2F76DF;
+$colorAccent: #F331A6;
+$colorAccentDark: #C92B8A;
+
+// transition
+$transition: 400ms;
+
+// mixins
+
+@mixin btn {
+    color: $colorLight;
+    border-radius: 9999px;
+    font-size: $fontSize3;
+    font-weight: 300;
+    padding: .25em 1.5em;
+}

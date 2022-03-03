@@ -20,7 +20,6 @@ function Sidebar() {
             </div>
             <nav>
                 <ul>
-                    
                     <li className={`${location.pathname == '/' ? 'active' : ''}`}>
                         <Link to='/'>
                             <ion-icon name="home-outline"></ion-icon>

@@ -1,0 +1,35 @@
+@import '../../../sass/imports/variables.scss';
+
+.selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+        outline: none;
+        transition: $transition;
+        text-transform: lowercase;
+        background: none;
+        padding: .4em 1.5em;
+        border: 1px solid $colorLight;
+        color: $colorLight;
+        font-weight: 300;
+        font-size: $fontSize3;
+
+        &.active {
+            background: $colorMain;
+        }
+        &:not(.active):hover {
+            background: $colorMainDark;
+        }
+        &:first-of-type {
+            border-radius: 9999px 0 0 9999px;
+            border-right-width: 0;
+        }
+
+        &:last-of-type {
+            border-radius: 0 9999px 9999px 0;
+            border-left-width: 0;
+        }
+    }
+}

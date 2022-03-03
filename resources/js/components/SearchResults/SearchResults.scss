@@ -1,0 +1,78 @@
+@import '../../../sass/imports/variables.scss';
+
+.searchResults {
+    $gap: 1rem;
+
+    width: min(90%, 920px);
+    height: 50%;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            $height: 3.5rem;
+
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: $gap;
+            width: 100%;
+            height: $height;
+
+            &:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: calc(100% + 1rem);
+                background: $colorGray;
+                width: 86%;
+                height: 1px;
+                left: 7%;
+            }
+
+
+            .userInfo {
+                display: flex;
+                align-items: center;
+                gap: $gap;
+
+                img {
+                    width: calc($height * 0.9);
+                    height: calc($height * 0.9);
+                    flex: none;
+                    border-radius: 50%;
+                    background: $colorLight;
+                }
+
+                h2 {
+                    font-weight: 300;
+                }
+            }
+
+            .btns {
+                display: flex;
+                align-items: center;
+                gap: $gap;
+                justify-content: flex-end;
+
+                button {
+                    @include btn;
+                    border: none;
+
+                    &.accentColor {
+                        background: $colorAccent;
+                    }
+
+                    &.mainColor {
+                        background: $colorMain;
+                    }
+                }
+            }
+        }
+    }
+}

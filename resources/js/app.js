@@ -1,12 +1,10 @@
-// styles
-import './sass/app.scss'
 // global dependencies
 import ReactDOM from 'react-dom'
 import { Routes, BrowserRouter, Route } from 'react-router-dom'
 // components
 import Sidebar from './components/Sidebar/Sidebar.js'
-import Home from './components/Home/Home.js'
-import Friends from './components/Friends/Friends.js'
+import Home from './components/pages/Home/Home.js'
+import Friends from './components/pages/Friends/Friends.js'
 
 function App() {
     return (
