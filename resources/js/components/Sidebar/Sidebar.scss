@@ -1,55 +1,67 @@
 @import '../../sass/imports/variables';
 
 .sidebar {
+    $transition: 400ms;
+    $widthActive: 16.5rem;
+    $widthNonActive: 4rem;
+    $gridTemplate: 4rem 1fr;
+    $gridGap: 1rem;
+
     flex: none;
     position: relative;
     font-family: "Roboto", sans-serif;
-    width: 4rem;
+    width: $widthNonActive;
     display: grid;
     gap: .125rem;
-    grid-template-columns: 100%;
     grid-template-rows: 1fr 4fr 1fr;
     padding-block: 1.5rem;
     height: 100vh;
     background: $colorMain;
-    transition: 400ms;
+    transition: $transition;
     color: $colorLight;
+    overflow: hidden;
 
     &.active {
-        width: 15rem;
+        width: $widthActive;
 
         h3 {
-
-            display: block;
+            transform: none;
+            opacity: 1;
+            pointer-events: all;
         }
     }
 
     h3 {
+        transition: $transition;
+        transform: translateY(20px);
         font-size: 1.5rem;
-        display: none;
+        pointer-events: none;
+        opacity: 0;
         margin: 0;
     }
 
     ion-icon {
         font-size: 2.5rem;
+        place-self: center;
     }
 
     &__userInfo {
         align-self: flex-start;
-        display: flex;
+        grid-template-columns: $gridTemplate;
         align-items: center;
-        justify-content: center;
-        gap: 1rem;
+        display: grid;
+        gap: $gridGap;
 
         h3 {
             white-space: nowrap;
         }
 
         img {
+            place-self: center;
             flex: none;
             border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
+            width: calc($widthNonActive * 0.8);
+            height: calc($widthNonActive * 0.8);
             background: $colorLight;
         }
     }
@@ -61,26 +73,20 @@
             padding: 0;
             margin: 0;
             list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
 
             li {
                 width: 100%;
                 padding-block: .5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 
                 &.active {
                     background: $colorMainDark;
                 }
 
                 a {
-                    display: flex;
+                    grid-template-columns: $gridTemplate;
+                    display: grid;
                     align-items: center;
-                    gap: 1rem;
+                    gap: $gridGap;
                     color: $colorLight;
                     text-decoration: none;
                     outline: none;
@@ -91,9 +97,9 @@
 
     &__exit {
         align-self: flex-end;
-        gap: 1rem;
-        display: flex;
+        gap: $gridGap;
+        grid-template-columns: $gridTemplate;
+        display: grid;
         align-items: center;
-        justify-content: center;
     }
 }
