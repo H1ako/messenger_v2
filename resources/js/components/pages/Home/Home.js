@@ -1,5 +1,3 @@
-// styles
-import './Home.scss'
 // components
 import Search from '../../Search/Search.js'
 import Selector from '../../Selector/Selector.js'
@@ -10,8 +8,8 @@ function Home(props) {
     return (
         <div className="page homePage">
             <Search/>
-            <Selector/>
-            <SearchResults/>
+            <Selector type='users'/>
+            <SearchResults type='users'/>
         </div>
     )
 }

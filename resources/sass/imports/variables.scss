@@ -7,6 +7,7 @@ $colorBg: black;
 $colorGray: #484C52;
 $colorLight: white;
 $colorMain: #317FF3;
+$colorMainLight: #448cf8;
 $colorMainDark: #2F76DF;
 $colorAccent: #F331A6;
 $colorAccentDark: #C92B8A;
@@ -22,4 +23,5 @@ $transition: 400ms;
     font-size: $fontSize3;
     font-weight: 300;
     padding: .25em 1.5em;
+    white-space: nowrap;
 }

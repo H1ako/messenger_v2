@@ -71,9 +71,22 @@
             margin: 0;
             list-style: none;
 
+            .menuBtn {
+                grid-template-columns: $gridTemplate;
+                display: grid;
+                align-items: center;
+                gap: $gridGap;
+                cursor: pointer;
+            }
+
             li {
                 width: 100%;
                 padding-block: .5rem;
+                transition: $transition;
+
+                &:not(.active):hover {
+                    background: $colorMainLight;
+                }
                 
                 &.active {
                     background: $colorMainDark;

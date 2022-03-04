@@ -5,6 +5,7 @@ import { Routes, BrowserRouter, Route } from 'react-router-dom'
 import Sidebar from './components/Sidebar/Sidebar.js'
 import Home from './components/pages/Home/Home.js'
 import Friends from './components/pages/Friends/Friends.js'
+import Chats from './components/pages/Chats/Chats.js'
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home/>} />
                         <Route path="/friends" element={<Friends/>} />
+                        <Route path="/chats" element={<Chats/>} />
                     </Routes>
                 </main>
             </BrowserRouter>

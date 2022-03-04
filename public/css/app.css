@@ -339,6 +339,26 @@ template {
   display: none;
 }
 
+::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: none;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  background-color: rgba(72, 76, 82, 0.5);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #484C52;
+}
+
 *,
 *::after,
 *::before {
@@ -396,4 +416,22 @@ main {
 }
 .page::after {
   right: 0;
+}
+.page .pageRow {
+  width: 90%;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.page .pageRow a {
+  color: white;
+  border-radius: 9999px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  padding: 0.25em 1.5em;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid white;
 }

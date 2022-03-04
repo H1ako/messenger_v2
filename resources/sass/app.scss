@@ -3,6 +3,25 @@
 @import './imports/normalize.scss';
 @import './imports/variables';
 
+::-webkit-scrollbar {
+    width: .25rem;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: none;
+    border-radius: 100px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    transition: 300ms;
+    background-color: rgba($color: $colorGray, $alpha: 0.5);
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $colorGray;
+}
+
 *,
 *::after,
 *::before {
@@ -63,5 +82,20 @@ main {
 
     &::after {
         right: 0;
+    }
+
+    .pageRow {
+        width: 90%;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        a {
+            @include btn;
+            text-decoration: none;
+            border: 1px solid $colorLight;
+        }
     }
 }

@@ -9,17 +9,17 @@ function Sidebar() {
     const [isActive, setIsActive] = useState(false)
 
     return (
-        <div
-            onMouseEnter={() => setIsActive(true)}
-            onMouseLeave={() => setIsActive(false)}
-            className={`sidebar${isActive ? ' active' : ''}`}
-        >
+        <div className={`sidebar${isActive ? ' active' : ''}`}>
             <div className="sidebar__userInfo">
                 <img src='/assets/ava.png' alt="user pic"/>
                 <h3>Nikita Sobolev</h3>
             </div>
             <nav>
                 <ul>
+                    <li className='menuBtn' onClick={() => setIsActive(!isActive)}>
+                        <ion-icon name="menu-outline"></ion-icon>
+                        <h3>menu</h3>
+                    </li>
                     <li className={`${location.pathname == '/' ? 'active' : ''}`}>
                         <Link to='/'>
                             <ion-icon name="home-outline"></ion-icon>

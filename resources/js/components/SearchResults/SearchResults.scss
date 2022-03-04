@@ -1,10 +1,10 @@
 @import '../../../sass/imports/variables.scss';
 
 .searchResults {
-    $gap: 1rem;
-
     width: min(90%, 920px);
     height: 50%;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
 
     ul {
         display: flex;
@@ -15,7 +15,8 @@
         margin: 0;
         padding: 0;
 
-        li {
+        .searchResultUser {
+            $gap: 1rem;
             $height: 3.5rem;
 
             position: relative;
@@ -71,6 +72,72 @@
                     &.mainColor {
                         background: $colorMain;
                     }
+                }
+            }
+        }
+
+        .searchResultChat {
+            $gap: 1rem;
+            $height: 5rem;
+            $chatPicSize: 0.7;
+
+            position: relative;
+            display: grid;
+            grid-template-columns: calc($height * $chatPicSize) 1fr;
+            align-items: center;
+            gap: $gap;
+            width: 100%;
+            height: $height;
+
+
+            &__chatPic {
+                width: calc($height * $chatPicSize);
+                height: calc($height * $chatPicSize);
+                flex: none;
+                border-radius: 50%;
+                background: $colorLight;
+            }
+ 
+
+            &__chatInfo {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                .chatInfo__lastMessage {
+                    display: flex;
+                    align-items: center;
+                    gap: .6rem;
+    
+                    .lastMessage__userPic {
+                        width: calc($height * 0.4);
+                        height: calc($height * 0.4);
+                        flex: none;
+                        border-radius: 50%;
+                        background: $colorLight;
+                    }
+                }
+
+                h2, h3 {
+                    font-weight: 300;
+                    margin: 0;
+                }
+
+                h2 {
+                    width: 100%;
+                    position: relative;
+
+                    &::after {
+                        position: absolute;
+                        content: '';
+                        background: $colorGray;
+                        left: -10px;
+                        top: calc(100% + 0.5rem);
+                        width: 100%;
+                        height: 1px;
+    
+                    }
+
                 }
             }
         }
