@@ -4,9 +4,9 @@ import './Selector.scss'
 // home page
 function Selector({type}) {
 
-    if (type === 'chats') {
+    if (type === 'users') {
         return (
-            <div className="selector chats">
+            <div className="selector">
                 <button className='active'>
                     all
                 </button>
@@ -20,7 +20,7 @@ function Selector({type}) {
         )
     }
     
-    if (type === 'users') {
+    if (type === 'chats') {
         return (
             <div className="selector">
                 <button className='active'>

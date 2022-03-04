@@ -463,9 +463,9 @@ __webpack_require__.r(__webpack_exports__);
 function Selector(_ref) {
   var type = _ref.type;
 
-  if (type === 'chats') {
+  if (type === 'users') {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "selector chats",
+      className: "selector",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
         className: "active",
         children: "all"
@@ -477,7 +477,7 @@ function Selector(_ref) {
     });
   }
 
-  if (type === 'users') {
+  if (type === 'chats') {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "selector",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
