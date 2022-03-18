@@ -1,6 +1,18 @@
+// sizes
+$sizeSidebarActive: 16.5rem;
+$sizeSidebar: clamp(3rem, 8vw, 4rem);
+// ___screen sizes
+$sizeScreenSmallPhone: 320px;
+$sizeScreenPhone: 480px;
+$sizeScreenBigPhone: 640px;
+$sizeScreenTablet: 960px;
+$sizeScreenBigTablet: 1025px;
+$sizeScreenDesktop: 1280px;
+
 // fonts
-$fontSize3: 1.25rem;
-$fontSize2: 1.5rem;
+$fontSize3: clamp(.950rem, 2.5vw, 1.25rem);
+$fontSize2: clamp(1.2rem, 3vw, 1.5rem);
+$fontSizeSidebarIcon: clamp(2rem, 5vw, 2.5rem);
 
 // colors
 $colorBg: black;
@@ -16,12 +28,22 @@ $colorAccentDark: #C92B8A;
 $transition: 400ms;
 
 // mixins
-
 @mixin btn {
     color: $colorLight;
     border-radius: 9999px;
     font-size: $fontSize3;
     font-weight: 300;
     padding: .25em 1.5em;
+    white-space: nowrap;
+    transition: $transition;
+
+    &:hover {
+        background: $colorMain;
+    }
+}
+
+@mixin textOverflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
     white-space: nowrap;
 }

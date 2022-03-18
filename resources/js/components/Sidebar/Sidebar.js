@@ -32,12 +32,6 @@ function Sidebar() {
                             <h3>chats</h3>
                         </Link>
                     </li>
-                    <li className={`${location.pathname == '/friends' ? 'active' : ''}`}>
-                        <Link to='/friends'>
-                            <ion-icon name="people-outline"></ion-icon>
-                            <h3>friends</h3>
-                        </Link>
-                    </li>
                 </ul>
             </nav>
             <div className="sidebar__exit">

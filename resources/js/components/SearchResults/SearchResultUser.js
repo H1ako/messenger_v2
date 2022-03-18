@@ -43,7 +43,7 @@ function SearchResultUser({
                 </span>
                 <span className="btns">
                     <button className='mainColor'>accept</button>
-                    <button className='accentColor'>cancel</button>
+                    <button className='accentColor'>decline</button>
                 </span>
             </li>
         )

@@ -10,7 +10,7 @@ function Chats(props) {
             <Search/>
             <div className="pageRow">
                 <Selector type='chats'/>
-                <a href='/new-chat'>new chat</a>
+                <a href='/new-groupchat'>new groupchat</a>
             </div>
             <SearchResults type='chats'/>
         </div>

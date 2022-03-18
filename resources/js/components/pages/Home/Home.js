@@ -4,11 +4,13 @@ import Selector from '../../Selector/Selector.js'
 import SearchResults from '../../SearchResults/SearchResults.js'
 
 // home page
-function Home(props) {
+function Home() {
     return (
         <div className="page homePage">
             <Search/>
-            <Selector type='users'/>
+            <div className="pageRow">
+                <Selector type='users'/>
+            </div>
             <SearchResults type='users'/>
         </div>
     )

@@ -33,6 +33,41 @@ function SearchResults({type}) {
                 pic: '/assets/ava.png',
                 relationship: 'request',
                 requestFrom: 5,
+            },
+            {
+                userId: 6,
+                username: 'Vanya',
+                pic: '/assets/ava.png',
+                relationship: 'request',
+                requestFrom: 5,
+            },
+            {
+                userId: 7,
+                username: 'Vanya',
+                pic: '/assets/ava.png',
+                relationship: 'request',
+                requestFrom: 5,
+            },
+            {
+                userId: 8,
+                username: 'Vanya',
+                pic: '/assets/ava.png',
+                relationship: 'request',
+                requestFrom: 5,
+            },
+            {
+                userId: 9,
+                username: 'Vanya',
+                pic: '/assets/ava.png',
+                relationship: 'request',
+                requestFrom: 5,
+            },
+            {
+                userId: 10,
+                username: 'Vanya',
+                pic: '/assets/ava.png',
+                relationship: 'request',
+                requestFrom: 5,
             }
         ]
         
@@ -81,6 +116,56 @@ function SearchResults({type}) {
             },
             {
                 chatId: 5,
+                chatType: 'groupChat',
+                chatName: 'sosaichi',
+                pic: '/assets/ava.png',
+                lastMessage: 'heossssssddddddddddddddddddddsooo',
+                lastMessageFromName: 'Vova',
+                lastMessageFromPic: '/assets/ava.png'
+            },
+            {
+                chatId: 6,
+                chatType: 'groupChat',
+                chatName: 'sosaichi',
+                pic: '/assets/ava.png',
+                lastMessage: 'heossssssddddddddddddddddddddsooo',
+                lastMessageFromName: 'Vova',
+                lastMessageFromPic: '/assets/ava.png'
+            },
+            {
+                chatId: 7,
+                chatType: 'dialog',
+                chatName: 'Vova',
+                pic: '/assets/ava.png',
+                lastMessage: 'heoooo',
+            },
+            {
+                chatId: 8,
+                chatType: 'groupChat',
+                chatName: 'sosaichi',
+                pic: '/assets/ava.png',
+                lastMessage: 'heosssssssooo',
+                lastMessageFromName: 'Vova',
+                lastMessageFromPic: '/assets/ava.png'
+            },
+            {
+                chatId: 9,
+                chatType: 'groupChat',
+                chatName: 'sosaichi',
+                pic: '/assets/ava.png',
+                lastMessage: 'heosssssssooo',
+                lastMessageFromName: 'Vova',
+                lastMessageFromPic: '/assets/ava.png'
+            },
+            {
+                chatId: 10,
+                chatType: 'dialog',
+                chatName: 'Vova',
+                pic: '/assets/ava.png',
+                lastMessage: 'heoooo',
+            },
+            {
+                chatId: 11,
                 chatType: 'groupChat',
                 chatName: 'sosaichi',
                 pic: '/assets/ava.png',
