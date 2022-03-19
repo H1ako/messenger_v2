@@ -1,3 +1,5 @@
+// global dependencies
+import { Link } from 'react-router-dom'
 // components
 import Search from '../../Search/Search.js'
 import Selector from '../../Selector/Selector.js'
@@ -10,7 +12,7 @@ function Chats(props) {
             <Search/>
             <div className="pageRow">
                 <Selector type='chats'/>
-                <a href='/new-groupchat'>new groupchat</a>
+                <Link to='/new-groupchat'>new groupchat</Link>
             </div>
             <SearchResults type='chats'/>
         </div>

@@ -1,0 +1,54 @@
+@import '../../../sass/imports/variables.scss';
+
+.chatPicture {
+    $pictureSize: 150px;
+
+    input {
+        display: none;
+    }
+
+    label {
+        display: block;
+        position: relative;
+        width: $pictureSize;
+        height: $pictureSize;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &::before, &::after {
+            top: -1px; left: -1px;
+            position: absolute;
+            opacity: 0;
+            transition: $transition;
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            border-radius: 50%;
+            z-index: 1;
+            display: grid;
+            place-content: center;
+        }
+        
+        &::before {
+            content: '';
+            background: $colorBg;
+        }
+
+        &::after {
+            content: 'upload picture';
+        }
+
+        &:hover {
+            &::before, &::after {
+                opacity: .8;
+            }
+        }
+
+        img {
+            background-color: white;
+            border-radius: 50%;
+            width: $pictureSize;
+            height: $pictureSize;
+        }
+    }
+    
+}

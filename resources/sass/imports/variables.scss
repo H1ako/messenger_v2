@@ -47,3 +47,15 @@ $transition: 400ms;
     overflow: hidden;
     white-space: nowrap;
 }
+
+@mixin customInput {
+    background: none;
+    border-radius: 9999px;
+    border: 1px solid $colorLight;
+    color: $colorLight;
+    font-weight: 300;
+    outline: none;
+    font-size: $fontSize2;
+    padding-block: .5em;
+    padding-inline: 1.25em;
+}

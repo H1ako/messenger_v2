@@ -1,0 +1,22 @@
+@import '../../../../sass/imports/variables.scss';
+
+.newGroupchatPage {
+
+    .mainInfo {
+        position: relative;
+        width: min(90%, 920px);
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        
+        input {
+            @include customInput;
+            width: 100%;
+        }
+    }
+
+    button {
+        @include btn;
+        background: none;
+    }
+}
