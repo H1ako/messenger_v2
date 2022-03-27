@@ -36,6 +36,8 @@ $transition: 400ms;
     padding: .25em 1.5em;
     white-space: nowrap;
     transition: $transition;
+    border: 1px solid $colorLight;
+    background: none;
 
     &:hover {
         background: $colorMain;
@@ -58,4 +60,9 @@ $transition: 400ms;
     font-size: $fontSize2;
     padding-block: .5em;
     padding-inline: 1.25em;
+}
+
+@mixin picture {
+    border-radius: 50%;
+    background-color: $colorLight;
 }

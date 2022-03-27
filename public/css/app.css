@@ -364,6 +364,8 @@ template {
 *::after,
 *::before {
   box-sizing: border-box;
+  scrollbar-color: black black;
+  scrollbar-width: thin;
 }
 
 h2, h3 {
@@ -414,7 +416,7 @@ main {
   width: 85%;
   height: 90%;
 }
-@media (max-width: 640px) {
+@media (max-width: 960px) {
   .page {
     width: 100%;
   }
@@ -427,7 +429,7 @@ main {
   height: 80%;
   top: 10%;
 }
-@media (max-width: 640px) {
+@media (max-width: 960px) {
   .page::before, .page::after {
     display: none;
   }
@@ -454,6 +456,8 @@ main {
   padding: 0.25em 1.5em;
   white-space: nowrap;
   transition: 400ms;
+  border: 1px solid white;
+  background: none;
   text-decoration: none;
   border: 1px solid white;
   text-align: center;

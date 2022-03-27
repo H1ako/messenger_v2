@@ -14,7 +14,7 @@ function NewGroupchat() {
                 <input type="text" placeholder='chat name' />
             </div>
             <Search />
-            <SearchResults type='users' />
+            <SearchResults type='chatMembers' />
             <button>ok</button>
         </div>
     )

@@ -1,0 +1,122 @@
+@import '../../../../sass/imports/variables.scss';
+
+.chatPage {
+
+    &__topRow {
+        width: 95%;
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        .topRow__chatInfo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            img {
+                $picSize: 3.5rem;
+
+                @include picture;
+                width: $picSize;
+                height: $picSize;
+            }
+        }
+
+        button {
+            @include btn;
+            display: none;
+        }
+    }
+
+    &__messages {
+        width: 80%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(.5rem, 2vw, 1rem);
+        overflow-y: auto;
+        padding-inline: .5rem;
+
+        .messages__message {
+            flex: none;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            overflow: hidden;
+            align-self: flex-start;
+            gap: .5rem;
+
+            &.myMessage {
+                align-self: flex-end;
+
+                .message__senderInfo {
+                    display: none;
+                }
+
+                p {
+                    background: $colorAccent;
+                    align-self: flex-end;
+                }
+
+                time {
+                    align-self: flex-end;
+                }
+            }
+
+            .message__senderInfo {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 1rem;
+
+                img {
+                    $picSize: 2.5rem;
+
+                    @include picture;
+                    width: $picSize;
+                    height: $picSize;
+                }
+            }
+
+            p {
+                background: $colorMain;
+                font-size: clamp(.950rem, 1vw, 1.25rem);
+                word-wrap: break-word;
+                padding: .5em 1em;
+                border-radius: 1.5rem;
+                margin: 0;
+                max-width: 60%;
+
+                @media (max-width: $sizeScreenTablet) {
+                    max-width: 80%;
+                }
+            }
+
+            time {
+                color: $colorGray;
+            }
+        }
+    }
+
+    &__bottomRow {
+        background: $colorBg;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        textarea {
+            @include customInput;
+            flex-grow: 1;
+            resize: none;
+            height: 4em;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        button {
+            @include btn;
+        }
+    }
+}

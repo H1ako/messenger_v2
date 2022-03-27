@@ -3,11 +3,13 @@ import './Sidebar.scss'
 // global dependencies
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import { useSidebarLinks } from '../../libs/useSidebarLinks'
 
 function Sidebar() {
     const location = useLocation()
+    const navLinks = useSidebarLinks(location.pathname)
     const [isActive, setIsActive] = useState(false)
-
+    
     return (
         <div className={`sidebar${isActive ? ' active' : ''}`}>
             <div className="sidebar__userInfo">
@@ -20,18 +22,14 @@ function Sidebar() {
                         <ion-icon name="menu-outline"></ion-icon>
                         <h3>menu</h3>
                     </li>
-                    <li className={`${location.pathname == '/' ? 'active' : ''}`}>
-                        <Link to='/'>
-                            <ion-icon name="home-outline"></ion-icon>
-                            <h3>home</h3>
-                        </Link>
-                    </li>
-                    <li className={`${location.pathname == '/chats' ? 'active' : ''}`}>
-                        <Link to='/chats'>
-                            <ion-icon name="chatbubbles-outline"></ion-icon>
-                            <h3>chats</h3>
-                        </Link>
-                    </li>
+                    {navLinks.map(link => 
+                        <li key={link.pathname} className={`${location.pathname == link.pathname ? 'active' : ''}`}>
+                            <Link to={link.pathname}>
+                                <ion-icon name={link.icon}></ion-icon>
+                                <h3>{link.name}</h3>
+                            </Link>
+                        </li>
+                    )}
                 </ul>
             </nav>
             <div className="sidebar__exit">

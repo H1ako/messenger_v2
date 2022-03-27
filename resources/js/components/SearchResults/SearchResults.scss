@@ -87,6 +87,26 @@
                         background: $colorMain;
                     }
                 }
+
+                input {
+                    display: none;
+
+                    &:checked ~ label {
+                        background: $colorAccent;
+                    }
+                }
+
+                label {
+                    $size: 2rem;
+
+                    border: 1px solid $colorLight;
+                    background: none;
+                    position: relative;
+                    width: $size;
+                    height: $size;
+                    border-radius: .5rem;
+
+                }
             }
         }
 

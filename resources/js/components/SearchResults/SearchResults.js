@@ -1,10 +1,73 @@
 // styles
-import SearchResultChat from './SearchResultChat'
 import './SearchResults.scss'
 // components
 import SearchResultUser from './SearchResultUser'
+import SearchResultChat from './SearchResultChat'
+import SearchResultChatMember from './SearchResultChatMember'
 
 function SearchResults({type}) {
+
+    if (type === 'chatMembers') {
+        const searchResults = [
+            {
+                userId: 2,
+                username: 'Dima',
+                pic: '/assets/ava.png',
+                relationship: 'friend'
+            },
+            {
+                userId: 23,
+                username: 'Dima',
+                pic: '/assets/ava.png',
+                relationship: 'friend'
+            },
+            {
+                userId: 24,
+                username: 'Dima',
+                pic: '/assets/ava.png',
+                relationship: 'friend'
+            },
+            {
+                userId: 25,
+                username: 'Dima',
+                pic: '/assets/ava.png',
+                relationship: 'friend'
+            },
+            {
+                userId: 26,
+                username: 'Dima',
+                pic: '/assets/ava.png',
+                relationship: 'friend'
+            },
+            {
+                userId: 27,
+                username: 'Dima',
+                pic: '/assets/ava.png',
+                relationship: 'friend'
+            },
+            {
+                userId: 28,
+                username: 'Dima',
+                pic: '/assets/ava.png',
+                relationship: 'friend'
+            },
+        ]
+        
+        return (
+            <div className="searchResults">
+                <ul>
+                    {searchResults.map(result => (
+                        <SearchResultChatMember
+                            key={result.userId}
+                            userId={result.userId}
+                            username={result.username}
+                            pic={result.pic}
+                        />
+                    ))}
+                </ul>
+            </div>
+        )
+    }
     
     if (type === 'users') {
         const searchResults = [
