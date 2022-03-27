@@ -1,32 +1,32 @@
 // styles
 import './UploadPicture.scss'
 // global dependencies
-import { useState, useRef } from 'react'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { signUpPuctureFileState, signUpPuctureState } from '../../recoil/SignUpAtom'
 
 function UploadPicture() {
 
-    const [picturePath, setPicturePath] = useState('')
-    const [pictureFile, setPictureFile] = useState('')
-    const inputRef = useRef()
+    const [pictureFile, setPictureFile] = useRecoilState(signUpPuctureFileState)
+    const [picture, setPicture] = useRecoilState(signUpPuctureState)
 
     const pictureHandler = (event) => {
         const file = event.target.files[0]
         const value = URL.createObjectURL(file)
 
         setPictureFile(file)
-        setPicturePath(value)
+        setPicture(value)
     }
 
     return (
         <div className='chatPicture'>
             <input
-                ref={inputRef}
                 onChange={pictureHandler}
                 id='chatPictureUpload'
                 type="file"
             />
             <label htmlFor='chatPictureUpload'>
-                <img src={picturePath} />
+                <img src={picture} />
             </label>
         </div>
     )

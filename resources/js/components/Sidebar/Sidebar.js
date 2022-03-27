@@ -1,14 +1,31 @@
 // styles
 import './Sidebar.scss'
 // global dependencies
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useSidebarLinks } from '../../libs/useSidebarLinks'
 
 function Sidebar() {
+    const navigate = useNavigate();
     const location = useLocation()
     const navLinks = useSidebarLinks(location.pathname)
     const [isActive, setIsActive] = useState(false)
+
+    const signOut = () => {
+        fetch('/sign-out', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
+            }
+        })
+        .then(response => response.json())
+        .then((response) => {
+            if (response.url) {
+                navigate(response.url);
+            }
+        })
+    }
     
     return (
         <div className={`sidebar${isActive ? ' active' : ''}`}>
@@ -32,7 +49,7 @@ function Sidebar() {
                     )}
                 </ul>
             </nav>
-            <div className="sidebar__exit">
+            <div onClick={signOut} className="sidebar__exit">
                 <ion-icon name="exit-outline"></ion-icon>
                 <h3>log out</h3>
             </div>

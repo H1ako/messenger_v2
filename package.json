@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "react-router-dom": "^6.2.2",
-        "react-transition-group": "^4.4.2"
+        "react-transition-group": "^4.4.2",
+        "recoil": "^0.6.1"
     }
 }

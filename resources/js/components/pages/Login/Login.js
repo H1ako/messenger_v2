@@ -3,8 +3,8 @@ import './Login.scss'
 // global dependencies
 import { Route, Routes } from 'react-router-dom'
 // components
-import SignIn from './SignIn'
-import SignUp from './SignUp'
+import SignIn from '../SignIn/SignIn'
+import SignUp from '../SignUp/SignUp'
 
 // home page
 function Login() {
