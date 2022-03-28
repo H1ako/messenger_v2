@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate extends Middleware
 {
@@ -23,7 +23,7 @@ class Authenticate extends Middleware
     public function handle($request, Closure $next, ...$guards)
     {
         //check here if the user is authenticated
-        if (!$this->auth->user() && !in_array($request->path(), ['sign-in', 'sign-up'])) {
+        if (!Auth::check()) {
             return redirect('/sign-in');
         }
 

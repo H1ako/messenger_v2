@@ -3,6 +3,8 @@ import './SignIn.scss'
 // global dependencies
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+// libs
+import { customFetch } from '../../../libs/customFetch';
 
 // home page
 function SignIn() {
@@ -19,16 +21,14 @@ function SignIn() {
                 email,
                 password
             }
-            fetch('/sign-in', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8',
-                    'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
-                },
-                body: JSON.stringify(userData)
-            })
+            
+            customFetch('/sign-in', 'POST', JSON.stringify(userData))
             .then(response => response.json())
             .then((response) => {
+                if (response.error) {
+                    console.log(response.error)
+                    return
+                }
                 if (response.url) {
                     navigate(response.url);
                 }

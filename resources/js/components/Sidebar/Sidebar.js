@@ -3,7 +3,9 @@ import './Sidebar.scss'
 // global dependencies
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+// libs
 import { useSidebarLinks } from '../../libs/useSidebarLinks'
+import { customFetch } from '../../libs/customFetch';
 
 function Sidebar() {
     const navigate = useNavigate();
@@ -12,21 +14,25 @@ function Sidebar() {
     const [isActive, setIsActive] = useState(false)
 
     const signOut = () => {
-        fetch('/sign-out', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-                'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
-            }
-        })
+        // fetch('/sign-out', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json;charset=utf-8',
+        //         'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
+        //     }
+        // })
+        customFetch('/sign-out', 'POST')
         .then(response => response.json())
         .then((response) => {
+            if (response.error) {
+                console.log(response.error)
+                return
+            }
             if (response.url) {
                 navigate(response.url);
             }
         })
     }
-    
     return (
         <div className={`sidebar${isActive ? ' active' : ''}`}>
             <div className="sidebar__userInfo">

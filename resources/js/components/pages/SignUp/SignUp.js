@@ -34,16 +34,14 @@ function SignUp() {
                 email,
                 password
             }
-            fetch('/sign-up', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8',
-                    'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
-                },
-                body: JSON.stringify(newUserData)
-            })
+            
+            customFetch('/sign-up', 'POST', JSON.stringify(newUserData))
             .then(response => response.json())
             .then((response) => {
+                if (response.error) {
+                    console.log(response.error)
+                    return
+                }
                 if (response.url) {
                     navigate(response.url);
                 }
