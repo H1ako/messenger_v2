@@ -13,7 +13,6 @@ Route::view('/sign-up', 'app')->name('signUp');
 Route::view('/sign-out', 'app')->name('signOut');
 Route::view('/sign-in', 'app')->name('signIn');
 
-// Route::post('/sign-in', [AuthController::class, 'signIn']);
+Route::post('/sign-in', [AuthController::class, 'signIn']);
 Route::post('/sign-up', [AuthController::class, 'signUp']);
 Route::post('/sign-out', [AuthController::class, 'signOut']);
-Route::post('/sign-in', [AuthController::class, 'signIn']);

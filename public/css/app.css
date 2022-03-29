@@ -455,7 +455,7 @@ main {
   font-weight: 300;
   padding: 0.25em 1.5em;
   white-space: nowrap;
-  transition: 400ms;
+  transition: 300ms;
   border: 1px solid white;
   background: none;
   text-decoration: none;

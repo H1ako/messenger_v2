@@ -3,12 +3,12 @@ import './UploadPicture.scss'
 // global dependencies
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { signUpPuctureFileState, signUpPuctureState } from '../../recoil/SignUpAtom'
+import { signUpPuctureFileState } from '../../recoil/SignUpAtom'
 
 function UploadPicture() {
 
     const [pictureFile, setPictureFile] = useRecoilState(signUpPuctureFileState)
-    const [picture, setPicture] = useRecoilState(signUpPuctureState)
+    const [picture, setPicture] = useState('')
 
     const pictureHandler = (event) => {
         const file = event.target.files[0]

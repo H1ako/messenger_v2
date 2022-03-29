@@ -24,18 +24,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Sidebar/Sidebar.js */ "./resources/js/components/Sidebar/Sidebar.js");
-/* harmony import */ var _components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/pages/Home/Home.js */ "./resources/js/components/pages/Home/Home.js");
-/* harmony import */ var _components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/pages/Chats/Chats.js */ "./resources/js/components/pages/Chats/Chats.js");
-/* harmony import */ var _components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/Chat/Chat.js */ "./resources/js/components/pages/Chat/Chat.js");
-/* harmony import */ var _components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/NewGroupchat/NewGroupchat.js */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.js");
-/* harmony import */ var _components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/SignIn/SignIn.js */ "./resources/js/components/pages/SignIn/SignIn.js");
-/* harmony import */ var _components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/SignUp/SignUp.js */ "./resources/js/components/pages/SignUp/SignUp.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// global dependencies\
+/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main */ "./resources/js/main.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+// global dependencies
 
 
  // components
@@ -43,41 +36,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
 function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "app",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.BrowserRouter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(recoil__WEBPACK_IMPORTED_MODULE_1__.RecoilRoot, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("main", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Routes, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-              path: "/",
-              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-              path: "/chats",
-              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-              path: "/chats/:id",
-              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-              path: "/new-groupchat",
-              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_6__["default"], {})
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-              path: "/sign-in",
-              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_7__["default"], {})
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-              path: "/sign-up",
-              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-            })]
-          })
-        })]
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.BrowserRouter, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(recoil__WEBPACK_IMPORTED_MODULE_1__.RecoilRoot, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_main__WEBPACK_IMPORTED_MODULE_2__["default"], {})
       })
     })
   });
@@ -86,7 +50,7 @@ function App() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 if (document.getElementById('root')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(App, {}), document.getElementById('root'));
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(App, {}), document.getElementById('root'));
 }
 
 /***/ }),
@@ -715,12 +679,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Sidebar_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Sidebar.scss */ "./resources/js/components/Sidebar/Sidebar.scss");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _libs_useSidebarLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../libs/useSidebarLinks */ "./resources/js/libs/useSidebarLinks.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _libs_useSidebarLinks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../libs/useSidebarLinks */ "./resources/js/libs/useSidebarLinks.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -737,6 +703,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  // global dependencies
 
 
+
+ // recoil atoms
+
  // libs
 
 
@@ -745,24 +714,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Sidebar() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
-  var navLinks = (0,_libs_useSidebarLinks__WEBPACK_IMPORTED_MODULE_2__.useSidebarLinks)(location.pathname);
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useLocation)();
+  var navLinks = (0,_libs_useSidebarLinks__WEBPACK_IMPORTED_MODULE_4__.useSidebarLinks)(location.pathname);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       isActive = _useState2[0],
       setIsActive = _useState2[1];
 
+  var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__.userInfoState);
+
   var signOut = function signOut() {
-    // fetch('/sign-out', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json;charset=utf-8',
-    //         'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
-    //     }
-    // })
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/sign-out', 'POST').then(function (response) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/sign-out', 'POST').then(function (response) {
       return response.json();
     }).then(function (response) {
       if (response.error) {
@@ -776,48 +740,48 @@ function Sidebar() {
     });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "sidebar".concat(isActive ? ' active' : ''),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "sidebar__userInfo",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        src: "/assets/ava.png",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+        src: userInfo.picture,
         alt: "user pic"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-        children: "Nikita Sobolev"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+        children: "".concat(userInfo.name, " ").concat(userInfo.surname)
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("nav", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("ul", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("nav", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ul", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
           className: "menuBtn",
           onClick: function onClick() {
             return setIsActive(!isActive);
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ion-icon", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
             name: "menu-outline"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
             children: "menu"
           })]
         }), navLinks.map(function (link) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
             className: "".concat(location.pathname == link.pathname ? 'active' : ''),
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
               to: link.pathname,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ion-icon", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
                 name: link.icon
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
                 children: link.name
               })]
             })
           }, link.pathname);
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       onClick: signOut,
       className: "sidebar__exit",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ion-icon", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
         name: "exit-outline"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
         children: "log out"
       })]
     })]
@@ -871,10 +835,10 @@ function UploadPicture() {
       pictureFile = _useRecoilState2[0],
       setPictureFile = _useRecoilState2[1];
 
-  var _useRecoilState3 = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureState),
-      _useRecoilState4 = _slicedToArray(_useRecoilState3, 2),
-      picture = _useRecoilState4[0],
-      setPicture = _useRecoilState4[1];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      picture = _useState2[0],
+      setPicture = _useState2[1];
 
   var pictureHandler = function pictureHandler(event) {
     var file = event.target.files[0];
@@ -1335,11 +1299,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _SignUp_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SignUp.scss */ "./resources/js/components/pages/SignUp/SignUp.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SignUpAtom */ "./resources/js/recoil/SignUpAtom.js");
 /* harmony import */ var _UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture */ "./resources/js/components/UploadPicture/UploadPicture.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1360,15 +1325,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // components
 
+ // libs
+
  // sign up page
 
 
 
 
 function SignUp() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
   var pictureFile = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureFileState);
-  var picture = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureState);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -1397,14 +1363,22 @@ function SignUp() {
 
   var signUp = function signUp() {
     if (password.length >= 8 && password === passwordAgain && email != '' && name != '' && surname != '') {
-      var newUserData = {
-        picture: picture,
-        name: name,
-        surname: surname,
-        email: email,
-        password: password
-      };
-      customFetch('/sign-up', 'POST', JSON.stringify(newUserData)).then(function (response) {
+      var newUserData = new FormData();
+      newUserData.append('picture', pictureFile);
+      newUserData.append('name', name);
+      newUserData.append('surname', surname);
+      newUserData.append('email', email);
+      newUserData.append('password', password);
+      fetch('/sign-up', {
+        method: "POST",
+        headers: {
+          'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
+          // "Content-Type": "multipart/form-data",
+          "Accept": 'application/json;charset=utf-8',
+          "type": "formData"
+        },
+        body: newUserData
+      }).then(function (response) {
         return response.json();
       }).then(function (response) {
         if (response.error) {
@@ -1419,17 +1393,17 @@ function SignUp() {
     }
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "page loginPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "loginPage__signUp",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
         children: "sign up"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "signUp__info",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "info__main",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
             required: true,
             value: name,
             onChange: function onChange(e) {
@@ -1437,7 +1411,7 @@ function SignUp() {
             },
             type: "text",
             placeholder: "name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
             required: true,
             value: surname,
             onChange: function onChange(e) {
@@ -1445,7 +1419,7 @@ function SignUp() {
             },
             type: "text",
             placeholder: "surname"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
             required: true,
             value: email,
             onChange: function onChange(e) {
@@ -1455,9 +1429,9 @@ function SignUp() {
             placeholder: "email"
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "signUp__passwords",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
           required: true,
           value: password,
           onChange: function onChange(e) {
@@ -1465,7 +1439,7 @@ function SignUp() {
           },
           type: "password",
           placeholder: "password"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
           required: true,
           value: passwordAgain,
           onChange: function onChange(e) {
@@ -1475,7 +1449,7 @@ function SignUp() {
           placeholder: "password again"
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
       onClick: signUp,
       children: "ok"
     })]
@@ -1592,6 +1566,110 @@ function useSidebarLinks(path) {
 
 /***/ }),
 
+/***/ "./resources/js/main.js":
+/*!******************************!*\
+  !*** ./resources/js/main.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Sidebar/Sidebar.js */ "./resources/js/components/Sidebar/Sidebar.js");
+/* harmony import */ var _components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/pages/Home/Home.js */ "./resources/js/components/pages/Home/Home.js");
+/* harmony import */ var _components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/Chats/Chats.js */ "./resources/js/components/pages/Chats/Chats.js");
+/* harmony import */ var _components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/Chat/Chat.js */ "./resources/js/components/pages/Chat/Chat.js");
+/* harmony import */ var _components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/NewGroupchat/NewGroupchat.js */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.js");
+/* harmony import */ var _components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/SignIn/SignIn.js */ "./resources/js/components/pages/SignIn/SignIn.js");
+/* harmony import */ var _components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/pages/SignUp/SignUp.js */ "./resources/js/components/pages/SignUp/SignUp.js");
+/* harmony import */ var _libs_customFetch_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./libs/customFetch.js */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+// global dependencies
+
+
+ // recoil atoms
+
+ // components
+
+
+
+
+
+
+
+ // libs
+
+
+
+
+
+
+function Main() {
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_2__.userInfoState),
+      _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
+      userInfo = _useRecoilState2[0],
+      setUserInfo = _useRecoilState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    (0,_libs_customFetch_js__WEBPACK_IMPORTED_MODULE_10__.customFetch)('/api/user', 'POST').then(function (data) {
+      return data.json();
+    }).then(function (data) {
+      console.log(data.data);
+
+      if (data.data) {
+        setUserInfo(data.data);
+      }
+    });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("main", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/chats",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/chats/:id",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/new-groupchat",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/sign-in",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          path: "/sign-up",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+        })]
+      })
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
+
+/***/ }),
+
 /***/ "./resources/js/recoil/SignUpAtom.js":
 /*!*******************************************!*\
   !*** ./resources/js/recoil/SignUpAtom.js ***!
@@ -1601,18 +1679,33 @@ function useSidebarLinks(path) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "signUpPuctureState": () => (/* binding */ signUpPuctureState),
 /* harmony export */   "signUpPuctureFileState": () => (/* binding */ signUpPuctureFileState)
 /* harmony export */ });
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 
-var signUpPuctureState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
-  key: 'signUpPuctureState',
-  "default": ''
-});
 var signUpPuctureFileState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
   key: 'signUpPuctureFileState',
   "default": ''
+});
+
+/***/ }),
+
+/***/ "./resources/js/recoil/UserAtom.js":
+/*!*****************************************!*\
+  !*** ./resources/js/recoil/UserAtom.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "userInfoState": () => (/* binding */ userInfoState)
+/* harmony export */ });
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+
+var userInfoState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
+  key: 'userInfoState',
+  "default": {}
 });
 
 /***/ }),
@@ -1634,7 +1727,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 50%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 400ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover {\n  background: #317FF3;\n}\n.searchResults ul .searchResultUser .btns button.accentColor {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.mainColor {\n  background: #317FF3;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 50%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover {\n  background: #317FF3;\n}\n.searchResults ul .searchResultUser .btns button.accentColor {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.mainColor {\n  background: #317FF3;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1688,7 +1781,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".selector {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n@media (max-width: 320px) {\n  .selector {\n    width: 100%;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 0.5rem;\n  }\n}\n.selector button {\n  outline: none;\n  transition: 400ms;\n  text-transform: lowercase;\n  background: none;\n  padding: 0.4em 1.5em;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n}\n@media (max-width: 320px) {\n  .selector button {\n    border-radius: 9999px;\n  }\n}\n.selector button.active {\n  background: #317FF3;\n}\n.selector button:not(.active):hover {\n  background: #2F76DF;\n}\n@media (min-width: 321px) {\n  .selector button:first-of-type {\n    border-radius: 9999px 0 0 9999px;\n    border-right-width: 0;\n  }\n}\n@media (min-width: 321px) {\n  .selector button:last-of-type {\n    border-radius: 0 9999px 9999px 0;\n    border-left-width: 0;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".selector {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n@media (max-width: 320px) {\n  .selector {\n    width: 100%;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 0.5rem;\n  }\n}\n.selector button {\n  outline: none;\n  transition: 300ms;\n  text-transform: lowercase;\n  background: none;\n  padding: 0.4em 1.5em;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n}\n@media (max-width: 320px) {\n  .selector button {\n    border-radius: 9999px;\n  }\n}\n.selector button.active {\n  background: #317FF3;\n}\n.selector button:not(.active):hover {\n  background: #2F76DF;\n}\n@media (min-width: 321px) {\n  .selector button:first-of-type {\n    border-radius: 9999px 0 0 9999px;\n    border-right-width: 0;\n  }\n}\n@media (min-width: 321px) {\n  .selector button:last-of-type {\n    border-radius: 0 9999px 9999px 0;\n    border-left-width: 0;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1712,7 +1805,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  flex: none;\n  position: relative;\n  width: clamp(3rem, 8vw, 4rem);\n  display: grid;\n  gap: 0.125rem;\n  grid-template-rows: 1fr 4fr 1fr;\n  padding-block: 1.5rem;\n  background: #317FF3;\n  transition: 400ms;\n  overflow: hidden;\n}\n.sidebar.active {\n  width: 16.5rem;\n}\n.sidebar.active h3 {\n  transform: none;\n  opacity: 1;\n  pointer-events: all;\n}\n.sidebar h3 {\n  transition: 400ms;\n  transform: translateY(20px);\n  pointer-events: none;\n  opacity: 0;\n  margin: 0;\n  font-weight: 300;\n}\n.sidebar ion-icon {\n  font-size: clamp(2rem, 5vw, 2.5rem);\n  place-self: center;\n}\n.sidebar__userInfo {\n  align-self: flex-start;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  align-items: center;\n  display: grid;\n  gap: 1rem;\n  cursor: pointer;\n  transition: 400ms;\n  padding-block: 0.5rem;\n}\n.sidebar__userInfo:hover {\n  background: #448cf8;\n}\n.sidebar__userInfo h3 {\n  white-space: nowrap;\n}\n.sidebar__userInfo img {\n  place-self: center;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  width: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  height: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n}\n.sidebar nav {\n  align-self: center;\n}\n.sidebar nav ul {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n}\n.sidebar nav ul .menuBtn {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  cursor: pointer;\n}\n.sidebar nav ul li {\n  width: 100%;\n  padding-block: 0.5rem;\n  transition: 400ms;\n}\n.sidebar nav ul li:not(.active):hover {\n  background: #448cf8;\n}\n.sidebar nav ul li.active {\n  background: #2F76DF;\n}\n.sidebar nav ul li a {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  color: white;\n  text-decoration: none;\n  outline: none;\n}\n.sidebar__exit {\n  align-self: flex-end;\n  gap: 1rem;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  cursor: pointer;\n  padding-block: 0.5rem;\n  transition: 400ms;\n}\n.sidebar__exit:hover {\n  background: #448cf8;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  flex: none;\n  position: relative;\n  width: clamp(3rem, 8vw, 4rem);\n  display: grid;\n  gap: 0.125rem;\n  grid-template-rows: 1fr 4fr 1fr;\n  padding-block: 1.5rem;\n  background: #317FF3;\n  transition: 300ms;\n  overflow: hidden;\n}\n.sidebar.active {\n  width: 16.5rem;\n}\n.sidebar.active h3 {\n  transform: none;\n  opacity: 1;\n  pointer-events: all;\n}\n.sidebar h3 {\n  transition: 300ms;\n  transform: translateY(20px);\n  pointer-events: none;\n  opacity: 0;\n  margin: 0;\n  font-weight: 300;\n}\n.sidebar ion-icon {\n  font-size: clamp(2rem, 5vw, 2.5rem);\n  place-self: center;\n}\n.sidebar__userInfo {\n  align-self: flex-start;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  align-items: center;\n  display: grid;\n  gap: 1rem;\n  cursor: pointer;\n  transition: 300ms;\n  padding-block: 0.5rem;\n}\n.sidebar__userInfo:hover {\n  background: #448cf8;\n}\n.sidebar__userInfo h3 {\n  white-space: nowrap;\n}\n.sidebar__userInfo img {\n  place-self: center;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  width: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  height: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n}\n.sidebar nav {\n  align-self: center;\n}\n.sidebar nav ul {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n}\n.sidebar nav ul .menuBtn {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  cursor: pointer;\n}\n.sidebar nav ul li {\n  width: 100%;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar nav ul li:not(.active):hover {\n  background: #448cf8;\n}\n.sidebar nav ul li.active {\n  background: #2F76DF;\n}\n.sidebar nav ul li a {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  color: white;\n  text-decoration: none;\n  outline: none;\n}\n.sidebar__exit {\n  align-self: flex-end;\n  gap: 1rem;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  cursor: pointer;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar__exit:hover {\n  background: #448cf8;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1736,7 +1829,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatPicture input {\n  display: none;\n}\n.chatPicture label {\n  display: block;\n  position: relative;\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatPicture label::before, .chatPicture label::after {\n  top: -1px;\n  left: -1px;\n  position: absolute;\n  opacity: 0;\n  transition: 400ms;\n  width: calc(100% + 2px);\n  height: calc(100% + 2px);\n  border-radius: 50%;\n  z-index: 1;\n  display: grid;\n  place-content: center;\n}\n.chatPicture label::before {\n  content: \"\";\n  background: black;\n}\n.chatPicture label::after {\n  content: \"upload picture\";\n}\n.chatPicture label:hover::before, .chatPicture label:hover::after {\n  opacity: 0.8;\n}\n.chatPicture label img {\n  background-color: white;\n  border-radius: 50%;\n  width: 150px;\n  height: 150px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatPicture input {\n  display: none;\n}\n.chatPicture label {\n  display: block;\n  position: relative;\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatPicture label::before, .chatPicture label::after {\n  top: -1px;\n  left: -1px;\n  position: absolute;\n  opacity: 0;\n  transition: 300ms;\n  width: calc(100% + 2px);\n  height: calc(100% + 2px);\n  border-radius: 50%;\n  z-index: 1;\n  display: grid;\n  place-content: center;\n}\n.chatPicture label::before {\n  content: \"\";\n  background: black;\n}\n.chatPicture label::after {\n  content: \"upload picture\";\n}\n.chatPicture label:hover::before, .chatPicture label:hover::after {\n  opacity: 0.8;\n}\n.chatPicture label img {\n  background-color: white;\n  border-radius: 50%;\n  width: 150px;\n  height: 150px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1760,7 +1853,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3.5rem;\n  height: 3.5rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 400ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover {\n  background: #317FF3;\n}\n.chatPage__messages {\n  width: 80%;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n  padding-inline: 0.5rem;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage p {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message p {\n  background: #317FF3;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  word-wrap: break-word;\n  padding: 0.5em 1em;\n  border-radius: 1.5rem;\n  margin: 0;\n  max-width: 60%;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message p {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  height: 4em;\n  overflow: hidden;\n  border-radius: 1rem;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 400ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover {\n  background: #317FF3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3.5rem;\n  height: 3.5rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover {\n  background: #317FF3;\n}\n.chatPage__messages {\n  width: 80%;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n  padding-inline: 0.5rem;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage p {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message p {\n  background: #317FF3;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  word-wrap: break-word;\n  padding: 0.5em 1em;\n  border-radius: 1.5rem;\n  margin: 0;\n  max-width: 60%;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message p {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  height: 4em;\n  overflow: hidden;\n  border-radius: 1rem;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover {\n  background: #317FF3;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1784,7 +1877,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".newGroupchatPage .mainInfo {\n  position: relative;\n  width: min(90%, 920px);\n  display: flex;\n  align-items: center;\n  gap: 3rem;\n}\n.newGroupchatPage .mainInfo input {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}\n.newGroupchatPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 400ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.newGroupchatPage button:hover {\n  background: #317FF3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".newGroupchatPage .mainInfo {\n  position: relative;\n  width: min(90%, 920px);\n  display: flex;\n  align-items: center;\n  gap: 3rem;\n}\n.newGroupchatPage .mainInfo input {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}\n.newGroupchatPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.newGroupchatPage button:hover {\n  background: #317FF3;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1808,7 +1901,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signIn {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 400ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #317FF3;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signIn {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #317FF3;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1832,7 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signUp {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info .info__main {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__passwords {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  align-items: center;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 400ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #317FF3;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signUp {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info .info__main {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__passwords {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  align-items: center;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #317FF3;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -1,18 +1,19 @@
 // styles
 import './SignUp.scss'
 // global dependencies
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import { signUpPuctureFileState, signUpPuctureState } from '../../../recoil/SignUpAtom'
+import { signUpPuctureFileState } from '../../../recoil/SignUpAtom'
 // components
 import UploadPicture from "../../UploadPicture/UploadPicture"
+// libs
+import { customFetch } from '../../../libs/customFetch'
 
 // sign up page
 function SignUp() {
     const navigate = useNavigate();
     const pictureFile = useRecoilValue(signUpPuctureFileState)
-    const picture = useRecoilValue(signUpPuctureState)
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
@@ -27,15 +28,23 @@ function SignUp() {
             name != '' &&
             surname != ''
         ) {
-            const newUserData = {
-                picture,
-                name,
-                surname,
-                email,
-                password
-            }
-            
-            customFetch('/sign-up', 'POST', JSON.stringify(newUserData))
+            const newUserData = new FormData()
+            newUserData.append('picture', pictureFile)
+            newUserData.append('name', name)
+            newUserData.append('surname', surname)
+            newUserData.append('email', email)
+            newUserData.append('password', password)
+
+            fetch('/sign-up', {
+                method: "POST",
+                headers: {
+                    'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
+                    // "Content-Type": "multipart/form-data",
+                    "Accept": 'application/json;charset=utf-8',
+                    "type": "formData"
+                },
+                body: newUserData
+            })
             .then(response => response.json())
             .then((response) => {
                 if (response.error) {

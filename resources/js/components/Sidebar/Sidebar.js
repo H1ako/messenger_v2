@@ -3,6 +3,9 @@ import './Sidebar.scss'
 // global dependencies
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useRecoilValue } from 'recoil';
+// recoil atoms
+import { userInfoState } from '../../recoil/UserAtom';
 // libs
 import { useSidebarLinks } from '../../libs/useSidebarLinks'
 import { customFetch } from '../../libs/customFetch';
@@ -12,15 +15,9 @@ function Sidebar() {
     const location = useLocation()
     const navLinks = useSidebarLinks(location.pathname)
     const [isActive, setIsActive] = useState(false)
-
+    const userInfo = useRecoilValue(userInfoState)
+    
     const signOut = () => {
-        // fetch('/sign-out', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json;charset=utf-8',
-        //         'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
-        //     }
-        // })
         customFetch('/sign-out', 'POST')
         .then(response => response.json())
         .then((response) => {
@@ -36,8 +33,8 @@ function Sidebar() {
     return (
         <div className={`sidebar${isActive ? ' active' : ''}`}>
             <div className="sidebar__userInfo">
-                <img src='/assets/ava.png' alt="user pic"/>
-                <h3>Nikita Sobolev</h3>
+                <img src={userInfo.picture} alt="user pic"/>
+                <h3>{`${userInfo.name} ${userInfo.surname}`}</h3>
             </div>
             <nav>
                 <ul>
