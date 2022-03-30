@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +10,6 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function signUp(Request $request) {
-        
         $email = $request->input('email');
         // check if there is a user with this email
         if (User::where('email', $email)->exists()) {
@@ -27,40 +25,44 @@ class AuthController extends Controller
         ]);
         
         $newUser = User::make($validatedData);
+        if (!$newUser) {
+            return json_encode(['error' => 'wrong incoming data']);
+        }
+
         $newUser->password = Hash::make($request->input('password'));
-        $newUser->save();
 
-        try {
-            if ($request->hasFile('picture')) {
-                $file = $request->file('picture');
-                $destinationPath = 'users/avatars';
-                $extension = $file->getClientOriginalExtension();
-                $fileName = $newUser->id . "." . $extension;
-            
-                $file->move($destinationPath, $fileName);
-            
-                $newUser->picture = '/' . $destinationPath . '/' . $fileName;
-            }
-        } catch (Exception $e) {
-            return json_encode(['error' => $e]);
-        }
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $destinationPath = 'users/avatars';
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $newUser->id . "." . $extension;
         
+            $file->move($destinationPath, $fileName);
+        
+            $newUser->picture = '/' . $destinationPath . '/' . $fileName;
+            
+        }
         $newUser->save();
 
-        if ($newUser) {
-            Auth::login($newUser, true);
-            return json_encode(["url" => '/']);
-        }
-        return json_encode(['error' => 'wrong incoming data']);
+        Auth::login($newUser, true);
+        return json_encode([
+            "url" => '/',
+            "user" => $newUser
+        ]);
     }
 
     public function signIn(Request $request) {
         $email = $request->input('email');
         $password = $request->input('password');
+        $signInAttempt = Auth::attempt(['email' => $email, 'password' => $password]);
 
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return json_encode(["url" => '/']);
+        if ($signInAttempt) {
+            return json_encode([
+                "url" => '/',
+                "user" => Auth::user()
+            ]);
         }
+
         return json_encode(["error" => 'wrong incoming data']);
     }
 
@@ -69,6 +71,7 @@ class AuthController extends Controller
             Auth::logout();
             return json_encode(["url" => '/sign-in']);
         }
+
         return json_encode(["error" => 'not logged in']);
     }
 }

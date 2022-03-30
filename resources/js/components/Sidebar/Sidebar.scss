@@ -7,13 +7,17 @@
     flex: none;
     position: relative;
     width: $sizeSidebar;
-    display: grid;
     gap: .125rem;
+    display: grid;
     grid-template-rows: 1fr 4fr 1fr;
     padding-block: 1.5rem;
     background: $colorMain;
     transition: $transition;
     overflow: hidden;
+
+    &.notLoggedIn {
+        grid-template-rows: 1fr;
+    }
 
     &.active {
         width: $sizeSidebarActive;

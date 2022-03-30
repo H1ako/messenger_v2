@@ -1,10 +1,12 @@
 // styles
 import './SignUp.scss'
 // global dependencies
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { signUpPuctureFileState } from '../../../recoil/SignUpAtom'
+// recoil atoms
+import { userInfoState } from '../../../recoil/UserAtom'
 // components
 import UploadPicture from "../../UploadPicture/UploadPicture"
 // libs
@@ -14,6 +16,7 @@ import { customFetch } from '../../../libs/customFetch'
 function SignUp() {
     const navigate = useNavigate();
     const pictureFile = useRecoilValue(signUpPuctureFileState)
+    const [userInfo, setUserInfo] = useRecoilState(userInfoState)
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
@@ -52,6 +55,10 @@ function SignUp() {
                     return
                 }
                 if (response.url) {
+                    if (response.user) {
+                        setUserInfo(response.user)
+                    }
+                    
                     navigate(response.url);
                 }
             })

@@ -1,26 +1,29 @@
+import { Link } from "react-router-dom"
+
 function SearchResultChat({
     chatId,
     type,
     pic,
     name,
     lastMessage,
-    lastMessageFromName,
-    lastMessageFromPic
+    companion
 }) {
 
     if (type === 'dialog') {
         return (
-            <li className='searchResultChat'>
-                <img src={pic} className='searchResultChat__chatPic' alt="chat pic"/>
-                <span className="searchResultChat__chatInfo">
-                    <h2>{name}</h2>
-                    <h3>{lastMessage}</h3>
-                </span>
+            <li>
+                <Link className="searchResultChat" to={`/chats/${chatId}`}>
+                    <img src={companion.picture} className='searchResultChat__chatPic' alt="chat pic"/>
+                    <span className="searchResultChat__chatInfo">
+                        <h2>{`${companion.name} ${companion.surname}`}</h2>
+                        <h3>{lastMessage ? lastMessage: 'start dialog...'}</h3>
+                    </span>
+                </Link>
             </li>
         )
     }
 
-    if (type === 'groupChat') {
+    if (type === 'groupchat') {
         return (
             <li className='searchResultChat'>
                 <img src={pic} className='searchResultChat__chatPic' alt="chat pic"/>

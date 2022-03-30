@@ -3,7 +3,7 @@ import './Sidebar.scss'
 // global dependencies
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 // recoil atoms
 import { userInfoState } from '../../recoil/UserAtom';
 // libs
@@ -15,8 +15,8 @@ function Sidebar() {
     const location = useLocation()
     const navLinks = useSidebarLinks(location.pathname)
     const [isActive, setIsActive] = useState(false)
-    const userInfo = useRecoilValue(userInfoState)
-    
+    const [userInfo, setUserInfo] = useRecoilState(userInfoState)
+
     const signOut = () => {
         customFetch('/sign-out', 'POST')
         .then(response => response.json())
@@ -26,16 +26,20 @@ function Sidebar() {
                 return
             }
             if (response.url) {
+                setUserInfo({})
                 navigate(response.url);
             }
         })
     }
     return (
-        <div className={`sidebar${isActive ? ' active' : ''}`}>
-            <div className="sidebar__userInfo">
-                <img src={userInfo.picture} alt="user pic"/>
-                <h3>{`${userInfo.name} ${userInfo.surname}`}</h3>
-            </div>
+        <div className={`sidebar${isActive ? ' active' : ''}${userInfo.id ? '' : ' notLoggedIn'}`}>
+            {userInfo.id && 
+                <div className="sidebar__userInfo">
+                    <img src={userInfo.picture} alt="user pic"/>
+                    <h3>{`${userInfo.name} ${userInfo.surname}`}</h3>
+                </div>
+            }
+            
             <nav>
                 <ul>
                     <li className='menuBtn' onClick={() => setIsActive(!isActive)}>
@@ -52,10 +56,12 @@ function Sidebar() {
                     )}
                 </ul>
             </nav>
-            <div onClick={signOut} className="sidebar__exit">
-                <ion-icon name="exit-outline"></ion-icon>
-                <h3>log out</h3>
-            </div>
+            {userInfo.id && 
+                <div onClick={signOut} className="sidebar__exit">
+                    <ion-icon name="exit-outline"></ion-icon>
+                    <h3>log out</h3>
+                </div>
+            }
         </div>
     )
 }

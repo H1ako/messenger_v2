@@ -3,6 +3,9 @@ import './SignIn.scss'
 // global dependencies
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+// recoil atoms
+import { userInfoState } from '../../../recoil/UserAtom';
 // libs
 import { customFetch } from '../../../libs/customFetch';
 
@@ -11,6 +14,7 @@ function SignIn() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [userInfo, setUserInfo] = useRecoilState(userInfoState)
 
     const signIn = () => {
         if (
@@ -30,6 +34,10 @@ function SignIn() {
                     return
                 }
                 if (response.url) {
+                    if (response.user) {
+                        setUserInfo(response.user)
+                    }
+                    
                     navigate(response.url);
                 }
             })

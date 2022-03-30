@@ -23,7 +23,6 @@ function Main() {
         customFetch('/api/user', 'POST')
         .then(data => data.json())
         .then(data => {
-            console.log(data.data)
             if (data.data) {
                 setUserInfo(data.data)
             }
@@ -32,12 +31,12 @@ function Main() {
     
     return (
         <>
-        <Sidebar />
+            <Sidebar />
             <main>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/chats" element={<Chats />} />
-                    <Route path="/chats/:id" element={<Chat />} />
+                    <Route path="/chats/:chatId" element={<Chat />} />
                     <Route path="/new-groupchat" element={<NewGroupchat />} />
                     <Route path="/sign-in" element={<SignIn />} />
                     <Route path="/sign-up" element={<SignUp />} />

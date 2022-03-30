@@ -35,4 +35,20 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function friends() {
+        return $this->hasMany(Friend::class, 'user_id', 'id')->orderBy('updated_at', 'asc');
+    }
+    
+    public function chats() {
+        return $this->hasMany(ChatMember::class, 'member_id', 'id')->orderBy('updated_at', 'asc');
+    }
+
+    public function dialogs() {
+        return $this->hasMany(ChatMember::class, 'member_id', 'id')->where('chat_type', 'dialog')->orderBy('updated_at', 'asc');
+    }
+
+    public function groupchats() {
+        return $this->hasMany(ChatMember::class, 'member_id', 'id')->where('chat_type', 'groupchat')->orderBy('updated_at', 'asc');
+    }
 }

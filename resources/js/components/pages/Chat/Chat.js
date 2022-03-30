@@ -2,133 +2,96 @@
 import './Chat.scss'
 // global dependencies
 import { useParams } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+// recoil atoms
+import { userInfoState } from '../../../recoil/UserAtom.js'
+// libs
+import { customFetch } from '../../../libs/customFetch'
+// components
+import ChatMessage from './ChatMessage'
 
 // Chat page
-function Chat(props) {
-    const {id} = useParams()
-    const chatType = 'chatgroup'
+function Chat() {
+    const { chatId } = useParams()
+    const [chatInfo, setChatInfo] = useState({})
+    const [messages, setMessages] = useState([])
+    const [messageText, setMessageText] = useState([])
+    const [companionInfo, setCompanionInfo] = useState({})
+    const userInfo = useRecoilValue(userInfoState)
 
+    const sendMessage = () => {
+        if (!messageText) return
+        const messageData = {
+            text: messageText
+        }
+
+        setMessageText("")
+
+        customFetch(`/chats/${chatId}/new-message`, "POST", JSON.stringify(messageData))
+    }
+
+    const handeEnter = e => {
+        if (e.key === 'Enter' && e.shiftKey) {
+            sendMessage()
+        }
+    }
+
+    useEffect(() => {
+        customFetch(`/api/chats/${chatId}`, "POST")
+        .then(data => data.json())
+        .then(data => {
+            if (data.error) {
+                return console.log(data.error)
+            }
+            if (data) {
+                setChatInfo(data.chat)
+                setMessages(data.messages)
+                setCompanionInfo(data.companion[0])
+            }
+        })
+    }, [])
+    
     return (
-        <div className="page chatPage">
-            {chatType === 'chatgroup' &&
+        <div className="page chatPage" onKeyUp={handeEnter}>
+            {chatInfo.chat_type === 'chatgroup' ?
             <div className="chatPage__topRow">
                 <div className="topRow__chatInfo">
-                     <img src="/assets/ava.png" alt="" />
-                     <h3>sos</h3>
+                     <img src={chatInfo.picture} alt="" />
+                     <h3>{chatInfo.name}</h3>
                 </div>
                 <button>settings</button>
             </div>
-            }
-            <div className="chatPage__messages">
-                <div className="messages__message">
-                    <div className="message__senderInfo">
-                        <img src="/assets/ava.png" alt="" />
-                        <h2>dima</h2>
-                    </div>
-                    <p>
-                        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, excepturi! Quas omnis dignissimos delectus rerum magni? Nisi magni ratione veniam odio. Quod saepe temporibus cupiditate molestiae numquam nam, voluptates illo?
-                    </p>
-                    <time>
-                       12:47
-                    </time>
-                    
-                </div>
-
-                <div className="messages__message myMessage">
-                    <div className="message__senderInfo">
-                        <img src="/assets/ava.png" alt="" />
-                        <h2>nikita</h2>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, consequuntur? Consectetur harum neque amet quos veritatis nam dignissimos quis quibusdam iste odio esse facilis, voluptates perspiciatis? Quo molestiae tempora iure.
-                    </p>
-                   <time>
-                       12:47
-                   </time>
-                </div>
-                <div className="messages__message">
-                    <div className="message__senderInfo">
-                        <img src="/assets/ava.png" alt="" />
-                        <h2>dima</h2>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, excepturi! Quas omnis dignissimos delectus rerum magni? Nisi magni ratione veniam odio. Quod saepe temporibus cupiditate molestiae numquam nam, voluptates illo?
-                    </p>
-                    <time>
-                       12:47
-                    </time>
-                    
-                </div>
-
-                <div className="messages__message myMessage">
-                    <div className="message__senderInfo">
-                        <img src="/assets/ava.png" alt="" />
-                        <h2>nikita</h2>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, consequuntur? Consectetur harum neque amet quos veritatis nam dignissimos quis quibusdam iste odio esse facilis, voluptates perspiciatis? Quo molestiae tempora iure.
-                    </p>
-                   <time>
-                       12:47
-                   </time>
-                </div>
-                <div className="messages__message">
-                    <div className="message__senderInfo">
-                        <img src="/assets/ava.png" alt="" />
-                        <h2>dima</h2>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, excepturi! Quas omnis dignissimos delectus rerum magni? Nisi magni ratione veniam odio. Quod saepe temporibus cupiditate molestiae numquam nam, voluptates illo?
-                    </p>
-                    <time>
-                       12:47
-                    </time>
-                    
-                </div>
-
-                <div className="messages__message myMessage">
-                    <div className="message__senderInfo">
-                        <img src="/assets/ava.png" alt="" />
-                        <h2>nikita</h2>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, consequuntur? Consectetur harum neque amet quos veritatis nam dignissimos quis quibusdam iste odio esse facilis, voluptates perspiciatis? Quo molestiae tempora iure.
-                    </p>
-                   <time>
-                       12:47
-                   </time>
-                </div>
-                <div className="messages__message">
-                    <div className="message__senderInfo">
-                        <img src="/assets/ava.png" alt="" />
-                        <h2>dima</h2>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, excepturi! Quas omnis dignissimos delectus rerum magni? Nisi magni ratione veniam odio. Quod saepe temporibus cupiditate molestiae numquam nam, voluptates illo?
-                    </p>
-                    <time>
-                       12:47
-                    </time>
-                    
-                </div>
-
-                <div className="messages__message myMessage">
-                    <div className="message__senderInfo">
-                        <img src="/assets/ava.png" alt="" />
-                        <h2>nikita</h2>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, consequuntur? Consectetur harum neque amet quos veritatis nam dignissimos quis quibusdam iste odio esse facilis, voluptates perspiciatis? Quo molestiae tempora iure.
-                    </p>
-                   <time>
-                       12:47
-                   </time>
+            :
+            <div className="chatPage__topRow">
+                <div className="topRow__chatInfo">
+                     <img src={companionInfo.picture} alt="" />
+                     <h3>{`${companionInfo.name} ${companionInfo.surname}`}</h3>
                 </div>
             </div>
+            }
+            <div className="chatPage__messages">
+                {messages.map(message =>(
+                    <ChatMessage
+                        key={message.id}
+                        currentUserId={userInfo.id}
+                        sender={message.sender}
+                        text={message.text}
+                        time={message.updated_at}
+                    />
+                ))}
+            </div>
             <div className="chatPage__bottomRow">
-                <textarea placeholder='your message...'/>
-                <button>send</button>
+                <textarea
+                    autoFocus
+                    value={messageText}
+                    onChange={(e) => setMessageText(e.target.value)}
+                    placeholder='your message...'
+                />
+                <button
+                    onClick={sendMessage}
+                >send
+                </button>
             </div>
         </div>
     )
