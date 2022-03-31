@@ -2,7 +2,7 @@
 import './Chat.scss'
 // global dependencies
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useRecoilValue } from 'recoil'
 // recoil atoms
 import { userInfoState } from '../../../recoil/UserAtom.js'
@@ -19,6 +19,7 @@ function Chat() {
     const [messageText, setMessageText] = useState([])
     const [companionInfo, setCompanionInfo] = useState({})
     const userInfo = useRecoilValue(userInfoState)
+    const messagesBottom = useRef()
 
     const sendMessage = () => {
         if (!messageText) return
@@ -41,20 +42,25 @@ function Chat() {
         customFetch(`/api/chats/${chatId}`, "POST")
         .then(data => data.json())
         .then(data => {
+            console.log(data)
             if (data.error) {
                 return console.log(data.error)
             }
             if (data) {
                 setChatInfo(data.chat)
                 setMessages(data.messages)
-                setCompanionInfo(data.companion[0])
+                setCompanionInfo(data.companion?.[0])
             }
         })
     }, [])
+
+    useEffect(() => {
+        messagesBottom.current.scrollIntoView()
+    }, [messages])
     
     return (
         <div className="page chatPage" onKeyUp={handeEnter}>
-            {chatInfo.chat_type === 'chatgroup' ?
+            {chatInfo.chat_type === 'groupchat' ?
             <div className="chatPage__topRow">
                 <div className="topRow__chatInfo">
                      <img src={chatInfo.picture} alt="" />
@@ -65,8 +71,8 @@ function Chat() {
             :
             <div className="chatPage__topRow">
                 <div className="topRow__chatInfo">
-                     <img src={companionInfo.picture} alt="" />
-                     <h3>{`${companionInfo.name} ${companionInfo.surname}`}</h3>
+                     <img src={companionInfo?.picture} alt="" />
+                     <h3>{`${companionInfo?.name} ${companionInfo?.surname}`}</h3>
                 </div>
             </div>
             }
@@ -80,6 +86,7 @@ function Chat() {
                         time={message.updated_at}
                     />
                 ))}
+                <div ref={messagesBottom} className="messages__bottom" />
             </div>
             <div className="chatPage__bottomRow">
                 <textarea

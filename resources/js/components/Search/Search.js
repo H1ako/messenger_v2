@@ -24,52 +24,33 @@ function Search({ searchType }) {
         />
     )
 
-    const debouncedSearch = query => {
-        // const data = customFetch(`/api/search/${searchType}`, "POST", JSON.stringify({ searchQuery }))
-        // console.log(data)
-        // return data
-        let data = "[]"
+    const getSearchData = useCallback(debounce( (query) => {
         fetch(`/api/search/${searchType}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
                 'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
             },
-            body: JSON.stringify({ searchQuery })
+            body: JSON.stringify({ searchQuery: query })
         })
         .then(request => request.json())
         .then(request => {
-            console.log(request)
-            data = request
+            if (request && !request.error) {
+                if (searchType === 'chats') {
+                    setChats(request)
+                }
+        
+                if (searchType === 'users') {
+                    setUsers(request)
+                }
+            }
         })
-
-        return data
-        // customFetch(`/api/search/${searchType}`, "POST", JSON.stringify({ searchQuery }))
-        // .then(data => data.json())
-        // .then(data => {
-        //     console.log(data)
-        // })
-    }
-    const getSearchData = useCallback(debounce( query => debouncedSearch(query), 500), [])
+    }, 300), [])
 
     useEffect(() => {
         if (!trim(searchQuery)) return
         
-        const d = getSearchData(searchQuery);
-        console.log(d)
-        // .then(data => data.json)
-        // .then(data => {
-        //     // console.log(data)
-        // })
-        
-
-        // if (searchType === 'chats') {
-        //     setChats(searchData)
-        // }
-
-        // if (searchType === 'users') {
-        //     setUsers(searchData)
-        // }
+        getSearchData(searchQuery);
     }, [searchQuery])
 
     return (

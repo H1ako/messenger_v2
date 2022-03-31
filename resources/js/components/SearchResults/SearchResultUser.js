@@ -20,7 +20,7 @@ function SearchResultUser({
         )
     }
 
-    if (relationship === '') {
+    if (relationship === 'no') {
         return (
             <li className='searchResultUser'>
                 <span className='userInfo'>

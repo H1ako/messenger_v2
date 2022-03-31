@@ -13,6 +13,7 @@ import UploadPicture from '../../UploadPicture/UploadPicture.js'
 // for creating new chat
 function NewGroupchat() {
     const users = useRecoilValue(searchResultUsersState)
+    
     return (
         <div className="page newGroupchatPage">
             <div className="mainInfo">

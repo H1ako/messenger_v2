@@ -4,10 +4,13 @@ use App\Http\Resources\UserResource;
 use App\Models\Chat;
 use App\Models\ChatMember;
 use App\Models\ChatMessage;
+use App\Models\Friend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+
+use function PHPSTORM_META\type;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,16 +43,30 @@ Route::post('/search/{searchType}', function ($searchType, Request $request) {
                 $searchResults = User::where('id', '!=' , $user->id)
                                     ->where('name', 'like', "%$trimmedQuery%")
                                     ->orWhere('surname', 'like', "%$trimmedQuery%")
+                                    ->where('id', '!=' , $user->id)
                                     ->get();
+                                    
+                foreach ($searchResults as $searchResult) {
+                    $userFriend = $user->friends()->where('friend_id', $searchResult->id)->first();
+
+                    $searchResult->aboutRelationship = $userFriend;
+                }
+
                 break;
             case 'chats':
                 $userIds = User::where('id', '!=' , $user->id)
-                                ->where('name', 'like', "%$trimmedQuery%")
-                                ->orWhere('surname', 'like', "%$trimmedQuery%")
-                                ->pluck('id');
-                $chatIds = Chat::where('name', 'like', "%$trimmedQuery%")->pluck('id');
+                                    ->where('name', 'like', "%$trimmedQuery%")
+                                    ->orWhere('surname', 'like', "%$trimmedQuery%")
+                                    ->where('id', '!=' , $user->id)
+                                    ->pluck('id');
+                $userChatsIds = $user->chats()->pluck('chat_id');
                 
-                $resultIds = $userIds->merge($chatIds);
+                $chatMemberIds = ChatMember::whereIn('chat_id', $userChatsIds)
+                                            ->whereIn('member_id', $userIds)
+                                            ->pluck('chat_id');
+                $chatIds = Chat::where('name', 'like', "%$trimmedQuery%")->pluck('id');
+                $resultIds = $chatMemberIds->merge($chatIds);
+
                 $searchResults = Chat::whereIn('id', $resultIds)->get();
 
                 foreach ($searchResults as $chat) {

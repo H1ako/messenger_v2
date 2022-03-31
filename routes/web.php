@@ -8,6 +8,7 @@ use App\Http\Controllers\ChatController;
 
 // home page
 Route::view('/', 'app')->name('home')->middleware('auth');
+Route::post('/friend/{friendId}/action', [ChatController::class, 'newMessage']);
 // login page
 Route::view('/sign-up', 'app')->name('signUp');
 Route::view('/sign-out', 'app')->name('signOut');

@@ -1,24 +1,27 @@
 // styles
 import './SearchResults.scss'
+// global dependencies
+import { useRecoilValue } from 'recoil'
+// recoil atoms
+import { userInfoState } from '../../recoil/UserAtom'
 // components
 import SearchResultUser from './SearchResultUser'
 import SearchResultChat from './SearchResultChat'
 import SearchResultChatMember from './SearchResultChatMember'
 
 function SearchResults({ type, searchResults }) {
+    const userInfo = useRecoilValue(userInfoState);
 
     if (type === 'chatMembers') {
-
         return (
             <div className="searchResults">
                 <ul>
                     {searchResults.map(result => (
                         <SearchResultChatMember
-                            key={result.user_id}
-                            userId={result.user_id}
-                            username={`${result.friend.name} ${result.friend.surname}`}
-                            picture={result.friend.picture}
-                            relationship={result.relationship}
+                            key={result.friend_id || result.aboutRelationship?.friend_id}
+                            userId={userInfo.id}
+                            username={`${result.friend?.name || result.name} ${result.friend?.surname || result.surname}`}
+                            picture={result.friend?.picture || result.picture}
                         />
                     ))}
                 </ul>
@@ -32,12 +35,12 @@ function SearchResults({ type, searchResults }) {
                 <ul>
                     {searchResults.map(result => (
                         <SearchResultUser
-                            key={result.user_id}
-                            userId={result.user_id}
-                            username={`${result.friend.name} ${result.friend.surname}`}
-                            picture={result.friend.picture}
-                            relationship={result.relationship}
-                            requestFrom={result.request_from}
+                            key={result.friend_id || result.aboutRelationship?.friend_id}
+                            userId={userInfo.id}
+                            username={`${result.friend?.name || result.name} ${result.friend?.surname || result.surname}`}
+                            picture={result.friend?.picture || result.picture}
+                            relationship={result.relationship || result.aboutRelationship?.relationship || 'no'}
+                            requestFrom={result.request_from || result.aboutRelationship?.request_from}
                         />
                     ))}
                 </ul>
@@ -46,7 +49,6 @@ function SearchResults({ type, searchResults }) {
     }
 
     if (type === 'chats') {
-        
         return (
             <div className="searchResults">
                 <ul>
@@ -58,7 +60,7 @@ function SearchResults({ type, searchResults }) {
                             name={result.name}
                             pic={result.picture}
                             lastMessage={result.last_message}
-                            companion={result.companion[0]}
+                            companion={result.companion?.[0]}
                         />
                     ))}
                 </ul>

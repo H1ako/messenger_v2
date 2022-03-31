@@ -14,7 +14,6 @@ import { customFetch } from '../../../libs/customFetch';
 
 // chats page
 function Chats(props) {
-
     const chatType = useRecoilValue(chatTypeState)
     const [chats, setChats] = useRecoilState(searchResultChatsState)
 

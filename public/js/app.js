@@ -72,6 +72,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function SearchResultChat(_ref) {
   var chatId = _ref.chatId,
       type = _ref.type,
@@ -87,8 +88,7 @@ function SearchResultChat(_ref) {
         to: "/chats/".concat(chatId),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
           src: companion.picture,
-          className: "searchResultChat__chatPic",
-          alt: "chat pic"
+          className: "searchResultChat__chatPic"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
           className: "searchResultChat__chatInfo",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
@@ -102,27 +102,31 @@ function SearchResultChat(_ref) {
   }
 
   if (type === 'groupchat') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-      className: "searchResultChat",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-        src: pic,
-        className: "searchResultChat__chatPic",
-        alt: "chat pic"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-        className: "searchResultChat__chatInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
-          children: name
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "chatInfo__lastMessage",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-            src: lastMessageFromPic,
-            className: "lastMessage__userPic",
-            alt: "user pic"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-            children: "".concat(lastMessageFromName, ": ").concat(lastMessage)
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        className: "searchResultChat",
+        to: "/chats/".concat(chatId),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+          src: pic,
+          className: "searchResultChat__chatPic"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+          className: "searchResultChat__chatInfo",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+            children: name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "chatInfo__lastMessage",
+            children: lastMessage && (companion === null || companion === void 0 ? void 0 : companion.name) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: companion === null || companion === void 0 ? void 0 : companion.picture,
+                className: "lastMessage__userPic",
+                alt: "user pic"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+                children: "".concat(companion === null || companion === void 0 ? void 0 : companion.name, ": ").concat(lastMessage)
+              })]
+            })
           })]
         })]
-      })]
+      })
     });
   }
 
@@ -224,7 +228,7 @@ function SearchResultUser(_ref) {
     });
   }
 
-  if (relationship === '') {
+  if (relationship === 'no') {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
       className: "searchResultUser",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
@@ -312,11 +316,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _SearchResults_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchResults.scss */ "./resources/js/components/SearchResults/SearchResults.scss");
-/* harmony import */ var _SearchResultUser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchResultUser */ "./resources/js/components/SearchResults/SearchResultUser.js");
-/* harmony import */ var _SearchResultChat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchResultChat */ "./resources/js/components/SearchResults/SearchResultChat.js");
-/* harmony import */ var _SearchResultChatMember__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchResultChatMember */ "./resources/js/components/SearchResults/SearchResultChatMember.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _SearchResultUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchResultUser */ "./resources/js/components/SearchResults/SearchResultUser.js");
+/* harmony import */ var _SearchResultChat__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SearchResultChat */ "./resources/js/components/SearchResults/SearchResultChat.js");
+/* harmony import */ var _SearchResultChatMember__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchResultChatMember */ "./resources/js/components/SearchResults/SearchResultChatMember.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 // styles
+ // global dependencies
+
+ // recoil atoms
+
  // components
 
 
@@ -327,52 +337,58 @@ __webpack_require__.r(__webpack_exports__);
 function SearchResults(_ref) {
   var type = _ref.type,
       searchResults = _ref.searchResults;
+  var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_2__.userInfoState);
 
   if (type === 'chatMembers') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "searchResults",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         children: searchResults.map(function (result) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchResultChatMember__WEBPACK_IMPORTED_MODULE_3__["default"], {
-            userId: result.user_id,
-            username: "".concat(result.friend.name, " ").concat(result.friend.surname),
-            picture: result.friend.picture,
-            relationship: result.relationship
-          }, result.user_id);
+          var _result$aboutRelation, _result$friend, _result$friend2, _result$friend3;
+
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResultChatMember__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            userId: userInfo.id,
+            username: "".concat(((_result$friend = result.friend) === null || _result$friend === void 0 ? void 0 : _result$friend.name) || result.name, " ").concat(((_result$friend2 = result.friend) === null || _result$friend2 === void 0 ? void 0 : _result$friend2.surname) || result.surname),
+            picture: ((_result$friend3 = result.friend) === null || _result$friend3 === void 0 ? void 0 : _result$friend3.picture) || result.picture
+          }, result.friend_id || ((_result$aboutRelation = result.aboutRelationship) === null || _result$aboutRelation === void 0 ? void 0 : _result$aboutRelation.friend_id));
         })
       })
     });
   }
 
   if (type === 'users') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "searchResults",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         children: searchResults.map(function (result) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchResultUser__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            userId: result.user_id,
-            username: "".concat(result.friend.name, " ").concat(result.friend.surname),
-            picture: result.friend.picture,
-            relationship: result.relationship,
-            requestFrom: result.request_from
-          }, result.user_id);
+          var _result$aboutRelation2, _result$friend4, _result$friend5, _result$friend6, _result$aboutRelation3, _result$aboutRelation4;
+
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResultUser__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            userId: userInfo.id,
+            username: "".concat(((_result$friend4 = result.friend) === null || _result$friend4 === void 0 ? void 0 : _result$friend4.name) || result.name, " ").concat(((_result$friend5 = result.friend) === null || _result$friend5 === void 0 ? void 0 : _result$friend5.surname) || result.surname),
+            picture: ((_result$friend6 = result.friend) === null || _result$friend6 === void 0 ? void 0 : _result$friend6.picture) || result.picture,
+            relationship: result.relationship || ((_result$aboutRelation3 = result.aboutRelationship) === null || _result$aboutRelation3 === void 0 ? void 0 : _result$aboutRelation3.relationship) || 'no',
+            requestFrom: result.request_from || ((_result$aboutRelation4 = result.aboutRelationship) === null || _result$aboutRelation4 === void 0 ? void 0 : _result$aboutRelation4.request_from)
+          }, result.friend_id || ((_result$aboutRelation2 = result.aboutRelationship) === null || _result$aboutRelation2 === void 0 ? void 0 : _result$aboutRelation2.friend_id));
         })
       })
     });
   }
 
   if (type === 'chats') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "searchResults",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         children: searchResults.map(function (result) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchResultChat__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          var _result$companion;
+
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResultChat__WEBPACK_IMPORTED_MODULE_4__["default"], {
             chatId: result.id,
             type: result.chat_type,
             name: result.name,
             pic: result.picture,
             lastMessage: result.last_message,
-            companion: result.companion[0]
+            companion: (_result$companion = result.companion) === null || _result$companion === void 0 ? void 0 : _result$companion[0]
           }, result.id);
         })
       })
@@ -452,12 +468,7 @@ function Search(_ref) {
     className: "search",
     placeholder: "something went wrong..."
   });
-
-  var debouncedSearch = function debouncedSearch(query) {
-    // const data = customFetch(`/api/search/${searchType}`, "POST", JSON.stringify({ searchQuery }))
-    // console.log(data)
-    // return data
-    var data = "[]";
+  var getSearchData = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((0,lodash__WEBPACK_IMPORTED_MODULE_2__.debounce)(function (query) {
     fetch("/api/search/".concat(searchType), {
       method: "POST",
       headers: {
@@ -465,37 +476,25 @@ function Search(_ref) {
         'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
       },
       body: JSON.stringify({
-        searchQuery: searchQuery
+        searchQuery: query
       })
     }).then(function (request) {
       return request.json();
     }).then(function (request) {
-      console.log(request);
-      data = request;
-    });
-    return data; // customFetch(`/api/search/${searchType}`, "POST", JSON.stringify({ searchQuery }))
-    // .then(data => data.json())
-    // .then(data => {
-    //     console.log(data)
-    // })
-  };
+      if (request && !request.error) {
+        if (searchType === 'chats') {
+          setChats(request);
+        }
 
-  var getSearchData = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((0,lodash__WEBPACK_IMPORTED_MODULE_2__.debounce)(function (query) {
-    return debouncedSearch(query);
-  }, 500), []);
+        if (searchType === 'users') {
+          setUsers(request);
+        }
+      }
+    });
+  }, 300), []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (!(0,lodash__WEBPACK_IMPORTED_MODULE_2__.trim)(searchQuery)) return;
-    var d = getSearchData(searchQuery);
-    console.log(d); // .then(data => data.json)
-    // .then(data => {
-    //     // console.log(data)
-    // })
-    // if (searchType === 'chats') {
-    //     setChats(searchData)
-    // }
-    // if (searchType === 'users') {
-    //     setUsers(searchData)
-    // }
+    getSearchData(searchQuery);
   }, [searchQuery]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
     type: "text",
@@ -898,6 +897,7 @@ function Chat() {
       setCompanionInfo = _useState8[1];
 
   var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_3__.userInfoState);
+  var messagesBottom = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)();
 
   var sendMessage = function sendMessage() {
     if (!messageText) return;
@@ -918,21 +918,28 @@ function Chat() {
     (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)("/api/chats/".concat(chatId), "POST").then(function (data) {
       return data.json();
     }).then(function (data) {
+      console.log(data);
+
       if (data.error) {
         return console.log(data.error);
       }
 
       if (data) {
+        var _data$companion;
+
         setChatInfo(data.chat);
         setMessages(data.messages);
-        setCompanionInfo(data.companion[0]);
+        setCompanionInfo((_data$companion = data.companion) === null || _data$companion === void 0 ? void 0 : _data$companion[0]);
       }
     });
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    messagesBottom.current.scrollIntoView();
+  }, [messages]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "page chatPage",
     onKeyUp: handeEnter,
-    children: [chatInfo.chat_type === 'chatgroup' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [chatInfo.chat_type === 'groupchat' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "chatPage__topRow",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "topRow__chatInfo",
@@ -950,22 +957,25 @@ function Chat() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "topRow__chatInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-          src: companionInfo.picture,
+          src: companionInfo === null || companionInfo === void 0 ? void 0 : companionInfo.picture,
           alt: ""
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-          children: "".concat(companionInfo.name, " ").concat(companionInfo.surname)
+          children: "".concat(companionInfo === null || companionInfo === void 0 ? void 0 : companionInfo.name, " ").concat(companionInfo === null || companionInfo === void 0 ? void 0 : companionInfo.surname)
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "chatPage__messages",
-      children: messages.map(function (message) {
+      children: [messages.map(function (message) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ChatMessage__WEBPACK_IMPORTED_MODULE_5__["default"], {
           currentUserId: userInfo.id,
           sender: message.sender,
           text: message.text,
           time: message.updated_at
         }, message.id);
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        ref: messagesBottom,
+        className: "messages__bottom"
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "chatPage__bottomRow",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("textarea", {

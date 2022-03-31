@@ -13,7 +13,7 @@ function SearchResultChat({
         return (
             <li>
                 <Link className="searchResultChat" to={`/chats/${chatId}`}>
-                    <img src={companion.picture} className='searchResultChat__chatPic' alt="chat pic"/>
+                    <img src={companion.picture} className='searchResultChat__chatPic'/>
                     <span className="searchResultChat__chatInfo">
                         <h2>{`${companion.name} ${companion.surname}`}</h2>
                         <h3>{lastMessage ? lastMessage: 'start dialog...'}</h3>
@@ -25,19 +25,25 @@ function SearchResultChat({
 
     if (type === 'groupchat') {
         return (
-            <li className='searchResultChat'>
-                <img src={pic} className='searchResultChat__chatPic' alt="chat pic"/>
-                <span className="searchResultChat__chatInfo">
-                    <h2>{name}</h2>
-                    <div className="chatInfo__lastMessage">
-                        <img
-                            src={lastMessageFromPic}
-                            className='lastMessage__userPic'
-                            alt="user pic"
-                        />
-                        <h3>{`${lastMessageFromName}: ${lastMessage}`}</h3>
-                    </div>
-                </span>
+            <li>
+                    <Link className="searchResultChat" to={`/chats/${chatId}`}>
+                    <img src={pic} className='searchResultChat__chatPic'/>
+                    <span className="searchResultChat__chatInfo">
+                        <h2>{name}</h2>
+                        <div className="chatInfo__lastMessage">
+                        {lastMessage && companion?.name &&
+                        <>
+                            <img
+                                src={companion?.picture}
+                                className='lastMessage__userPic'
+                                alt="user pic"
+                            />
+                            <h3>{`${companion?.name}: ${lastMessage}`}</h3>
+                        </>
+                        }
+                        </div>
+                    </span>
+                </Link>
             </li>
         )
     }
