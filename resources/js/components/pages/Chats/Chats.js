@@ -1,9 +1,10 @@
 // global dependencies
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 // recoil atoms
 import { chatTypeState } from '../../../recoil/SelectorAtom.js'
+import { searchResultChatsState } from '../../../recoil/SearchAtom.js'
 // components
 import Search from '../../Search/Search.js'
 import Selector from '../../Selector/Selector.js'
@@ -15,7 +16,7 @@ import { customFetch } from '../../../libs/customFetch';
 function Chats(props) {
 
     const chatType = useRecoilValue(chatTypeState)
-    const [chats, setChats] = useState([])
+    const [chats, setChats] = useRecoilState(searchResultChatsState)
 
     useEffect(() => {
         customFetch(`/api/chats-get/${chatType}`, 'POST')
@@ -31,7 +32,7 @@ function Chats(props) {
 
     return (
         <div className="page chatsPage">
-            <Search/>
+            <Search searchType='chats'/>
             <div className="pageRow">
                 <Selector type='chats'/>
                 <Link to='/new-groupchat'>new groupchat</Link>

@@ -1,7 +1,7 @@
 function SearchResultUser({
     userId,
     username,
-    pic,
+    picture,
     relationship,
     requestFrom
 }) {
@@ -10,7 +10,7 @@ function SearchResultUser({
         return (
             <li className='searchResultUser'>
                 <span className='userInfo'>
-                    <img src={pic} alt="user pic"/>
+                    <img src={picture} alt="user pic"/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
@@ -24,7 +24,7 @@ function SearchResultUser({
         return (
             <li className='searchResultUser'>
                 <span className='userInfo'>
-                    <img src={pic} alt="user pic"/>
+                    <img src={picture} alt="user pic"/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
@@ -38,7 +38,7 @@ function SearchResultUser({
         return (
             <li className='searchResultUser'>
                 <span className='userInfo'>
-                    <img src={pic} alt="user pic"/>
+                    <img src={picture} alt="user pic"/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
@@ -53,7 +53,7 @@ function SearchResultUser({
         return (
             <li className='searchResultUser'>
                 <span className='userInfo'>
-                    <img src={pic} alt="user pic"/>
+                    <img src={picture} alt="user pic"/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">

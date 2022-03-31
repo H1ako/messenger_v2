@@ -154,13 +154,13 @@ __webpack_require__.r(__webpack_exports__);
 function SearchResultChatMember(_ref) {
   var userId = _ref.userId,
       username = _ref.username,
-      pic = _ref.pic;
+      picture = _ref.picture;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
     className: "searchResultUser",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
       className: "userInfo",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-        src: pic,
+        src: picture,
         alt: "user pic"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
         children: username
@@ -199,7 +199,7 @@ __webpack_require__.r(__webpack_exports__);
 function SearchResultUser(_ref) {
   var userId = _ref.userId,
       username = _ref.username,
-      pic = _ref.pic,
+      picture = _ref.picture,
       relationship = _ref.relationship,
       requestFrom = _ref.requestFrom;
 
@@ -209,7 +209,7 @@ function SearchResultUser(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "userInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: pic,
+          src: picture,
           alt: "user pic"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
           children: username
@@ -230,7 +230,7 @@ function SearchResultUser(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "userInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: pic,
+          src: picture,
           alt: "user pic"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
           children: username
@@ -251,7 +251,7 @@ function SearchResultUser(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "userInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: pic,
+          src: picture,
           alt: "user pic"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
           children: username
@@ -275,7 +275,7 @@ function SearchResultUser(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "userInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: pic,
+          src: picture,
           alt: "user pic"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
           children: username
@@ -334,10 +334,11 @@ function SearchResults(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
         children: searchResults.map(function (result) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchResultChatMember__WEBPACK_IMPORTED_MODULE_3__["default"], {
-            userId: result.userId,
-            username: result.username,
-            pic: result.pic
-          }, result.id);
+            userId: result.user_id,
+            username: "".concat(result.friend.name, " ").concat(result.friend.surname),
+            picture: result.friend.picture,
+            relationship: result.relationship
+          }, result.user_id);
         })
       })
     });
@@ -349,12 +350,12 @@ function SearchResults(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
         children: searchResults.map(function (result) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchResultUser__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            userId: result.userId,
-            username: result.username,
-            pic: result.pic,
+            userId: result.user_id,
+            username: "".concat(result.friend.name, " ").concat(result.friend.surname),
+            picture: result.friend.picture,
             relationship: result.relationship,
-            requestFrom: result.requestFrom
-          }, result.id);
+            requestFrom: result.request_from
+          }, result.user_id);
         })
       })
     });
@@ -365,7 +366,7 @@ function SearchResults(_ref) {
       className: "searchResults",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
         children: searchResults.map(function (result) {
-          return console.log(result.companion), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchResultChat__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchResultChat__WEBPACK_IMPORTED_MODULE_2__["default"], {
             chatId: result.id,
             type: result.chat_type,
             name: result.name,
@@ -398,7 +399,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../recoil/SearchAtom */ "./resources/js/recoil/SearchAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -411,29 +415,89 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
-
 // styles
  // global dependencies
 
 
 
+ // recoil atoms
+
+ // libs
+
+
 
 
 function Search(_ref) {
-  _objectDestructuringEmpty(_ref);
+  var searchType = _ref.searchType;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       searchQuery = _useState2[0],
-      setSearchQuery = _useState2[1]; // debounced
+      setSearchQuery = _useState2[1];
 
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_4__.searchResultChatsState),
+      _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
+      chats = _useRecoilState2[0],
+      setChats = _useRecoilState2[1];
 
-  var getSearchData = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((0,lodash__WEBPACK_IMPORTED_MODULE_2__.debounce)(function (query) {}, 500), []);
+  var _useRecoilState3 = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_4__.searchResultUsersState),
+      _useRecoilState4 = _slicedToArray(_useRecoilState3, 2),
+      users = _useRecoilState4[0],
+      setUsers = _useRecoilState4[1];
+
+  if (!searchType) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+    type: "text",
+    name: "search",
+    disabled: true,
+    className: "search",
+    placeholder: "something went wrong..."
+  });
+
+  var debouncedSearch = function debouncedSearch(query) {
+    // const data = customFetch(`/api/search/${searchType}`, "POST", JSON.stringify({ searchQuery }))
+    // console.log(data)
+    // return data
+    var data = "[]";
+    fetch("/api/search/".concat(searchType), {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
+      },
+      body: JSON.stringify({
+        searchQuery: searchQuery
+      })
+    }).then(function (request) {
+      return request.json();
+    }).then(function (request) {
+      console.log(request);
+      data = request;
+    });
+    return data; // customFetch(`/api/search/${searchType}`, "POST", JSON.stringify({ searchQuery }))
+    // .then(data => data.json())
+    // .then(data => {
+    //     console.log(data)
+    // })
+  };
+
+  var getSearchData = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((0,lodash__WEBPACK_IMPORTED_MODULE_2__.debounce)(function (query) {
+    return debouncedSearch(query);
+  }, 500), []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var searchData = getSearchData(searchQuery);
+    if (!(0,lodash__WEBPACK_IMPORTED_MODULE_2__.trim)(searchQuery)) return;
+    var d = getSearchData(searchQuery);
+    console.log(d); // .then(data => data.json)
+    // .then(data => {
+    //     // console.log(data)
+    // })
+    // if (searchType === 'chats') {
+    //     setChats(searchData)
+    // }
+    // if (searchType === 'users') {
+    //     setUsers(searchData)
+    // }
   }, [searchQuery]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
     type: "text",
     value: searchQuery,
     onChange: function onChange(e) {
@@ -976,15 +1040,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1002,6 +1067,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // components
 
 
@@ -1016,13 +1082,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Chats(props) {
   var chatType = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_2__.chatTypeState);
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      chats = _useState2[0],
-      setChats = _useState2[1];
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_3__.searchResultChatsState),
+      _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
+      chats = _useRecoilState2[0],
+      setChats = _useRecoilState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_6__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_7__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
       return data.json();
     }).then(function (data) {
       console.log(data);
@@ -1032,17 +1098,19 @@ function Chats(props) {
       }
     });
   }, [chatType]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "page chatsPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      searchType: "chats"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "pageRow",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
         type: "chats"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
         to: "/new-groupchat",
         children: "new groupchat"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       searchResults: chats,
       type: "chats"
     })]
@@ -1064,12 +1132,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// components
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
+/* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _libs_customFetch_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../libs/customFetch.js */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+// global dependencies
+
+ // recoil atoms
+
+
+ // components
+
+
+
+ // libs
 
  // home page
 
@@ -1077,14 +1170,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Home() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  var userType = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_2__.userTypeState);
+
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_3__.searchResultUsersState),
+      _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
+      users = _useRecoilState2[0],
+      setUsers = _useRecoilState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    (0,_libs_customFetch_js__WEBPACK_IMPORTED_MODULE_7__.customFetch)("/api/friends/".concat(userType), 'POST').then(function (data) {
+      return data.json();
+    }).then(function (data) {
+      if (data) {
+        setUsers(data);
+      }
+    });
+  }, [userType]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "page homePage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      searchType: "users"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       className: "pageRow",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
         type: "users"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      searchResults: users,
       type: "users"
     })]
   });
@@ -1106,11 +1218,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _NewGroupchat_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewGroupchat.scss */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.scss");
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var _UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture.js */ "./resources/js/components/UploadPicture/UploadPicture.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../recoil/SearchAtom */ "./resources/js/recoil/SearchAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture.js */ "./resources/js/components/UploadPicture/UploadPicture.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 // styles
+ // global dependencies
+
+ // recoil atoms
+
  // components
 
 
@@ -1121,17 +1239,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function NewGroupchat() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  var users = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_2__.searchResultUsersState);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "page newGroupchatPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "mainInfo",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         type: "text",
         placeholder: "chat name"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      searchType: "users"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      searchResults: users,
       type: "chatMembers"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
       children: "ok"
     })]
   });
@@ -1651,6 +1773,31 @@ function Main() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
+
+/***/ }),
+
+/***/ "./resources/js/recoil/SearchAtom.js":
+/*!*******************************************!*\
+  !*** ./resources/js/recoil/SearchAtom.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "searchResultChatsState": () => (/* binding */ searchResultChatsState),
+/* harmony export */   "searchResultUsersState": () => (/* binding */ searchResultUsersState)
+/* harmony export */ });
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+
+var searchResultChatsState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
+  key: 'searchResultChatsState',
+  "default": []
+});
+var searchResultUsersState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
+  key: 'searchResultUsersState',
+  "default": []
+});
 
 /***/ }),
 

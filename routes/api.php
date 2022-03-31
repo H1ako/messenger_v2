@@ -26,25 +26,33 @@ Route::post('/user', function (Request $request) {
     }
 });
 
-Route::post('/friends', function (Request $request) {
-    if (Auth::check()) {
-        $user = Auth::user();
-        $friends = $user->friends;
-        return $friends;
-    }
-});
+Route::post('/search/{searchType}', function ($searchType, Request $request) {
+    $user = Auth::user();
+    if (!$user) return ["error" => 'not logged in'];
 
-Route::post('/chats-get/{chat_type}', function ($chat_type, Request $request) {
-    if (Auth::check()) {
-        $user = Auth::user();
-        $chats = [];
+    $searchResults = [];
+    $searchQuery = $request->input('searchQuery');
+    $trimmedQuery = trim($searchQuery);
 
-        switch ($chat_type) {
-            case 'all':
-                $chatIds = $user->chats()->pluck('id');
-                $chats = Chat::whereIn('id', $chatIds)->get();
+    if ($trimmedQuery) {
+        switch ($searchType) {
+            case 'users':
+                $searchResults = User::where('id', '!=' , $user->id)
+                                    ->where('name', 'like', "%$trimmedQuery%")
+                                    ->orWhere('surname', 'like', "%$trimmedQuery%")
+                                    ->get();
+                break;
+            case 'chats':
+                $userIds = User::where('id', '!=' , $user->id)
+                                ->where('name', 'like', "%$trimmedQuery%")
+                                ->orWhere('surname', 'like', "%$trimmedQuery%")
+                                ->pluck('id');
+                $chatIds = Chat::where('name', 'like', "%$trimmedQuery%")->pluck('id');
+                
+                $resultIds = $userIds->merge($chatIds);
+                $searchResults = Chat::whereIn('id', $resultIds)->get();
 
-                foreach ($chats as $chat) {
+                foreach ($searchResults as $chat) {
                     if ($chat->last_message_sender && $chat->chat_type === 'groupchat') {
                         $chat->last_message_sender = User::find($chat->last_message_sender);
                     }
@@ -56,33 +64,76 @@ Route::post('/chats-get/{chat_type}', function ($chat_type, Request $request) {
                     }
                 }
                 break;
-                
-            case 'groupchats':
-                $chatIds = $user->groupchats()->pluck('id');
-                $chats = Chat::whereIn('id', $chatIds)->get();
-
-                foreach ($chats as $chat) {
-                    if ($chat->last_message_sender) {
-                        $chat->last_message_sender = User::find($chat->last_message_sender);
-                    }
-                }
-                break;
-
-            case 'dialogs':
-                $chatIds = $user->dialogs()->pluck('id');
-                $chats = Chat::whereIn('id', $chatIds)->get();
-
-                foreach ($chats as $chat) {
-                    $companionId = ChatMember::where('chat_id', $chat->id)
-                                            ->where('member_id', '!=', Auth::id())
-                                            ->pluck('member_id');
-                    $chat->companion = User::find($companionId);
-                }
-                break;
         }
 
-        return $chats;
+        return $searchResults;
     }
+    return ["error" => 'nullable query'];
+});
+
+
+Route::post('/friends/{friendType}', function ($friendType, Request $request) {
+    $user = Auth::user();
+    if (!$user) return ["error" => 'not logged in'];
+
+    $friends = [];
+    
+    switch ($friendType) {
+        case 'all':
+            $friends = $user->friends;
+            break;
+        case 'friends':
+            $friends = $user->friends()->where('relationship', 'friend')->get();
+            break;
+        case 'requests':
+            $friends = $user->friends()->where('relationship', 'request')->get();
+            break;
+    }
+
+    foreach ($friends as $friend) {
+        $friend->friend = User::find($friend->friend_id);
+    }
+
+    return $friends;
+});
+
+Route::post('/chats-get/{chat_type}', function ($chat_type, Request $request) {
+    $user = Auth::user();
+    if (!$user) return ["error" => 'not logged in'];
+
+    $chatIds = [];
+    $chats = [];
+
+    switch ($chat_type) {
+        case 'all':
+            $chatIds = $user->chats()->pluck('chat_id');
+            $chats = Chat::whereIn('id', $chatIds)->get();
+            break;
+            
+        case 'groupchats':
+            $chatIds = $user->groupchats()->pluck('chat_id');
+            $chats = Chat::whereIn('id', $chatIds)->get();
+            break;
+
+        case 'dialogs':
+            $chatIds = $user->dialogs()->pluck('chat_id');
+            $chats = Chat::whereIn('id', $chatIds)->get();
+            break;
+    }
+
+    foreach ($chats as $chat) {
+        if ($chat->last_message_sender && $chat->chat_type === 'groupchat') {
+            $chat->last_message_sender = User::find($chat->last_message_sender);
+        }
+        if ($chat->chat_type === 'dialog') {
+            $companionId = ChatMember::where('chat_id', $chat->id)
+                                    ->where('member_id', '!=', Auth::id())
+                                    ->pluck('member_id');
+            $chat->companion = User::find($companionId);
+        }
+    }
+
+    return $chats;
 });
 
 Route::post('/chats/{chat_id}', function ($chat_id, Request $request) {

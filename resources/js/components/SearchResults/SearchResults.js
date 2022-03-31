@@ -14,10 +14,11 @@ function SearchResults({ type, searchResults }) {
                 <ul>
                     {searchResults.map(result => (
                         <SearchResultChatMember
-                            key={result.id}
-                            userId={result.userId}
-                            username={result.username}
-                            pic={result.pic}
+                            key={result.user_id}
+                            userId={result.user_id}
+                            username={`${result.friend.name} ${result.friend.surname}`}
+                            picture={result.friend.picture}
+                            relationship={result.relationship}
                         />
                     ))}
                 </ul>
@@ -31,12 +32,12 @@ function SearchResults({ type, searchResults }) {
                 <ul>
                     {searchResults.map(result => (
                         <SearchResultUser
-                            key={result.id}
-                            userId={result.userId}
-                            username={result.username}
-                            pic={result.pic}
+                            key={result.user_id}
+                            userId={result.user_id}
+                            username={`${result.friend.name} ${result.friend.surname}`}
+                            picture={result.friend.picture}
                             relationship={result.relationship}
-                            requestFrom={result.requestFrom}
+                            requestFrom={result.request_from}
                         />
                     ))}
                 </ul>
@@ -50,7 +51,6 @@ function SearchResults({ type, searchResults }) {
             <div className="searchResults">
                 <ul>
                     {searchResults.map(result => (
-                        console.log(result.companion),
                         <SearchResultChat
                             key={result.id}
                             chatId={result.id}
