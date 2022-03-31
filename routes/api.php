@@ -44,6 +44,7 @@ Route::post('/search/{searchType}', function ($searchType, Request $request) {
                                     ->where('name', 'like', "%$trimmedQuery%")
                                     ->orWhere('surname', 'like', "%$trimmedQuery%")
                                     ->where('id', '!=' , $user->id)
+                                    ->orderBy('updated_at', 'DESC')
                                     ->get();
                                     
                 foreach ($searchResults as $searchResult) {
@@ -64,10 +65,12 @@ Route::post('/search/{searchType}', function ($searchType, Request $request) {
                 $chatMemberIds = ChatMember::whereIn('chat_id', $userChatsIds)
                                             ->whereIn('member_id', $userIds)
                                             ->pluck('chat_id');
-                $chatIds = Chat::where('name', 'like', "%$trimmedQuery%")->pluck('id');
+                $chatIds = Chat::where('name', 'like', "%$trimmedQuery%")
+                                ->whereIn('id', $userChatsIds)
+                                ->pluck('id');
                 $resultIds = $chatMemberIds->merge($chatIds);
 
-                $searchResults = Chat::whereIn('id', $resultIds)->get();
+                $searchResults = Chat::whereIn('id', $resultIds)->orderBy('updated_at', 'DESC')->get();
 
                 foreach ($searchResults as $chat) {
                     if ($chat->last_message_sender && $chat->chat_type === 'groupchat') {
@@ -100,10 +103,10 @@ Route::post('/friends/{friendType}', function ($friendType, Request $request) {
             $friends = $user->friends;
             break;
         case 'friends':
-            $friends = $user->friends()->where('relationship', 'friend')->get();
+            $friends = $user->friends()->where('relationship', 'friend')->orderBy('updated_at', 'DESC')->get();
             break;
         case 'requests':
-            $friends = $user->friends()->where('relationship', 'request')->get();
+            $friends = $user->friends()->where('relationship', 'request')->orderBy('updated_at', 'DESC')->get();
             break;
     }
 
@@ -124,17 +127,17 @@ Route::post('/chats-get/{chat_type}', function ($chat_type, Request $request) {
     switch ($chat_type) {
         case 'all':
             $chatIds = $user->chats()->pluck('chat_id');
-            $chats = Chat::whereIn('id', $chatIds)->get();
+            $chats = Chat::whereIn('id', $chatIds)->orderBy('updated_at', 'DESC')->get();
             break;
             
         case 'groupchats':
             $chatIds = $user->groupchats()->pluck('chat_id');
-            $chats = Chat::whereIn('id', $chatIds)->get();
+            $chats = Chat::whereIn('id', $chatIds)->orderBy('updated_at', 'DESC')->get();
             break;
 
         case 'dialogs':
             $chatIds = $user->dialogs()->pluck('chat_id');
-            $chats = Chat::whereIn('id', $chatIds)->get();
+            $chats = Chat::whereIn('id', $chatIds)->orderBy('updated_at', 'DESC')->get();
             break;
     }
 

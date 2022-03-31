@@ -30,12 +30,14 @@ function SearchResults({ type, searchResults }) {
     }
     
     if (type === 'users') {        
+        console.log(searchResults)
         return (
             <div className="searchResults">
                 <ul>
                     {searchResults.map(result => (
                         <SearchResultUser
-                            key={result.friend_id || result.aboutRelationship?.friend_id}
+                            key={result.friend_id || result.aboutRelationship?.friend_id || result.id}
+                            friendId={result.friend_id || result.aboutRelationship?.friend_id || result.id}
                             userId={userInfo.id}
                             username={`${result.friend?.name || result.name} ${result.friend?.surname || result.surname}`}
                             picture={result.friend?.picture || result.picture}

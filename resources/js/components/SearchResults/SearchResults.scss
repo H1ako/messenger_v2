@@ -55,6 +55,7 @@
                 display: flex;
                 align-items: center;
                 gap: $gap;
+                cursor: pointer;
 
                 img {
                     width: calc($height * 0.9);

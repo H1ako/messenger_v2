@@ -9,6 +9,12 @@ class Chat extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'chat_type',
+        'name',
+        'picture',
+    ];
+
     public function members() {
         return $this->hasMany(ChatMember::class, 'chat_id', 'id')->orderBy('created_at');;
     }

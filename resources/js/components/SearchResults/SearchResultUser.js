@@ -1,63 +1,119 @@
+// global dependencies
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+// libs
+import { customFetch } from "../../libs/customFetch"
+
 function SearchResultUser({
     userId,
+    friendId,
     username,
     picture,
     relationship,
     requestFrom
 }) {
+    const navigate = useNavigate();
+    const [userRequestFrom, setUserRequestFrom] = useState(requestFrom)
+    const [userRelationship, setUserRelationship] = useState(relationship)
 
-    if (relationship === 'friend') {
+    const removeFriend = () => {
+        customFetch('/friend/remove-friend', 'POST', JSON.stringify({friendId}))
+        .then(data => data.json())
+        setUserRelationship('request')
+    }
+
+    const sendRequest = () => {
+        customFetch('/friend/send-request', 'POST', JSON.stringify({friendId}))
+        .then(data => data.json())
+        setUserRelationship('request')
+        setUserRequestFrom(userId)
+    }
+
+    const acceptRequest = () => {
+        customFetch('/friend/accept-request', 'POST', JSON.stringify({friendId}))
+        .then(data => data.json())
+        setUserRelationship('friend')
+    }
+
+    const declineRequest = () => {
+        customFetch('/friend/decline-friend', 'POST', JSON.stringify({friendId}))
+        .then(data => data.json())
+        setUserRelationship('no')
+    }
+
+    const cancelRequest = () => {
+        customFetch('/friend/cancel-request', 'POST', JSON.stringify({friendId}))
+        .then(data => data.json())
+        setUserRelationship('no')
+    }
+
+    const goToMessages = () => {
+        customFetch(`/chat/check/${friendId}`, 'POST')
+        .then(data => data.json())
+        .then(data => {
+            if (data.error) {
+                return console.log(data.error)
+            }
+
+            if (data.url) {
+                navigate(data.url)
+            }
+        })
+        setUserRelationship('no')
+    }
+    
+    if (userRelationship === 'friend') {
         return (
             <li className='searchResultUser'>
-                <span className='userInfo'>
+                <span onClick={goToMessages} className='userInfo'>
                     <img src={picture} alt="user pic"/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
-                    <button className='accentColor'>remove</button>
+                    <button onClick={removeFriend} className='accentColor'>remove</button>
                 </span>
             </li>
         )
     }
 
-    if (relationship === 'no') {
+    if (userRelationship === 'no') {
         return (
             <li className='searchResultUser'>
-                <span className='userInfo'>
+                <span onClick={goToMessages} className='userInfo'>
                     <img src={picture} alt="user pic"/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
-                    <button className='mainColor'>add</button>
+                    <button onClick={sendRequest} className='mainColor'>add</button>
                 </span>
             </li>
         )
     }
 
-    if (relationship === 'request' && requestFrom !== userId) {
+    if (userRelationship === 'request' && userRequestFrom !== userId) {
         return (
             <li className='searchResultUser'>
-                <span className='userInfo'>
+                <span onClick={goToMessages} className='userInfo'>
                     <img src={picture} alt="user pic"/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
-                    <button className='mainColor'>accept</button>
-                    <button className='accentColor'>decline</button>
+                    <button onClick={acceptRequest} className='mainColor'>accept</button>
+                    <button onClick={declineRequest} className='accentColor'>decline</button>
                 </span>
             </li>
         )
     }
 
-    if (relationship === 'request' && requestFrom === userId) {
+    if (userRelationship === 'request' && userRequestFrom === userId) {
         return (
             <li className='searchResultUser'>
-                <span className='userInfo'>
+                <span onClick={goToMessages} className='userInfo'>
                     <img src={picture} alt="user pic"/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
-                    <button className='accentColor'>cancel</button>
+                    <button onClick={cancelRequest} className='accentColor'>cancel</button>
                 </span>
             </li>
         )

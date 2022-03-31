@@ -26,7 +26,7 @@ function SearchResultChat({
     if (type === 'groupchat') {
         return (
             <li>
-                    <Link className="searchResultChat" to={`/chats/${chatId}`}>
+                <Link className="searchResultChat" to={`/chats/${chatId}`}>
                     <img src={pic} className='searchResultChat__chatPic'/>
                     <span className="searchResultChat__chatInfo">
                         <h2>{name}</h2>

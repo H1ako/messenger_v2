@@ -9,6 +9,13 @@ class ChatMember extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'chat_id',
+        'chat_type',
+        'friend_id',
+        'relationship'
+    ];
+
     public function chat() {
         return $this->belongsTo(Chat::class);
     }
