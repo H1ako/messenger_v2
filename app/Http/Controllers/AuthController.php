@@ -30,6 +30,7 @@ class AuthController extends Controller
         }
 
         $newUser->password = Hash::make($request->input('password'));
+        $newUser->save();
 
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
@@ -40,9 +41,9 @@ class AuthController extends Controller
             $file->move($destinationPath, $fileName);
         
             $newUser->picture = '/' . $destinationPath . '/' . $fileName;
-            
+            $newUser->save();
         }
-        $newUser->save();
+        
 
         Auth::login($newUser, true);
         return json_encode([

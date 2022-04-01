@@ -15,15 +15,17 @@ class UserController extends Controller
 
         $friendId = $request->input('friendId');
         $userFriendRelationship = $user->friends()->where('friend_id', $friendId)->first();
-        if ($userFriendRelationship->relationship !== 'request') return;
+        if ($userFriendRelationship->relationship !== 'friend') return ['error' => 'not request'];
 
         $friend = User::find($friendId);
         $friendUserRelationship = $friend->friends()->where('friend_id', $user->id)->first();
         
+        $userFriendRelationship->request_from = $friend->id;
         $userFriendRelationship->relationship = 'request';
         $userFriendRelationship->save();
 
-        $friendUserRelationship->relationship = 'request';
+        $friendUserRelationship->request_from = $friend->id;
+        $userFriendRelationship->relationship = 'request';
         $friendUserRelationship->save();
     }
 

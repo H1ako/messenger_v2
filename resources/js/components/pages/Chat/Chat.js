@@ -44,17 +44,23 @@ function Chat() {
         .then(data => {
             console.log(data)
             if (data.error) {
-                return console.log(data.error)
+                console.log(data.error)
             }
-            if (data) {
+            else if (data) {
                 setChatInfo(data.chat)
                 setMessages(data.messages)
                 setCompanionInfo(data.companion?.[0])
             }
         })
+        Echo.private(`chatbox.${chatId}`)
+        .listen('MessageSend', (e) => {
+            console.log([...messages, e.message])
+            setMessages(state => ([...state, e.message]));
+        })
     }, [])
 
     useEffect(() => {
+        console.log(messages)
         messagesBottom.current.scrollIntoView()
     }, [messages])
     

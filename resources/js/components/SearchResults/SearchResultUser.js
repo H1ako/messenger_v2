@@ -20,6 +20,7 @@ function SearchResultUser({
         customFetch('/friend/remove-friend', 'POST', JSON.stringify({friendId}))
         .then(data => data.json())
         setUserRelationship('request')
+        setUserRequestFrom(friendId)
     }
 
     const sendRequest = () => {

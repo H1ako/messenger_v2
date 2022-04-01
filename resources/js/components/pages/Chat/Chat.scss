@@ -87,6 +87,7 @@
                 border-radius: 1.5rem;
                 margin: 0;
                 max-width: 60%;
+                align-self: flex-start;
 
                 @media (max-width: $sizeScreenTablet) {
                     max-width: 80%;

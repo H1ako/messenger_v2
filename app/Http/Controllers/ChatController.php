@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSend;
 use App\Models\Chat;
 use App\Models\ChatMessage;
 use App\Models\User;
@@ -24,18 +25,19 @@ class ChatController extends Controller
 
         $text = $request->input('text');
 
-        $newMessage = new ChatMessage([
+        $newMessage = $chat->messages()->create([
             'chat_id' => $chat_id,
             'text' => $text,
             'sender' => $user->id
         ]);
-        $newMessage->save();
 
         if ($newMessage) {
             $chat->last_message_sender = $user->id;
             $chat->last_message = $text;
             $chat->save();
         }
+        $newMessage->sender = $user;
+        event(new MessageSend($newMessage));
     }
 
     public function checkChat($friendId, Request $request) {

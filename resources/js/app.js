@@ -2,8 +2,9 @@
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
+import './bootstrap.js'
 // components
-import Main from './main'
+import Main from './main.js'
 
 function App() {    
     return (
