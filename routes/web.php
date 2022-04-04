@@ -24,8 +24,8 @@ Route::post('/sign-up', [AuthController::class, 'signUp']);
 Route::post('/sign-out', [AuthController::class, 'signOut']);
 // chat page
 Route::view('/chats', 'app')->name('chats')->middleware('auth');
-Route::post('/chat/check/{friendId}', [ChatController::class, 'checkChat']);
-Route::view('/chats/{id}', 'app')->name('chatN')->middleware('auth', 'chat.access');
+Route::post('/chat/check/{friendId}', [ChatController::class, 'checkChat'])->middleware('auth');
+Route::view('/chats/{chat_id}', 'app')->name('chatN')->middleware('auth', 'chat.access');
+Route::post('/chats/{chat_id}/new-message', [ChatController::class, 'newMessage'])->middleware('auth', 'chat.access');
 Route::view('/new-groupchat', 'app')->name('newGroupchat')->middleware('auth');
-
-Route::post('/chats/{chat_id}/new-message', [ChatController::class, 'newMessage']);
+Route::post('/new-groupchat', [ChatController::class, 'newGroupchat'])->middleware('auth');

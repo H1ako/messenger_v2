@@ -81,17 +81,32 @@
                     @include btn;
                     border: none;
 
-                    &.accentColor {
+                    &.btnRemove,
+                    &.btnDecline,
+                    &.btnCancel {
                         background: $colorAccent;
+                        
+                        &:hover {
+                            background: $colorAccentDark;
+                        }
                     }
 
-                    &.mainColor {
+                    &.btnAdd,
+                    &.btnAccept {
                         background: $colorMain;
+
+                        &:hover {
+                            background: $colorMainDark;
+                        }
                     }
                 }
 
                 input {
                     display: none;
+
+                    &:not(:checked) ~ label:hover {
+                        background: $colorAccentDark;
+                    }
 
                     &:checked ~ label {
                         background: $colorAccent;
@@ -107,7 +122,7 @@
                     width: $size;
                     height: $size;
                     border-radius: .5rem;
-
+                    transition: $transition;
                 }
             }
         }

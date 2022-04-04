@@ -462,7 +462,7 @@ main {
   border: 1px solid white;
   text-align: center;
 }
-.page .pageRow a:hover {
+.page .pageRow a:hover, .page .pageRow a:focus {
   background: #0a4bac;
 }
 @media (max-width: 320px) {

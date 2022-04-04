@@ -39,7 +39,8 @@ $transition: 300ms;
     border: 1px solid $colorLight;
     background: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background: $colorMain;
     }
 }

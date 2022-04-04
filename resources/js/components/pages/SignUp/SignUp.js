@@ -3,7 +3,7 @@ import './SignUp.scss'
 // global dependencies
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { signUpPuctureFileState } from '../../../recoil/SignUpAtom'
 // recoil atoms
 import { userInfoState } from '../../../recoil/UserAtom'
@@ -71,7 +71,7 @@ function SignUp() {
             <div className="loginPage__signUp">
                 <h1>sign up</h1>
                 <div className="signUp__info">
-                    <UploadPicture />
+                    <UploadPicture  recoilState={signUpPuctureFileState} />
                     <div className="info__main">
                         <input required value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="name" />
                         <input required value={surname} onChange={(e) => setSurname(e.target.value)} type="text" placeholder="surname" />

@@ -5477,7 +5477,8 @@ function SearchResultChat(_ref) {
       pic = _ref.pic,
       name = _ref.name,
       lastMessage = _ref.lastMessage,
-      companion = _ref.companion;
+      companion = _ref.companion,
+      lastMessageSender = _ref.lastMessageSender;
 
   if (type === 'dialog') {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
@@ -5513,12 +5514,18 @@ function SearchResultChat(_ref) {
             children: name
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: "chatInfo__lastMessage",
-            children: lastMessage && (companion === null || companion === void 0 ? void 0 : companion.name) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+            children: lastMessage && lastMessageSender !== null && lastMessageSender !== void 0 && lastMessageSender.name ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-                src: companion === null || companion === void 0 ? void 0 : companion.picture,
+                src: lastMessageSender === null || lastMessageSender === void 0 ? void 0 : lastMessageSender.picture,
                 className: "lastMessage__userPic"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-                children: "".concat(companion === null || companion === void 0 ? void 0 : companion.name, ": ").concat(lastMessage)
+                children: "".concat(lastMessageSender === null || lastMessageSender === void 0 ? void 0 : lastMessageSender.name, ": ").concat(lastMessage)
+              })]
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                className: "lastMessage__userPic"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+                children: "start dialog..."
               })]
             })
           })]
@@ -5548,7 +5555,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../recoil/NewChatAtom */ "./resources/js/recoil/NewChatAtom.js");
+/* harmony import */ var _libs_GetArrayWithoutElement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../libs/GetArrayWithoutElement */ "./resources/js/libs/GetArrayWithoutElement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+// global dependencies
+ // recoil atoms
+
+ // libs
+
+
 
 
 
@@ -5556,21 +5592,39 @@ function SearchResultChatMember(_ref) {
   var userId = _ref.userId,
       username = _ref.username,
       picture = _ref.picture;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.useRecoilState)(_recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_1__.newChatMembersIdsState),
+      _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
+      chatMembers = _useRecoilState2[0],
+      setChatMembers = _useRecoilState2[1];
+
+  var handleChange = function handleChange(e) {
+    if (chatMembers.includes(userId)) {
+      var arrayWithoutUserId = (0,_libs_GetArrayWithoutElement__WEBPACK_IMPORTED_MODULE_2__.getArrayWithoutElement)(chatMembers, userId);
+      setChatMembers(arrayWithoutUserId);
+      return;
+    }
+
+    setChatMembers([].concat(_toConsumableArray(chatMembers), [userId]));
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
     className: "searchResultUser",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
       className: "userInfo",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
         src: picture
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
         children: username
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
       className: "btns",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        checked: chatMembers.includes(userId) ? true : false,
+        onChange: handleChange,
         type: "checkbox",
         id: "user-".concat(userId)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
         htmlFor: "user-".concat(userId)
       })]
     })]
@@ -5712,7 +5766,7 @@ function SearchResultUser(_ref) {
         className: "btns",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: removeFriend,
-          className: "accentColor",
+          className: "btnRemove",
           children: "remove"
         })
       })]
@@ -5734,7 +5788,7 @@ function SearchResultUser(_ref) {
         className: "btns",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: sendRequest,
-          className: "mainColor",
+          className: "btnAdd",
           children: "add"
         })
       })]
@@ -5756,11 +5810,11 @@ function SearchResultUser(_ref) {
         className: "btns",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: acceptRequest,
-          className: "mainColor",
+          className: "btnAccept",
           children: "accept"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: declineRequest,
-          className: "accentColor",
+          className: "btnDecline",
           children: "decline"
         })]
       })]
@@ -5782,7 +5836,7 @@ function SearchResultUser(_ref) {
         className: "btns",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: cancelRequest,
-          className: "accentColor",
+          className: "btnCancel",
           children: "cancel"
         })
       })]
@@ -5839,34 +5893,33 @@ function SearchResults(_ref) {
       className: "searchResults",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         children: searchResults.map(function (result) {
-          var _result$aboutRelation, _result$friend, _result$friend2, _result$friend3;
+          var _result$friend, _result$friend2, _result$friend3, _result$friend4;
 
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResultChatMember__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            userId: userInfo.id,
-            username: "".concat(((_result$friend = result.friend) === null || _result$friend === void 0 ? void 0 : _result$friend.name) || result.name, " ").concat(((_result$friend2 = result.friend) === null || _result$friend2 === void 0 ? void 0 : _result$friend2.surname) || result.surname),
-            picture: ((_result$friend3 = result.friend) === null || _result$friend3 === void 0 ? void 0 : _result$friend3.picture) || result.picture
-          }, result.friend_id || ((_result$aboutRelation = result.aboutRelationship) === null || _result$aboutRelation === void 0 ? void 0 : _result$aboutRelation.friend_id));
+            userId: result.friend_id || ((_result$friend = result.friend) === null || _result$friend === void 0 ? void 0 : _result$friend.id) || result.id,
+            username: "".concat(((_result$friend2 = result.friend) === null || _result$friend2 === void 0 ? void 0 : _result$friend2.name) || result.name, " ").concat(((_result$friend3 = result.friend) === null || _result$friend3 === void 0 ? void 0 : _result$friend3.surname) || result.surname),
+            picture: ((_result$friend4 = result.friend) === null || _result$friend4 === void 0 ? void 0 : _result$friend4.picture) || result.picture
+          }, result.id);
         })
       })
     });
   }
 
   if (type === 'users') {
-    console.log(searchResults);
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "searchResults",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         children: searchResults.map(function (result) {
-          var _result$aboutRelation2, _result$aboutRelation3, _result$friend4, _result$friend5, _result$friend6, _result$aboutRelation4, _result$aboutRelation5;
+          var _result$aboutRelation, _result$friend5, _result$friend6, _result$friend7, _result$aboutRelation2, _result$aboutRelation3;
 
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResultUser__WEBPACK_IMPORTED_MODULE_3__["default"], {
-            friendId: result.friend_id || ((_result$aboutRelation3 = result.aboutRelationship) === null || _result$aboutRelation3 === void 0 ? void 0 : _result$aboutRelation3.friend_id) || result.id,
+            friendId: result.friend_id || ((_result$aboutRelation = result.aboutRelationship) === null || _result$aboutRelation === void 0 ? void 0 : _result$aboutRelation.friend_id) || result.id,
             userId: userInfo.id,
-            username: "".concat(((_result$friend4 = result.friend) === null || _result$friend4 === void 0 ? void 0 : _result$friend4.name) || result.name, " ").concat(((_result$friend5 = result.friend) === null || _result$friend5 === void 0 ? void 0 : _result$friend5.surname) || result.surname),
-            picture: ((_result$friend6 = result.friend) === null || _result$friend6 === void 0 ? void 0 : _result$friend6.picture) || result.picture,
-            relationship: result.relationship || ((_result$aboutRelation4 = result.aboutRelationship) === null || _result$aboutRelation4 === void 0 ? void 0 : _result$aboutRelation4.relationship) || 'no',
-            requestFrom: result.request_from || ((_result$aboutRelation5 = result.aboutRelationship) === null || _result$aboutRelation5 === void 0 ? void 0 : _result$aboutRelation5.request_from)
-          }, result.friend_id || ((_result$aboutRelation2 = result.aboutRelationship) === null || _result$aboutRelation2 === void 0 ? void 0 : _result$aboutRelation2.friend_id) || result.id);
+            username: "".concat(((_result$friend5 = result.friend) === null || _result$friend5 === void 0 ? void 0 : _result$friend5.name) || result.name, " ").concat(((_result$friend6 = result.friend) === null || _result$friend6 === void 0 ? void 0 : _result$friend6.surname) || result.surname),
+            picture: ((_result$friend7 = result.friend) === null || _result$friend7 === void 0 ? void 0 : _result$friend7.picture) || result.picture,
+            relationship: result.relationship || ((_result$aboutRelation2 = result.aboutRelationship) === null || _result$aboutRelation2 === void 0 ? void 0 : _result$aboutRelation2.relationship) || 'no',
+            requestFrom: result.request_from || ((_result$aboutRelation3 = result.aboutRelationship) === null || _result$aboutRelation3 === void 0 ? void 0 : _result$aboutRelation3.request_from)
+          }, result.id);
         })
       })
     });
@@ -5885,7 +5938,8 @@ function SearchResults(_ref) {
             name: result.name,
             pic: result.picture,
             lastMessage: result.last_message,
-            companion: (_result$companion = result.companion) === null || _result$companion === void 0 ? void 0 : _result$companion[0]
+            companion: (_result$companion = result.companion) === null || _result$companion === void 0 ? void 0 : _result$companion[0],
+            lastMessageSender: result.last_message_sender
           }, result.id);
         })
       })
@@ -5958,6 +6012,11 @@ function Search(_ref) {
       users = _useRecoilState4[0],
       setUsers = _useRecoilState4[1];
 
+  var _useRecoilState5 = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_4__.searchResultChatMembersState),
+      _useRecoilState6 = _slicedToArray(_useRecoilState5, 2),
+      chatMembers = _useRecoilState6[0],
+      setChatMembers = _useRecoilState6[1];
+
   if (!searchType) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
     type: "text",
     name: "search",
@@ -5966,16 +6025,9 @@ function Search(_ref) {
     placeholder: "something went wrong..."
   });
   var getSearchData = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((0,lodash__WEBPACK_IMPORTED_MODULE_2__.debounce)(function (query) {
-    fetch("/api/search/".concat(searchType), {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content')
-      },
-      body: JSON.stringify({
-        searchQuery: query
-      })
-    }).then(function (request) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)("/api/search/".concat(searchType), "POST", JSON.stringify({
+      searchQuery: query
+    })).then(function (request) {
       return request.json();
     }).then(function (request) {
       if (request && !request.error) {
@@ -5986,11 +6038,15 @@ function Search(_ref) {
         if (searchType === 'users') {
           setUsers(request);
         }
+
+        if (searchType === 'friends') {
+          setChatMembers(request);
+        }
       }
     });
-  }, 300), []);
+  }, 200), []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (!(0,lodash__WEBPACK_IMPORTED_MODULE_2__.trim)(searchQuery)) return;
+    if (!(searchType === 'friends') && !(0,lodash__WEBPACK_IMPORTED_MODULE_2__.trim)(searchQuery)) return;
     getSearchData(searchQuery);
   }, [searchQuery]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
@@ -6261,8 +6317,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UploadPicture_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UploadPicture.scss */ "./resources/js/components/UploadPicture/UploadPicture.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../recoil/SignUpAtom */ "./resources/js/recoil/SignUpAtom.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6283,9 +6338,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+function UploadPicture(_ref) {
+  var recoilState = _ref.recoilState;
 
-function UploadPicture() {
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureFileState),
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(recoilState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
       pictureFile = _useRecoilState2[0],
       setPictureFile = _useRecoilState2[1];
@@ -6302,16 +6358,16 @@ function UploadPicture() {
     setPicture(value);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "chatPicture",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
       onChange: pictureHandler,
       id: "chatPictureUpload",
       type: "file",
       accept: ".png, .jpg, .jpeg"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
       htmlFor: "chatPictureUpload",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
         src: picture
       })
     })]
@@ -6436,7 +6492,6 @@ function Chat() {
       }
     });
     Echo["private"]("chatbox.".concat(chatId)).listen('MessageSend', function (e) {
-      console.log([].concat(_toConsumableArray(messages), [e.message]));
       setMessages(function (state) {
         return [].concat(_toConsumableArray(state), [e.message]);
       });
@@ -6612,8 +6667,6 @@ function Chats(props) {
     (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_7__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
       return data.json();
     }).then(function (data) {
-      console.log(data);
-
       if (data) {
         setChats(data);
       }
@@ -6739,16 +6792,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _NewGroupchat_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewGroupchat.scss */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.scss");
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../recoil/SearchAtom */ "./resources/js/recoil/SearchAtom.js");
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var _UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture.js */ "./resources/js/components/UploadPicture/UploadPicture.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SearchAtom */ "./resources/js/recoil/SearchAtom.js");
+/* harmony import */ var _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/NewChatAtom */ "./resources/js/recoil/NewChatAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture.js */ "./resources/js/components/UploadPicture/UploadPicture.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 // styles
  // global dependencies
 
+
+
  // recoil atoms
+
 
  // components
 
@@ -6760,21 +6831,78 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function NewGroupchat() {
-  var users = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_2__.searchResultUsersState);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useNavigate)();
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      chatName = _useState2[0],
+      setChatName = _useState2[1];
+
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_3__.searchResultChatMembersState),
+      _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
+      users = _useRecoilState2[0],
+      setUsers = _useRecoilState2[1];
+
+  var _useRecoilState3 = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_4__.newChatMembersIdsState),
+      _useRecoilState4 = _slicedToArray(_useRecoilState3, 2),
+      chatMembers = _useRecoilState4[0],
+      setChatMembers = _useRecoilState4[1];
+
+  var _useRecoilState5 = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_4__.newChatPictureFileState),
+      _useRecoilState6 = _slicedToArray(_useRecoilState5, 2),
+      pictureFile = _useRecoilState6[0],
+      setPictureFile = _useRecoilState6[1];
+
+  var makeNewChat = function makeNewChat() {
+    var newChatData = new FormData();
+    if (pictureFile) newChatData.append('picture', pictureFile);
+    newChatData.append('name', chatName);
+    newChatData.append('chatMembers', chatMembers);
+    fetch('/new-groupchat', {
+      method: "POST",
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
+        // "Content-Type": "multipart/form-data",
+        "Accept": 'application/json;charset=utf-8',
+        "type": "formData"
+      },
+      body: newChatData
+    }).then(function (response) {
+      return response.json();
+    }).then(function (response) {
+      if (response.error) {
+        console.log(response.error);
+        return;
+      }
+
+      if (response.url) {
+        navigate(response.url);
+        setPictureFile('');
+      }
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "page newGroupchatPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "mainInfo",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        recoilState: _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_4__.newChatPictureFileState
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
         type: "text",
-        placeholder: "chat name"
+        placeholder: "chat name",
+        value: chatName,
+        onChange: function onChange(e) {
+          return setChatName(e.target.value);
+        }
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      searchType: "users"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      searchType: "friends"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       searchResults: users,
       type: "chatMembers"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+      onClick: makeNewChat,
       children: "ok"
     })]
   });
@@ -7035,7 +7163,9 @@ function SignUp() {
         children: "sign up"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "signUp__info",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          recoilState: _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureFileState
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "info__main",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
             required: true,
@@ -7091,6 +7221,40 @@ function SignUp() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SignUp);
+
+/***/ }),
+
+/***/ "./resources/js/libs/GetArrayWithoutElement.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/libs/GetArrayWithoutElement.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getArrayWithoutElement": () => (/* binding */ getArrayWithoutElement)
+/* harmony export */ });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function getArrayWithoutElement(array, elementToRemove) {
+  var arrayCopy = _toConsumableArray(array);
+
+  var elementIndex = arrayCopy.indexOf(elementToRemove);
+  if (elementIndex === -1) return;
+  arrayCopy.splice(elementIndex, 1);
+  return arrayCopy;
+}
 
 /***/ }),
 
@@ -7302,6 +7466,31 @@ function Main() {
 
 /***/ }),
 
+/***/ "./resources/js/recoil/NewChatAtom.js":
+/*!********************************************!*\
+  !*** ./resources/js/recoil/NewChatAtom.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "newChatMembersIdsState": () => (/* binding */ newChatMembersIdsState),
+/* harmony export */   "newChatPictureFileState": () => (/* binding */ newChatPictureFileState)
+/* harmony export */ });
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+
+var newChatMembersIdsState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
+  key: 'newChatMembersIdsState',
+  "default": []
+});
+var newChatPictureFileState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
+  key: 'newChatPictureFileState',
+  "default": ''
+});
+
+/***/ }),
+
 /***/ "./resources/js/recoil/SearchAtom.js":
 /*!*******************************************!*\
   !*** ./resources/js/recoil/SearchAtom.js ***!
@@ -7311,6 +7500,7 @@ function Main() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "searchResultChatMembersState": () => (/* binding */ searchResultChatMembersState),
 /* harmony export */   "searchResultChatsState": () => (/* binding */ searchResultChatsState),
 /* harmony export */   "searchResultUsersState": () => (/* binding */ searchResultUsersState)
 /* harmony export */ });
@@ -7322,6 +7512,10 @@ var searchResultChatsState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
 });
 var searchResultUsersState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
   key: 'searchResultUsersState',
+  "default": []
+});
+var searchResultChatMembersState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
+  key: 'searchResultChatMembersState',
   "default": []
 });
 
@@ -12436,7 +12630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 50%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.accentColor {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.mainColor {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.searchResults ul .searchResultChat__chatInfo h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n  opacity: 0.7;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n  color: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 50%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover, .searchResults ul .searchResultUser .btns button:focus {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.btnRemove, .searchResults ul .searchResultUser .btns button.btnDecline, .searchResults ul .searchResultUser .btns button.btnCancel {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.btnRemove:hover, .searchResults ul .searchResultUser .btns button.btnDecline:hover, .searchResults ul .searchResultUser .btns button.btnCancel:hover {\n  background: #C92B8A;\n}\n.searchResults ul .searchResultUser .btns button.btnAdd, .searchResults ul .searchResultUser .btns button.btnAccept {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.btnAdd:hover, .searchResults ul .searchResultUser .btns button.btnAccept:hover {\n  background: #0c408f;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:not(:checked) ~ label:hover {\n  background: #C92B8A;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n  transition: 300ms;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.searchResults ul .searchResultChat__chatInfo h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n  opacity: 0.7;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n  color: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12562,7 +12756,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3rem;\n  height: 3rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover {\n  background: #0a4bac;\n}\n.chatPage__messages {\n  width: 80%;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n  padding-inline: 0.5rem;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage .message__text {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message .message__text {\n  background: #0a4bac;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  white-space: pre-line;\n  padding: 0.5em 1em;\n  border-radius: 1rem;\n  margin: 0;\n  max-width: 60%;\n  align-self: flex-start;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message .message__text {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  height: 4em;\n  border-radius: 1rem;\n  scrollbar-width: none;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover {\n  background: #0a4bac;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3rem;\n  height: 3rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover, .chatPage__topRow button:focus {\n  background: #0a4bac;\n}\n.chatPage__messages {\n  width: 80%;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n  padding-inline: 0.5rem;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage .message__text {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message .message__text {\n  background: #0a4bac;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  white-space: pre-line;\n  padding: 0.5em 1em;\n  border-radius: 1rem;\n  margin: 0;\n  max-width: 60%;\n  align-self: flex-start;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message .message__text {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  height: 4em;\n  border-radius: 1rem;\n  scrollbar-width: none;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover, .chatPage__bottomRow button:focus {\n  background: #0a4bac;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12586,7 +12780,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".newGroupchatPage .mainInfo {\n  position: relative;\n  width: min(90%, 920px);\n  display: flex;\n  align-items: center;\n  gap: 3rem;\n}\n.newGroupchatPage .mainInfo input {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}\n.newGroupchatPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.newGroupchatPage button:hover {\n  background: #0a4bac;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".newGroupchatPage .mainInfo {\n  position: relative;\n  width: min(90%, 920px);\n  display: flex;\n  align-items: center;\n  gap: 3rem;\n}\n.newGroupchatPage .mainInfo input {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}\n.newGroupchatPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.newGroupchatPage button:hover, .newGroupchatPage button:focus {\n  background: #0a4bac;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12610,7 +12804,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signIn {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #0a4bac;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signIn {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover, .loginPage button:focus {\n  background: #0a4bac;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12634,7 +12828,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signUp {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info .info__main {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__passwords {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  align-items: center;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #0a4bac;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signUp {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info .info__main {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__passwords {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  align-items: center;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover, .loginPage button:focus {\n  background: #0a4bac;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

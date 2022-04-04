@@ -54,7 +54,6 @@ function Chat() {
         })
         Echo.private(`chatbox.${chatId}`)
         .listen('MessageSend', (e) => {
-            console.log([...messages, e.message])
             setMessages(state => ([...state, e.message]));
         })
     }, [])

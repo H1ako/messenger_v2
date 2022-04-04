@@ -31,70 +31,80 @@ Route::post('/user', function (Request $request) {
 
 Route::post('/search/{searchType}', function ($searchType, Request $request) {
     $user = Auth::user();
-    if (!$user) return ["error" => 'not logged in'];
-
     $searchResults = [];
     $searchQuery = $request->input('searchQuery');
-    $trimmedQuery = trim($searchQuery);
 
-    if ($trimmedQuery) {
-        switch ($searchType) {
-            case 'users':
-                $searchResults = User::where('id', '!=' , $user->id)
-                                    ->where('name', 'like', "%$trimmedQuery%")
-                                    ->orWhere('surname', 'like', "%$trimmedQuery%")
-                                    ->where('id', '!=' , $user->id)
-                                    ->orderBy('updated_at', 'DESC')
-                                    ->get();
-                                    
-                foreach ($searchResults as $searchResult) {
-                    $userFriend = $user->friends()->where('friend_id', $searchResult->id)->first();
+    switch ($searchType) {
+        case 'users':
+            $searchResults = User::where('id', '!=' , $user->id)
+                                ->where('name', 'like', "%$searchQuery%")
+                                ->orWhere('surname', 'like', "%$searchQuery%")
+                                ->where('id', '!=' , $user->id)
+                                ->orderBy('updated_at', 'DESC')
+                                ->get();
+                                
+            foreach ($searchResults as $searchResult) {
+                $userFriend = $user->friends()->where('friend_id', $searchResult->id)->first();
 
-                    $searchResult->aboutRelationship = $userFriend;
-                }
+                $searchResult->aboutRelationship = $userFriend;
+            }
 
-                break;
-            case 'chats':
-                $userIds = User::where('id', '!=' , $user->id)
-                                    ->where('name', 'like', "%$trimmedQuery%")
-                                    ->orWhere('surname', 'like', "%$trimmedQuery%")
-                                    ->where('id', '!=' , $user->id)
-                                    ->pluck('id');
-                $userChatsIds = $user->chats()->pluck('chat_id');
-                
-                $chatMemberIds = ChatMember::whereIn('chat_id', $userChatsIds)
-                                            ->whereIn('member_id', $userIds)
-                                            ->pluck('chat_id');
-                $chatIds = Chat::where('name', 'like', "%$trimmedQuery%")
-                                ->whereIn('id', $userChatsIds)
+            break;
+        case 'chats':
+            $userIds = User::where('id', '!=' , $user->id)
+                                ->where('name', 'like', "%$searchQuery%")
+                                ->orWhere('surname', 'like', "%$searchQuery%")
+                                ->where('id', '!=' , $user->id)
                                 ->pluck('id');
-                $resultIds = $chatMemberIds->merge($chatIds);
+            $userChatsIds = $user->chats()->pluck('chat_id');
+            
+            $chatMemberIds = ChatMember::whereIn('chat_id', $userChatsIds)
+                                        ->whereIn('member_id', $userIds)
+                                        ->pluck('chat_id');
+            $chatIds = Chat::where('name', 'like', "%$searchQuery%")
+                            ->whereIn('id', $userChatsIds)
+                            ->pluck('id');
+            $resultIds = $chatMemberIds->merge($chatIds);
 
-                $searchResults = Chat::whereIn('id', $resultIds)->orderBy('updated_at', 'DESC')->get();
+            $searchResults = Chat::whereIn('id', $resultIds)->orderBy('updated_at', 'DESC')->get();
 
-                foreach ($searchResults as $chat) {
-                    if ($chat->last_message_sender && $chat->chat_type === 'groupchat') {
-                        $chat->last_message_sender = User::find($chat->last_message_sender);
-                    }
-                    if ($chat->chat_type === 'dialog') {
-                        $companionId = ChatMember::where('chat_id', $chat->id)
-                                                ->where('member_id', '!=', Auth::id())
-                                                ->pluck('member_id');
-                        $chat->companion = User::find($companionId);
-                    }
+            foreach ($searchResults as $chat) {
+                if ($chat->last_message_sender && $chat->chat_type === 'groupchat') {
+                    $chat->last_message_sender = User::find($chat->last_message_sender);
                 }
-                break;
-        }
+                if ($chat->chat_type === 'dialog') {
+                    $companionId = ChatMember::where('chat_id', $chat->id)
+                                            ->where('member_id', '!=', Auth::id())
+                                            ->pluck('member_id');
+                    $chat->companion = User::find($companionId);
+                }
+            }
+            break;
+        
+        case 'friends':
+            $friendIds = $user->friends()
+                                ->where('relationship', 'friend')
+                                ->pluck('friend_id');
 
-        return $searchResults;
+            $searchResults = User::whereIn('id', $friendIds)
+                                ->where('name', 'like', "%$searchQuery%")
+                                ->orWhere('surname', 'like', "%$searchQuery%")
+                                ->whereIn('id', $friendIds)
+                                ->orderBy('updated_at', 'DESC')
+                                ->get();
+                                
+            foreach ($searchResults as $searchResult) {
+                $searchResult->friend = User::find($searchResult->friend_id);
+            }
+            break;
     }
-    return ["error" => 'nullable query'];
+
+    return $searchResults;    
 });
 
 
 Route::post('/friends/{friendType}', function ($friendType, Request $request) {
     $user = Auth::user();
-    if (!$user) return ["error" => 'not logged in'];
 
     $friends = [];
     
@@ -115,11 +125,10 @@ Route::post('/friends/{friendType}', function ($friendType, Request $request) {
     }
 
     return $friends;
-});
+})->middleware('auth');
 
 Route::post('/chats-get/{chat_type}', function ($chat_type, Request $request) {
     $user = Auth::user();
-    if (!$user) return ["error" => 'not logged in'];
 
     $chatIds = [];
     $chats = [];
@@ -154,26 +163,24 @@ Route::post('/chats-get/{chat_type}', function ($chat_type, Request $request) {
     }
 
     return $chats;
-});
+})->middleware('auth');
 
 Route::post('/chats/{chat_id}', function ($chat_id, Request $request) {
-    if (Auth::check()) {
-        $chat = Chat::find($chat_id);
-        $messages = $chat->messages;
-        $companionId = ChatMember::where('chat_id', $chat->id)
-                                ->where('member_id', '!=', Auth::id())
-                                ->pluck('member_id');
+    $chat = Chat::find($chat_id);
+    $messages = $chat->messages;
+    $companionId = ChatMember::where('chat_id', $chat->id)
+                            ->where('member_id', '!=', Auth::id())
+                            ->pluck('member_id');
 
-        foreach ($messages as $message) {
-            $message->sender = User::find($message->sender);
-        }
-
-        $data = [
-            "messages" => $messages,
-            "chat" => $chat,
-            "companion" => User::find($companionId)
-        ];
-
-        return $data;
+    foreach ($messages as $message) {
+        $message->sender = User::find($message->sender);
     }
-});
+
+    $data = [
+        "messages" => $messages,
+        "chat" => $chat,
+        "companion" => User::find($companionId)
+    ];
+
+    return $data;
+})->middleware('auth', 'chat.access');

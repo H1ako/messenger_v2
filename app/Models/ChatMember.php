@@ -12,8 +12,9 @@ class ChatMember extends Model
     protected $fillable = [
         'chat_id',
         'chat_type',
-        'friend_id',
-        'relationship'
+        'member_id',
+        'member_role',
+        'status'
     ];
 
     public function chat() {

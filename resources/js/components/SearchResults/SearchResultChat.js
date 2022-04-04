@@ -6,7 +6,8 @@ function SearchResultChat({
     pic,
     name,
     lastMessage,
-    companion
+    companion,
+    lastMessageSender
 }) {
 
     if (type === 'dialog') {
@@ -31,14 +32,21 @@ function SearchResultChat({
                     <span className="searchResultChat__chatInfo">
                         <h2>{name}</h2>
                         <div className="chatInfo__lastMessage">
-                        {lastMessage && companion?.name &&
-                        <>
-                            <img
-                                src={companion?.picture}
-                                className='lastMessage__userPic'
-                            />
-                            <h3>{`${companion?.name}: ${lastMessage}`}</h3>
-                        </>
+                        {lastMessage && lastMessageSender?.name ?
+                            <>
+                                <img
+                                    src={lastMessageSender?.picture}
+                                    className='lastMessage__userPic'
+                                />
+                                <h3>{`${lastMessageSender?.name}: ${lastMessage}`}</h3>
+                            </>
+                        :
+                            <>
+                                <img
+                                    className='lastMessage__userPic'
+                                />
+                                <h3>start dialog...</h3>
+                            </>
                         }
                         </div>
                     </span>

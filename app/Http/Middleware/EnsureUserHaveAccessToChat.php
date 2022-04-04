@@ -18,7 +18,7 @@ class EnsureUserHaveAccessToChat
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        $chatId = $request->route('id');
+        $chatId = $request->route('chat_id');
         if ( $user->chats()->where('chat_id', $chatId)->first() ) return $next($request);
         return redirect('/chats');
     }

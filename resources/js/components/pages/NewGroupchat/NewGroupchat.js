@@ -1,28 +1,63 @@
 // styles
 import './NewGroupchat.scss'
 // global dependencies
-import { useRecoilValue } from 'recoil'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useRecoilState } from 'recoil'
 // recoil atoms
-import { searchResultUsersState } from '../../../recoil/SearchAtom'
+import { searchResultChatMembersState } from '../../../recoil/SearchAtom'
+import { newChatMembersIdsState, newChatPictureFileState } from '../../../recoil/NewChatAtom'
 // components
 import Search from '../../Search/Search.js'
 import SearchResults from '../../SearchResults/SearchResults.js'
 import UploadPicture from '../../UploadPicture/UploadPicture.js'
 
-
 // for creating new chat
 function NewGroupchat() {
-    const users = useRecoilValue(searchResultUsersState)
+    const navigate = useNavigate()
+    const [chatName, setChatName] = useState('')
+    const [users, setUsers] = useRecoilState(searchResultChatMembersState)
+    const [chatMembers, setChatMembers] = useRecoilState(newChatMembersIdsState)
+    const [pictureFile, setPictureFile] = useRecoilState(newChatPictureFileState)
+
+    const makeNewChat = () => {
+        const newChatData = new FormData()
+        if (pictureFile) newChatData.append('picture', pictureFile)
+        newChatData.append('name', chatName)
+        newChatData.append('chatMembers', chatMembers)
+
+        fetch('/new-groupchat', {
+            method: "POST",
+            headers: {
+                'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
+                // "Content-Type": "multipart/form-data",
+                "Accept": 'application/json;charset=utf-8',
+                "type": "formData"
+            },
+            body: newChatData
+        })
+        .then(response => response.json())
+        .then((response) => {
+            if (response.error) {
+                console.log(response.error)
+                return
+            }
+            if (response.url) {
+                navigate(response.url)
+                setPictureFile('')
+            }
+        })
+    }
     
     return (
         <div className="page newGroupchatPage">
             <div className="mainInfo">
-                <UploadPicture />
-                <input type="text" placeholder='chat name' />
+                <UploadPicture recoilState={newChatPictureFileState} />
+                <input type="text" placeholder='chat name' value={chatName} onChange={e => setChatName(e.target.value)} />
             </div>
-            <Search searchType='users'/>
+            <Search searchType='friends'/>
             <SearchResults searchResults={users} type='chatMembers' />
-            <button>ok</button>
+            <button onClick={makeNewChat}>ok</button>
         </div>
     )
 }

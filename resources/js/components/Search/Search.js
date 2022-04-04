@@ -5,7 +5,7 @@ import { useCallback, useEffect,useState } from 'react'
 import { debounce, trim } from 'lodash'
 import { useRecoilState } from 'recoil'
 // recoil atoms
-import { searchResultChatsState, searchResultUsersState } from '../../recoil/SearchAtom'
+import { searchResultChatMembersState, searchResultChatsState, searchResultUsersState } from '../../recoil/SearchAtom'
 // libs
 import { customFetch } from '../../libs/customFetch'
 
@@ -13,6 +13,7 @@ function Search({ searchType }) {
     const [searchQuery, setSearchQuery] = useState('')
     const [chats, setChats] = useRecoilState(searchResultChatsState)
     const [users, setUsers] = useRecoilState(searchResultUsersState)
+    const [chatMembers, setChatMembers] = useRecoilState(searchResultChatMembersState)
 
     if (!searchType) return (
         <input
@@ -25,14 +26,7 @@ function Search({ searchType }) {
     )
 
     const getSearchData = useCallback(debounce( (query) => {
-        fetch(`/api/search/${searchType}`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-                'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
-            },
-            body: JSON.stringify({ searchQuery: query })
-        })
+        customFetch(`/api/search/${searchType}`, "POST", JSON.stringify({ searchQuery: query }))
         .then(request => request.json())
         .then(request => {
             if (request && !request.error) {
@@ -43,14 +37,18 @@ function Search({ searchType }) {
                 if (searchType === 'users') {
                     setUsers(request)
                 }
+
+                if (searchType === 'friends') {
+                    setChatMembers(request)
+                }
             }
         })
-    }, 300), [])
+    }, 200), [])
 
     useEffect(() => {
-        if (!trim(searchQuery)) return
+        if (!(searchType === 'friends') && !trim(searchQuery)) return
         
-        getSearchData(searchQuery);
+        getSearchData(searchQuery)
     }, [searchQuery])
 
     return (

@@ -71,7 +71,7 @@ function SearchResultUser({
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
-                    <button onClick={removeFriend} className='accentColor'>remove</button>
+                    <button onClick={removeFriend} className='btnRemove'>remove</button>
                 </span>
             </li>
         )
@@ -85,7 +85,7 @@ function SearchResultUser({
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
-                    <button onClick={sendRequest} className='mainColor'>add</button>
+                    <button onClick={sendRequest} className='btnAdd'>add</button>
                 </span>
             </li>
         )
@@ -99,8 +99,8 @@ function SearchResultUser({
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
-                    <button onClick={acceptRequest} className='mainColor'>accept</button>
-                    <button onClick={declineRequest} className='accentColor'>decline</button>
+                    <button onClick={acceptRequest} className='btnAccept'>accept</button>
+                    <button onClick={declineRequest} className='btnDecline'>decline</button>
                 </span>
             </li>
         )
@@ -114,7 +114,7 @@ function SearchResultUser({
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
-                    <button onClick={cancelRequest} className='accentColor'>cancel</button>
+                    <button onClick={cancelRequest} className='btnCancel'>cancel</button>
                 </span>
             </li>
         )

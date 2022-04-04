@@ -19,9 +19,6 @@ class ChatController extends Controller
         $chatMemebrship = $user->chats()->where('chat_id', $chat_id)->first();
         $chat = Chat::find($chatMemebrship->chat_id);
 
-        if (!$user) return ["error" => 'not logged in'];
-        if (!$chatMemebrship) return ["error" => 'user is not chat member'];
-
         $text = $request->input('text');
 
         $newMessage = $chat->messages()->create([
@@ -41,7 +38,6 @@ class ChatController extends Controller
 
     public function checkChat($friendId, Request $request) {
         $user = Auth::user();
-        if (! $user) return ["error" => 'user is not logged in'];
 
         $userChatsIds = $user->dialogs()->pluck('chat_id');
         $friend = User::find($friendId);
@@ -60,6 +56,51 @@ class ChatController extends Controller
             'chat_id' => $newChat->id,
             'chat_type' => 'dialog'
         ]);
+        return ["url" => "/chats/$newChat->id"];
+    }
+
+    public function newGroupchat(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'picture' => 'image'
+        ]);
+
+        $user = Auth::user();
+        $name = $request->input('name');
+        $chatMembersIds = explode(',', $request->input('chatMembers'));
+        $newChat = Chat::make();
+        $newChat->name = $name;
+        $newChat->chat_type = 'groupchat';
+        $newChat->save();
+
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $destinationPath = 'for_chats/avatars';
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $newChat->id . "." . $extension;
+        
+            $file->move($destinationPath, $fileName);
+        
+            $newChat->picture = '/' . $destinationPath . '/' . $fileName;
+            $newChat->save();
+        }
+
+        $newChat->members()->create([
+            'chat_type' => 'groupchat',
+            'member_id' => $user->id,
+            'role' => 'owner'
+        ]);
+
+        foreach ($chatMembersIds as $chatMemberId) {
+            $chatMember = $user->friends()->where('friend_id', $chatMemberId)->first();
+            if (! $chatMember) break; // if chat member is user's friend
+            $newChat->members()->create([
+                'chat_type' => 'groupchat',
+                'member_id' => $chatMemberId,
+                'role' => 'user'
+            ]);
+        }
+
         return ["url" => "/chats/$newChat->id"];
     }
 }

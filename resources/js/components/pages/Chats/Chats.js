@@ -21,7 +21,6 @@ function Chats(props) {
         customFetch(`/api/chats-get/${chatType}`, 'POST')
         .then(data => data.json())
         .then(data => {
-            console.log(data)
             if (data) {
                 setChats(data)
             }
