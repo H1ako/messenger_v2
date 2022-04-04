@@ -54,7 +54,7 @@
                     display: none;
                 }
 
-                p {
+                .message__text {
                     background: $colorAccent;
                     align-self: flex-end;
                 }
@@ -79,12 +79,12 @@
                 }
             }
 
-            p {
+            .message__text {
                 background: $colorMain;
                 font-size: clamp(.950rem, 1vw, 1.25rem);
-                word-wrap: break-word;
+                white-space: pre-line;
                 padding: .5em 1em;
-                border-radius: 1.5rem;
+                border-radius: 1rem;
                 margin: 0;
                 max-width: 60%;
                 align-self: flex-start;

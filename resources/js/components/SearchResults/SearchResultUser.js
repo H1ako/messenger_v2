@@ -67,7 +67,7 @@ function SearchResultUser({
         return (
             <li className='searchResultUser'>
                 <span onClick={goToMessages} className='userInfo'>
-                    <img src={picture} alt="user pic"/>
+                    <img src={picture}/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
@@ -81,7 +81,7 @@ function SearchResultUser({
         return (
             <li className='searchResultUser'>
                 <span onClick={goToMessages} className='userInfo'>
-                    <img src={picture} alt="user pic"/>
+                    <img src={picture}/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
@@ -95,7 +95,7 @@ function SearchResultUser({
         return (
             <li className='searchResultUser'>
                 <span onClick={goToMessages} className='userInfo'>
-                    <img src={picture} alt="user pic"/>
+                    <img src={picture}/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">
@@ -110,7 +110,7 @@ function SearchResultUser({
         return (
             <li className='searchResultUser'>
                 <span onClick={goToMessages} className='userInfo'>
-                    <img src={picture} alt="user pic"/>
+                    <img src={picture}/>
                     <h2>{username}</h2>
                 </span>
                 <span className="btns">

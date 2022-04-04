@@ -17,7 +17,7 @@ class AuthController extends Controller
         }
 
         $validatedData = $request->validate([
-            'picture' => '',
+            'picture' => 'image',
             'name' => 'required',
             'surname' => 'required',
             'email' => 'email|required|unique:users',

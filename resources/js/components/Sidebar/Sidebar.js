@@ -35,7 +35,7 @@ function Sidebar() {
         <div className={`sidebar${isActive ? ' active' : ''}${userInfo.id ? '' : ' notLoggedIn'}`}>
             {userInfo.id && 
                 <div className="sidebar__userInfo">
-                    <img src={userInfo.picture} alt="user pic"/>
+                    <img src={userInfo.picture}/>
                     <h3>{`${userInfo.name} ${userInfo.surname}`}</h3>
                 </div>
             }

@@ -15,7 +15,7 @@ import { customFetch } from '../../../libs/customFetch'
 // sign up page
 function SignUp() {
     const navigate = useNavigate();
-    const pictureFile = useRecoilValue(signUpPuctureFileState)
+    const [pictureFile, setPictureFile] = useRecoilState(signUpPuctureFileState)
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
@@ -32,7 +32,7 @@ function SignUp() {
             surname != ''
         ) {
             const newUserData = new FormData()
-            newUserData.append('picture', pictureFile)
+            if (pictureFile) newUserData.append('picture', pictureFile)
             newUserData.append('name', name)
             newUserData.append('surname', surname)
             newUserData.append('email', email)
@@ -56,6 +56,7 @@ function SignUp() {
                 }
                 if (response.url) {
                     if (response.user) {
+                        setPictureFile('')
                         setUserInfo(response.user)
                     }
                     

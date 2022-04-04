@@ -7,7 +7,7 @@ function SearchResultChatMember({
     return (
         <li className='searchResultUser'>
             <span className='userInfo'>
-                <img src={picture} alt="user pic"/>
+                <img src={picture}/>
                 <h2>{username}</h2>
             </span>
             <span className="btns">

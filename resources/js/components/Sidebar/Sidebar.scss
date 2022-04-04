@@ -68,6 +68,7 @@
             background: $colorLight;
             width: calc($sizeSidebar * 0.8);
             height: calc($sizeSidebar * 0.8);
+            object-fit: cover;
         }
     }
 

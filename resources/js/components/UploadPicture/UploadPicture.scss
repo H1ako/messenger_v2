@@ -48,6 +48,7 @@
             border-radius: 50%;
             width: $pictureSize;
             height: $pictureSize;
+            object-fit: cover;
         }
     }
     

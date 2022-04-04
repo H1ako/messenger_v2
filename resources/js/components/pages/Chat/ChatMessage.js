@@ -10,7 +10,7 @@ function ChatMessage({
                 <img src={sender.picture} alt="" />
                 <h2>{sender.name}</h2>
             </div>
-            <p>
+            <p className="message__text">
                 {text}
             </p>
             <time>

@@ -18,9 +18,8 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('chatbox.{chatId}', function ($user, $chatId) {
-    return true;
     if (!$user) return false;
-    $isUserChatMember = $user->chats->where('chat_id', $chatId)->exists();
+    $isUserChatMember = $user->chats->where('chat_id', $chatId)->first();
     if (!$isUserChatMember) return false;
     return true;
 });

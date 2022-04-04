@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Events\MessageSend;
 use App\Models\Chat;
-use App\Models\ChatMessage;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

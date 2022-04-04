@@ -24,6 +24,7 @@ function UploadPicture() {
                 onChange={pictureHandler}
                 id='chatPictureUpload'
                 type="file"
+                accept=".png, .jpg, .jpeg"
             />
             <label htmlFor='chatPictureUpload'>
                 <img src={picture} />

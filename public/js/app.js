@@ -5516,8 +5516,7 @@ function SearchResultChat(_ref) {
             children: lastMessage && (companion === null || companion === void 0 ? void 0 : companion.name) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
                 src: companion === null || companion === void 0 ? void 0 : companion.picture,
-                className: "lastMessage__userPic",
-                alt: "user pic"
+                className: "lastMessage__userPic"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
                 children: "".concat(companion === null || companion === void 0 ? void 0 : companion.name, ": ").concat(lastMessage)
               })]
@@ -5562,8 +5561,7 @@ function SearchResultChatMember(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
       className: "userInfo",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-        src: picture,
-        alt: "user pic"
+        src: picture
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
         children: username
       })]
@@ -5706,8 +5704,7 @@ function SearchResultUser(_ref) {
         onClick: goToMessages,
         className: "userInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          src: picture,
-          alt: "user pic"
+          src: picture
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
           children: username
         })]
@@ -5729,8 +5726,7 @@ function SearchResultUser(_ref) {
         onClick: goToMessages,
         className: "userInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          src: picture,
-          alt: "user pic"
+          src: picture
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
           children: username
         })]
@@ -5752,8 +5748,7 @@ function SearchResultUser(_ref) {
         onClick: goToMessages,
         className: "userInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          src: picture,
-          alt: "user pic"
+          src: picture
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
           children: username
         })]
@@ -5779,8 +5774,7 @@ function SearchResultUser(_ref) {
         onClick: goToMessages,
         className: "userInfo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          src: picture,
-          alt: "user pic"
+          src: picture
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
           children: username
         })]
@@ -6207,8 +6201,7 @@ function Sidebar() {
     children: [userInfo.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "sidebar__userInfo",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-        src: userInfo.picture,
-        alt: "user pic"
+        src: userInfo.picture
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
         children: "".concat(userInfo.name, " ").concat(userInfo.surname)
       })]
@@ -6314,7 +6307,8 @@ function UploadPicture() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
       onChange: pictureHandler,
       id: "chatPictureUpload",
-      type: "file"
+      type: "file",
+      accept: ".png, .jpg, .jpeg"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
       htmlFor: "chatPictureUpload",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
@@ -6544,6 +6538,7 @@ function ChatMessage(_ref) {
         children: sender.name
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+      className: "message__text",
       children: text
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("time", {
       children: time
@@ -6959,12 +6954,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function SignUp() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
-  var pictureFile = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureFileState);
 
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_4__.userInfoState),
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureFileState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
-      userInfo = _useRecoilState2[0],
-      setUserInfo = _useRecoilState2[1];
+      pictureFile = _useRecoilState2[0],
+      setPictureFile = _useRecoilState2[1];
+
+  var _useRecoilState3 = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_4__.userInfoState),
+      _useRecoilState4 = _slicedToArray(_useRecoilState3, 2),
+      userInfo = _useRecoilState4[0],
+      setUserInfo = _useRecoilState4[1];
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6994,7 +6993,7 @@ function SignUp() {
   var signUp = function signUp() {
     if (password.length >= 8 && password === passwordAgain && email != '' && name != '' && surname != '') {
       var newUserData = new FormData();
-      newUserData.append('picture', pictureFile);
+      if (pictureFile) newUserData.append('picture', pictureFile);
       newUserData.append('name', name);
       newUserData.append('surname', surname);
       newUserData.append('email', email);
@@ -7018,6 +7017,7 @@ function SignUp() {
 
         if (response.url) {
           if (response.user) {
+            setPictureFile('');
             setUserInfo(response.user);
           }
 
@@ -12436,7 +12436,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 50%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover {\n  background: #317FF3;\n}\n.searchResults ul .searchResultUser .btns button.accentColor {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.mainColor {\n  background: #317FF3;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.searchResults ul .searchResultChat__chatInfo h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n  opacity: 0.7;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n  color: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 50%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.accentColor {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.mainColor {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.searchResults ul .searchResultChat__chatInfo h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n  opacity: 0.7;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n  color: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12490,7 +12490,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".selector {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n@media (max-width: 320px) {\n  .selector {\n    width: 100%;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 0.5rem;\n  }\n}\n.selector button {\n  outline: none;\n  transition: 300ms;\n  text-transform: lowercase;\n  background: none;\n  padding: 0.4em 1.5em;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n}\n@media (max-width: 320px) {\n  .selector button {\n    border-radius: 9999px;\n  }\n}\n.selector button.active {\n  background: #317FF3;\n}\n.selector button:not(.active):hover {\n  background: #2F76DF;\n}\n@media (min-width: 321px) {\n  .selector button:first-of-type {\n    border-radius: 9999px 0 0 9999px;\n    border-right-width: 0;\n  }\n}\n@media (min-width: 321px) {\n  .selector button:last-of-type {\n    border-radius: 0 9999px 9999px 0;\n    border-left-width: 0;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".selector {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n@media (max-width: 320px) {\n  .selector {\n    width: 100%;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 0.5rem;\n  }\n}\n.selector button {\n  outline: none;\n  transition: 300ms;\n  text-transform: lowercase;\n  background: none;\n  padding: 0.4em 1.5em;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n}\n@media (max-width: 320px) {\n  .selector button {\n    border-radius: 9999px;\n  }\n}\n.selector button.active {\n  background: #0a4bac;\n}\n.selector button:not(.active):hover {\n  background: #0c408f;\n}\n@media (min-width: 321px) {\n  .selector button:first-of-type {\n    border-radius: 9999px 0 0 9999px;\n    border-right-width: 0;\n  }\n}\n@media (min-width: 321px) {\n  .selector button:last-of-type {\n    border-radius: 0 9999px 9999px 0;\n    border-left-width: 0;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12514,7 +12514,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  flex: none;\n  position: relative;\n  width: clamp(3rem, 8vw, 4rem);\n  gap: 0.125rem;\n  display: grid;\n  grid-template-rows: 1fr 4fr 1fr;\n  padding-block: 1.5rem;\n  background: #317FF3;\n  transition: 300ms;\n  overflow: hidden;\n}\n.sidebar.notLoggedIn {\n  grid-template-rows: 1fr;\n}\n.sidebar.active {\n  width: 16.5rem;\n}\n.sidebar.active h3 {\n  transform: none;\n  opacity: 1;\n  pointer-events: all;\n}\n.sidebar h3 {\n  transition: 300ms;\n  transform: translateY(20px);\n  pointer-events: none;\n  opacity: 0;\n  margin: 0;\n  font-weight: 300;\n}\n.sidebar ion-icon {\n  font-size: clamp(2rem, 5vw, 2.5rem);\n  place-self: center;\n}\n.sidebar__userInfo {\n  align-self: flex-start;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  align-items: center;\n  display: grid;\n  gap: 1rem;\n  cursor: pointer;\n  transition: 300ms;\n  padding-block: 0.5rem;\n}\n.sidebar__userInfo:hover {\n  background: #448cf8;\n}\n.sidebar__userInfo h3 {\n  white-space: nowrap;\n}\n.sidebar__userInfo img {\n  place-self: center;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  width: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  height: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n}\n.sidebar nav {\n  align-self: center;\n}\n.sidebar nav ul {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n}\n.sidebar nav ul .menuBtn {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  cursor: pointer;\n}\n.sidebar nav ul li {\n  width: 100%;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar nav ul li:not(.active):hover {\n  background: #448cf8;\n}\n.sidebar nav ul li.active {\n  background: #2F76DF;\n}\n.sidebar nav ul li a {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  color: white;\n  text-decoration: none;\n  outline: none;\n}\n.sidebar__exit {\n  align-self: flex-end;\n  gap: 1rem;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  cursor: pointer;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar__exit:hover {\n  background: #448cf8;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  flex: none;\n  position: relative;\n  width: clamp(3rem, 8vw, 4rem);\n  gap: 0.125rem;\n  display: grid;\n  grid-template-rows: 1fr 4fr 1fr;\n  padding-block: 1.5rem;\n  background: #0a4bac;\n  transition: 300ms;\n  overflow: hidden;\n}\n.sidebar.notLoggedIn {\n  grid-template-rows: 1fr;\n}\n.sidebar.active {\n  width: 16.5rem;\n}\n.sidebar.active h3 {\n  transform: none;\n  opacity: 1;\n  pointer-events: all;\n}\n.sidebar h3 {\n  transition: 300ms;\n  transform: translateY(20px);\n  pointer-events: none;\n  opacity: 0;\n  margin: 0;\n  font-weight: 300;\n}\n.sidebar ion-icon {\n  font-size: clamp(2rem, 5vw, 2.5rem);\n  place-self: center;\n}\n.sidebar__userInfo {\n  align-self: flex-start;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  align-items: center;\n  display: grid;\n  gap: 1rem;\n  cursor: pointer;\n  transition: 300ms;\n  padding-block: 0.5rem;\n}\n.sidebar__userInfo:hover {\n  background: #0b60df;\n}\n.sidebar__userInfo h3 {\n  white-space: nowrap;\n}\n.sidebar__userInfo img {\n  place-self: center;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  width: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  height: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.sidebar nav {\n  align-self: center;\n}\n.sidebar nav ul {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n}\n.sidebar nav ul .menuBtn {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  cursor: pointer;\n}\n.sidebar nav ul li {\n  width: 100%;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar nav ul li:not(.active):hover {\n  background: #0b60df;\n}\n.sidebar nav ul li.active {\n  background: #0c408f;\n}\n.sidebar nav ul li a {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  color: white;\n  text-decoration: none;\n  outline: none;\n}\n.sidebar__exit {\n  align-self: flex-end;\n  gap: 1rem;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  cursor: pointer;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar__exit:hover {\n  background: #0b60df;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12538,7 +12538,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatPicture input {\n  display: none;\n}\n.chatPicture label {\n  display: block;\n  position: relative;\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatPicture label::before, .chatPicture label::after {\n  top: -1px;\n  left: -1px;\n  position: absolute;\n  opacity: 0;\n  transition: 300ms;\n  width: calc(100% + 2px);\n  height: calc(100% + 2px);\n  border-radius: 50%;\n  z-index: 1;\n  display: grid;\n  place-content: center;\n}\n.chatPicture label::before {\n  content: \"\";\n  background: black;\n}\n.chatPicture label::after {\n  content: \"upload picture\";\n}\n.chatPicture label:hover::before, .chatPicture label:hover::after {\n  opacity: 0.8;\n}\n.chatPicture label img {\n  background-color: white;\n  border-radius: 50%;\n  width: 150px;\n  height: 150px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatPicture input {\n  display: none;\n}\n.chatPicture label {\n  display: block;\n  position: relative;\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatPicture label::before, .chatPicture label::after {\n  top: -1px;\n  left: -1px;\n  position: absolute;\n  opacity: 0;\n  transition: 300ms;\n  width: calc(100% + 2px);\n  height: calc(100% + 2px);\n  border-radius: 50%;\n  z-index: 1;\n  display: grid;\n  place-content: center;\n}\n.chatPicture label::before {\n  content: \"\";\n  background: black;\n}\n.chatPicture label::after {\n  content: \"upload picture\";\n}\n.chatPicture label:hover::before, .chatPicture label:hover::after {\n  opacity: 0.8;\n}\n.chatPicture label img {\n  background-color: white;\n  border-radius: 50%;\n  width: 150px;\n  height: 150px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12562,7 +12562,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3rem;\n  height: 3rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover {\n  background: #317FF3;\n}\n.chatPage__messages {\n  width: 80%;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n  padding-inline: 0.5rem;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage p {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message p {\n  background: #317FF3;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  word-wrap: break-word;\n  padding: 0.5em 1em;\n  border-radius: 1.5rem;\n  margin: 0;\n  max-width: 60%;\n  align-self: flex-start;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message p {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  height: 4em;\n  border-radius: 1rem;\n  scrollbar-width: none;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover {\n  background: #317FF3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3rem;\n  height: 3rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover {\n  background: #0a4bac;\n}\n.chatPage__messages {\n  width: 80%;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n  padding-inline: 0.5rem;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage .message__text {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message .message__text {\n  background: #0a4bac;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  white-space: pre-line;\n  padding: 0.5em 1em;\n  border-radius: 1rem;\n  margin: 0;\n  max-width: 60%;\n  align-self: flex-start;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message .message__text {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  height: 4em;\n  border-radius: 1rem;\n  scrollbar-width: none;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover {\n  background: #0a4bac;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12586,7 +12586,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".newGroupchatPage .mainInfo {\n  position: relative;\n  width: min(90%, 920px);\n  display: flex;\n  align-items: center;\n  gap: 3rem;\n}\n.newGroupchatPage .mainInfo input {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}\n.newGroupchatPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.newGroupchatPage button:hover {\n  background: #317FF3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".newGroupchatPage .mainInfo {\n  position: relative;\n  width: min(90%, 920px);\n  display: flex;\n  align-items: center;\n  gap: 3rem;\n}\n.newGroupchatPage .mainInfo input {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}\n.newGroupchatPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.newGroupchatPage button:hover {\n  background: #0a4bac;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12610,7 +12610,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signIn {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #317FF3;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signIn {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #0a4bac;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12634,7 +12634,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signUp {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info .info__main {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__passwords {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  align-items: center;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #317FF3;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signUp {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info .info__main {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__passwords {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  align-items: center;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover {\n  background: #0a4bac;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

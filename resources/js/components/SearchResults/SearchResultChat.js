@@ -36,7 +36,6 @@ function SearchResultChat({
                             <img
                                 src={companion?.picture}
                                 className='lastMessage__userPic'
-                                alt="user pic"
                             />
                             <h3>{`${companion?.name}: ${lastMessage}`}</h3>
                         </>
