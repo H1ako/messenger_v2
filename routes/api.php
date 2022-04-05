@@ -3,14 +3,10 @@
 use App\Http\Resources\UserResource;
 use App\Models\Chat;
 use App\Models\ChatMember;
-use App\Models\ChatMessage;
-use App\Models\Friend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
-
-use function PHPSTORM_META\type;
 
 /*
 |--------------------------------------------------------------------------
