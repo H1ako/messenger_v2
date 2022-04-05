@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil"
 // recoil atoms
 import { newChatMembersIdsState } from "../../recoil/NewChatAtom"
 // libs
-import { getArrayWithoutElement } from "../../libs/GetArrayWithoutElement"
+import { getArrayWithoutElement } from "../../libs/getArrayWithoutElement"
 
 function SearchResultChatMember({
     userId,

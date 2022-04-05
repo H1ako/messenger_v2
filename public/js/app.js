@@ -5557,7 +5557,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../recoil/NewChatAtom */ "./resources/js/recoil/NewChatAtom.js");
-/* harmony import */ var _libs_GetArrayWithoutElement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../libs/GetArrayWithoutElement */ "./resources/js/libs/GetArrayWithoutElement.js");
+/* harmony import */ var _libs_getArrayWithoutElement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../libs/getArrayWithoutElement */ "./resources/js/libs/getArrayWithoutElement.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -5600,7 +5600,7 @@ function SearchResultChatMember(_ref) {
 
   var handleChange = function handleChange(e) {
     if (chatMembers.includes(userId)) {
-      var arrayWithoutUserId = (0,_libs_GetArrayWithoutElement__WEBPACK_IMPORTED_MODULE_2__.getArrayWithoutElement)(chatMembers, userId);
+      var arrayWithoutUserId = (0,_libs_getArrayWithoutElement__WEBPACK_IMPORTED_MODULE_2__.getArrayWithoutElement)(chatMembers, userId);
       setChatMembers(arrayWithoutUserId);
       return;
     }
@@ -6479,8 +6479,6 @@ function Chat() {
     (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)("/api/chats/".concat(chatId), "POST").then(function (data) {
       return data.json();
     }).then(function (data) {
-      console.log(data);
-
       if (data.error) {
         console.log(data.error);
       } else if (data) {
@@ -6498,7 +6496,6 @@ function Chat() {
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log(messages);
     messagesBottom.current.scrollIntoView();
   }, [messages]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -6616,16 +6613,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
-/* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
+/* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
+/* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6641,7 +6641,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 // global dependencies
 
 
+
  // recoil atoms
+
 
 
  // components
@@ -6656,15 +6658,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Chats(props) {
-  var chatType = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_2__.chatTypeState);
+  var chatType = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_3__.chatTypeState);
 
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_3__.searchResultChatsState),
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_4__.searchResultChatsState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
       chats = _useRecoilState2[0],
       setChats = _useRecoilState2[1];
 
+  var user = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_5__.userInfoState);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_7__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_9__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
       return data.json();
     }).then(function (data) {
       if (data) {
@@ -6672,19 +6675,41 @@ function Chats(props) {
       }
     });
   }, [chatType]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!user.id) return;
+    Echo["private"]("chats.".concat(user.id)).listen('ChatUpdate', function (e) {
+      if (chatType === e.chat.chat_type || chatType === 'all') {
+        var updatedChats = (0,lodash__WEBPACK_IMPORTED_MODULE_2__.cloneDeep)(chats);
+        updatedChats.map(function (el) {
+          if (el.id == e.chat.id) {
+            var _e$chat, _e$chat2, _e$chat3, _e$chat4, _e$chat5, _e$chat6, _e$chat7;
+
+            el.last_message = (_e$chat = e.chat) === null || _e$chat === void 0 ? void 0 : _e$chat.last_message;
+            el.last_message_sender = (_e$chat2 = e.chat) === null || _e$chat2 === void 0 ? void 0 : _e$chat2.last_message_sender;
+            el.updated_at = (_e$chat3 = e.chat) === null || _e$chat3 === void 0 ? void 0 : _e$chat3.updated_at;
+            el.created_at = (_e$chat4 = e.chat) === null || _e$chat4 === void 0 ? void 0 : _e$chat4.created_at;
+            el.status = (_e$chat5 = e.chat) === null || _e$chat5 === void 0 ? void 0 : _e$chat5.status;
+            el.name = (_e$chat6 = e.chat) === null || _e$chat6 === void 0 ? void 0 : _e$chat6.name;
+            el.picture = (_e$chat7 = e.chat) === null || _e$chat7 === void 0 ? void 0 : _e$chat7.picture;
+          }
+        });
+        setChats(updatedChats);
+      }
+    });
+  }, [user.id]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
     className: "page chatsPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       searchType: "chats"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
       className: "pageRow",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
         type: "chats"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link, {
         to: "/new-groupchat",
         children: "new groupchat"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
       searchResults: chats,
       type: "chats"
     })]
@@ -7224,40 +7249,6 @@ function SignUp() {
 
 /***/ }),
 
-/***/ "./resources/js/libs/GetArrayWithoutElement.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/libs/GetArrayWithoutElement.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getArrayWithoutElement": () => (/* binding */ getArrayWithoutElement)
-/* harmony export */ });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function getArrayWithoutElement(array, elementToRemove) {
-  var arrayCopy = _toConsumableArray(array);
-
-  var elementIndex = arrayCopy.indexOf(elementToRemove);
-  if (elementIndex === -1) return;
-  arrayCopy.splice(elementIndex, 1);
-  return arrayCopy;
-}
-
-/***/ }),
-
 /***/ "./resources/js/libs/customFetch.js":
 /*!******************************************!*\
   !*** ./resources/js/libs/customFetch.js ***!
@@ -7322,6 +7313,40 @@ function _customFetch() {
 }
 
 
+
+/***/ }),
+
+/***/ "./resources/js/libs/getArrayWithoutElement.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/libs/getArrayWithoutElement.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getArrayWithoutElement": () => (/* binding */ getArrayWithoutElement)
+/* harmony export */ });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function getArrayWithoutElement(array, elementToRemove) {
+  var arrayCopy = _toConsumableArray(array);
+
+  var elementIndex = arrayCopy.indexOf(elementToRemove);
+  if (elementIndex === -1) return;
+  arrayCopy.splice(elementIndex, 1);
+  return arrayCopy;
+}
 
 /***/ }),
 

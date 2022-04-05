@@ -42,7 +42,6 @@ function Chat() {
         customFetch(`/api/chats/${chatId}`, "POST")
         .then(data => data.json())
         .then(data => {
-            console.log(data)
             if (data.error) {
                 console.log(data.error)
             }
@@ -59,7 +58,6 @@ function Chat() {
     }, [])
 
     useEffect(() => {
-        console.log(messages)
         messagesBottom.current.scrollIntoView()
     }, [messages])
     

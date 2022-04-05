@@ -23,3 +23,9 @@ Broadcast::channel('chatbox.{chatId}', function ($user, $chatId) {
     if (!$isUserChatMember) return false;
     return true;
 });
+
+Broadcast::channel('chats.{userId}', function ($user, $userId) {
+    return true;
+    if (!$user || !$user->id != $userId) return false;
+    return true;
+});

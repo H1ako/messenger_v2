@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChatUpdate;
 use App\Events\MessageSend;
 use App\Models\Chat;
 use App\Models\User;
@@ -33,7 +34,13 @@ class ChatController extends Controller
             $chat->save();
         }
         $newMessage->sender = $user;
+        $chat->last_message_sender = User::find($chat->last_message_sender);
+        $chatMembers = $chat->members()->pluck('member_id');
+        
         event(new MessageSend($newMessage));
+        foreach ($chatMembers as $chatMember) {
+            event(new ChatUpdate($chat, $chatMember));
+        }
     }
 
     public function checkChat($friendId, Request $request) {
