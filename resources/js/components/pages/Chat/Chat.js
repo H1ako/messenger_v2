@@ -57,7 +57,6 @@ function Chat() {
         })
 
         return () => {
-            console.log('leave')
             Echo.leaveChannel(channel)
         }
     }, [])
@@ -70,7 +69,7 @@ function Chat() {
         <div className="page chatPage" onKeyUp={handeEnter}>
             {chatInfo.chat_type === 'groupchat' ?
             <div className="chatPage__topRow">
-                <div className="topRow__chatInfo">
+                <div className={`topRow__chatInfo${!chatInfo.name ? ' notLoaded' : ''}`}>
                      <img src={chatInfo.picture} alt="" />
                      <h3>{chatInfo.name}</h3>
                 </div>
@@ -78,7 +77,7 @@ function Chat() {
             </div>
             :
             <div className="chatPage__topRow">
-                <div className="topRow__chatInfo">
+                <div className={`topRow__chatInfo${!companionInfo?.name || !companionInfo?.surname ? ' notLoaded' : ''}`}>
                      <img src={companionInfo?.picture} alt="" />
                      <h3>{`${companionInfo?.name} ${companionInfo?.surname}`}</h3>
                 </div>

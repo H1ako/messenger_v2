@@ -472,3 +472,10 @@ main {
     gap: 0.5rem;
   }
 }
+
+.notLoaded h2, .notLoaded h3, .notLoaded h4, .notLoaded h5, .notLoaded h1 {
+  background: #484C52;
+  border-radius: 0.75em;
+  opacity: 0.6;
+  color: transparent;
+}

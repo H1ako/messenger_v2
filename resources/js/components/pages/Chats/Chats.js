@@ -46,7 +46,6 @@ function Chats(props) {
         })
 
         return () => {
-            console.log('leave')
             Echo.leaveChannel(channel)
         }
     }, [user])

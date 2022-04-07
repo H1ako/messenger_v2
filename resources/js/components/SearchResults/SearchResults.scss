@@ -50,15 +50,6 @@
                 left: 7%;
             }
 
-            &.notLoaded {
-                h2 {
-                    background: $colorGray;
-                    border-radius: .75em;
-                    opacity: .6;
-                    color: transparent;
-                }
-            }
-
             .userInfo {
                 display: flex;
                 align-items: center;

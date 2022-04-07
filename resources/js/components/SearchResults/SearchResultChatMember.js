@@ -2,8 +2,6 @@
 import { useRecoilState } from "recoil"
 // recoil atoms
 import { newChatMembersIdsState } from "../../recoil/NewChatAtom"
-// libs
-import { getArrayWithoutElement } from "../../libs/getArrayWithoutElement"
 
 function SearchResultChatMember({
     friendId,
@@ -14,11 +12,24 @@ function SearchResultChatMember({
 
     const handleChange = (e) => {
         if (chatMembers.includes(friendId)) {
-            const arrayWithoutUserId = getArrayWithoutElement(chatMembers, friendId)
+            const arrayWithoutUserId = [...chatMembers].filter(el => el != friendId)
             setChatMembers(arrayWithoutUserId)
             return
         }
         setChatMembers([...chatMembers, friendId])
+    }
+
+    if (!friendId || !username) {
+        return (
+            <li className='searchResultUser notLoaded'>
+                <span className='userInfo'>
+                    <img/>
+                    <h2>{username}</h2>
+                </span>
+                <span className="btns">
+                </span>
+            </li>
+        )
     }
 
     return (
