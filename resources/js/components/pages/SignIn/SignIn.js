@@ -16,7 +16,7 @@ function SignIn() {
     const [password, setPassword] = useState('')
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
 
-    const signIn = () => {
+    const signIn = async () => {
         if (
             password.length >= 8 &&
             email != ''
@@ -26,7 +26,7 @@ function SignIn() {
                 password
             }
             
-            customFetch('/sign-in', 'POST', JSON.stringify(userData))
+            await customFetch('/sign-in', 'POST', JSON.stringify(userData))
             .then(response => response.json())
             .then((response) => {
                 if (response.error) {

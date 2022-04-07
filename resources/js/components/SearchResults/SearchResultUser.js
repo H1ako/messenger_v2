@@ -1,50 +1,49 @@
 // global dependencies
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+// recoil atoms
+import { userInfoState } from '../../recoil/UserAtom';
 // libs
 import { customFetch } from "../../libs/customFetch"
 
+
 function SearchResultUser({
-    userId,
     friendId,
     username,
     picture,
     relationship,
     requestFrom
 }) {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const userInfo = useRecoilValue(userInfoState)
     const [userRequestFrom, setUserRequestFrom] = useState(requestFrom)
     const [userRelationship, setUserRelationship] = useState(relationship)
 
     const removeFriend = () => {
         customFetch('/friend/remove-friend', 'POST', JSON.stringify({friendId}))
-        .then(data => data.json())
         setUserRelationship('request')
         setUserRequestFrom(friendId)
     }
 
     const sendRequest = () => {
         customFetch('/friend/send-request', 'POST', JSON.stringify({friendId}))
-        .then(data => data.json())
         setUserRelationship('request')
-        setUserRequestFrom(userId)
+        setUserRequestFrom(userInfo.id)
     }
 
     const acceptRequest = () => {
         customFetch('/friend/accept-request', 'POST', JSON.stringify({friendId}))
-        .then(data => data.json())
         setUserRelationship('friend')
     }
 
     const declineRequest = () => {
         customFetch('/friend/decline-friend', 'POST', JSON.stringify({friendId}))
-        .then(data => data.json())
         setUserRelationship('no')
     }
 
     const cancelRequest = () => {
         customFetch('/friend/cancel-request', 'POST', JSON.stringify({friendId}))
-        .then(data => data.json())
         setUserRelationship('no')
     }
 
@@ -60,7 +59,28 @@ function SearchResultUser({
                 navigate(data.url)
             }
         })
-        setUserRelationship('no')
+    }
+
+    useEffect(() => {
+        setUserRelationship(relationship)
+    }, [relationship])
+
+    useEffect(() => {
+        setUserRequestFrom(requestFrom)
+    }, [requestFrom])
+
+    if (!userInfo.id) {
+        return (
+            <li className='searchResultUser notLoaded'>
+                <span className='userInfo'>
+                    <img />
+                    <h2>{username}</h2>
+                </span>
+                <span className="btns">
+                    
+                </span>
+            </li>
+        )
     }
     
     if (userRelationship === 'friend') {
@@ -77,7 +97,7 @@ function SearchResultUser({
         )
     }
 
-    if (userRelationship === 'no') {
+    else if (userRelationship === 'no') {
         return (
             <li className='searchResultUser'>
                 <span onClick={goToMessages} className='userInfo'>
@@ -91,7 +111,7 @@ function SearchResultUser({
         )
     }
 
-    if (userRelationship === 'request' && userRequestFrom !== userId) {
+    else if (userRelationship === 'request' && userRequestFrom !== userInfo.id) {
         return (
             <li className='searchResultUser'>
                 <span onClick={goToMessages} className='userInfo'>
@@ -106,7 +126,7 @@ function SearchResultUser({
         )
     }
 
-    if (userRelationship === 'request' && userRequestFrom === userId) {
+    else if (userRelationship === 'request' && userRequestFrom === userInfo.id) {
         return (
             <li className='searchResultUser'>
                 <span onClick={goToMessages} className='userInfo'>
@@ -120,7 +140,7 @@ function SearchResultUser({
         )
     }
 
-    return (
+    else return (
         <div className="error">error</div>
     )
 }

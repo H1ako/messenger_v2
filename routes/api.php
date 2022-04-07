@@ -23,6 +23,8 @@ Route::post('/user', function (Request $request) {
     if (Auth::check()) {
         return new UserResource(Auth::user());
     }
+
+    return ['error' => 'not logged in'];
 });
 
 Route::post('/search/{searchType}', function ($searchType, Request $request) {
@@ -32,8 +34,7 @@ Route::post('/search/{searchType}', function ($searchType, Request $request) {
 
     switch ($searchType) {
         case 'users':
-            $searchResults = User::where('id', '!=' , $user->id)
-                                ->where('name', 'like', "%$searchQuery%")
+            $searchResults = User::where('name', 'like', "%$searchQuery%")
                                 ->orWhere('surname', 'like', "%$searchQuery%")
                                 ->where('id', '!=' , $user->id)
                                 ->orderBy('updated_at', 'DESC')
@@ -47,8 +48,7 @@ Route::post('/search/{searchType}', function ($searchType, Request $request) {
 
             break;
         case 'chats':
-            $userIds = User::where('id', '!=' , $user->id)
-                                ->where('name', 'like', "%$searchQuery%")
+            $userIds = User::where('name', 'like', "%$searchQuery%")
                                 ->orWhere('surname', 'like', "%$searchQuery%")
                                 ->where('id', '!=' , $user->id)
                                 ->pluck('id');
@@ -71,7 +71,8 @@ Route::post('/search/{searchType}', function ($searchType, Request $request) {
                 if ($chat->chat_type === 'dialog') {
                     $companionId = ChatMember::where('chat_id', $chat->id)
                                             ->where('member_id', '!=', Auth::id())
-                                            ->pluck('member_id');
+                                            ->first()
+                                            ->member_id;
                     $chat->companion = User::find($companionId);
                 }
             }
@@ -151,10 +152,11 @@ Route::post('/chats-get/{chat_type}', function ($chat_type, Request $request) {
             $chat->last_message_sender = User::find($chat->last_message_sender);
         }
         if ($chat->chat_type === 'dialog') {
-            $companionId = ChatMember::where('chat_id', $chat->id)
-                                    ->where('member_id', '!=', Auth::id())
-                                    ->pluck('member_id');
-            $chat->companion = User::find($companionId);
+            $companionId = $chat->members()
+                                ->where('member_id', '!=', Auth::id())
+                                ->first();
+            $chat->companion = User::find($companionId->member_id);
+            error_log($chat);
         }
     }
 

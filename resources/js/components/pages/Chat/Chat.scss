@@ -30,13 +30,12 @@
     }
 
     &__messages {
-        width: 80%;
+        width: min(80%, 920px);
         flex-grow: 1;
         display: flex;
         flex-direction: column;
         gap: clamp(.5rem, 2vw, 1rem);
         overflow-y: auto;
-        padding-inline: .5rem;
 
         .messages__message {
             flex: none;
@@ -111,7 +110,8 @@
             @include customInput;
             flex-grow: 1;
             resize: none;
-            height: 4em;
+            min-height: 1em;
+            max-height: 6em;
             border-radius: 1rem;
             scrollbar-width: none;
         }

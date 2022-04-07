@@ -5481,56 +5481,67 @@ function SearchResultChat(_ref) {
       lastMessageSender = _ref.lastMessageSender;
 
   if (type === 'dialog') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        className: "searchResultChat",
-        to: "/chats/".concat(chatId),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: companion.picture,
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+      className: "searchResultChat",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        to: "/user/".concat(companion === null || companion === void 0 ? void 0 : companion.id),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+          src: companion === null || companion === void 0 ? void 0 : companion.picture,
           className: "searchResultChat__chatPic"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-          className: "searchResultChat__chatInfo",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
-            children: "".concat(companion.name, " ").concat(companion.surname)
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-            children: lastMessage ? lastMessage : 'start dialog...'
-          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        to: "/chats/".concat(chatId),
+        className: "searchResultChat__chatInfo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+          children: "".concat(companion === null || companion === void 0 ? void 0 : companion.name, " ").concat(companion === null || companion === void 0 ? void 0 : companion.surname)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+          children: lastMessage ? lastMessage : 'start dialog...'
         })]
-      })
+      })]
     });
   }
 
   if (type === 'groupchat') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        className: "searchResultChat",
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+      className: "searchResultChat",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/chats/".concat(chatId),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
           src: pic,
           className: "searchResultChat__chatPic"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-          className: "searchResultChat__chatInfo",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "searchResultChat__chatInfo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+          to: "/chats/".concat(chatId),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
             children: name
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "chatInfo__lastMessage",
-            children: lastMessage && lastMessageSender !== null && lastMessageSender !== void 0 && lastMessageSender.name ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "chatInfo__lastMessage",
+          children: lastMessage && lastMessageSender !== null && lastMessageSender !== void 0 && lastMessageSender.name ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+              to: "/user/".concat(lastMessageSender === null || lastMessageSender === void 0 ? void 0 : lastMessageSender.id),
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
                 src: lastMessageSender === null || lastMessageSender === void 0 ? void 0 : lastMessageSender.picture,
                 className: "lastMessage__userPic"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+              to: "/chats/".concat(chatId),
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
                 children: "".concat(lastMessageSender === null || lastMessageSender === void 0 ? void 0 : lastMessageSender.name, ": ").concat(lastMessage)
-              })]
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-                className: "lastMessage__userPic"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-                children: "start dialog..."
-              })]
-            })
-          })]
+              })
+            })]
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+            to: "/chats/".concat(chatId),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+              className: "lastMessage__userPic"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+              children: "start dialog..."
+            })]
+          })
         })]
-      })
+      })]
     });
   }
 
@@ -5589,7 +5600,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SearchResultChatMember(_ref) {
-  var userId = _ref.userId,
+  var friendId = _ref.friendId,
       username = _ref.username,
       picture = _ref.picture;
 
@@ -5599,13 +5610,13 @@ function SearchResultChatMember(_ref) {
       setChatMembers = _useRecoilState2[1];
 
   var handleChange = function handleChange(e) {
-    if (chatMembers.includes(userId)) {
-      var arrayWithoutUserId = (0,_libs_getArrayWithoutElement__WEBPACK_IMPORTED_MODULE_2__.getArrayWithoutElement)(chatMembers, userId);
+    if (chatMembers.includes(friendId)) {
+      var arrayWithoutUserId = (0,_libs_getArrayWithoutElement__WEBPACK_IMPORTED_MODULE_2__.getArrayWithoutElement)(chatMembers, friendId);
       setChatMembers(arrayWithoutUserId);
       return;
     }
 
-    setChatMembers([].concat(_toConsumableArray(chatMembers), [userId]));
+    setChatMembers([].concat(_toConsumableArray(chatMembers), [friendId]));
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -5620,12 +5631,12 @@ function SearchResultChatMember(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
       className: "btns",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        checked: chatMembers.includes(userId) ? true : false,
+        checked: chatMembers.includes(friendId) ? true : false,
         onChange: handleChange,
         type: "checkbox",
-        id: "user-".concat(userId)
+        id: "user-".concat(friendId)
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-        htmlFor: "user-".concat(userId)
+        htmlFor: "user-".concat(friendId)
       })]
     })]
   });
@@ -5647,9 +5658,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5664,6 +5677,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 // global dependencies
 
+
+ // recoil atoms
+
  // libs
 
 
@@ -5671,13 +5687,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SearchResultUser(_ref) {
-  var userId = _ref.userId,
-      friendId = _ref.friendId,
+  var friendId = _ref.friendId,
       username = _ref.username,
       picture = _ref.picture,
       relationship = _ref.relationship,
       requestFrom = _ref.requestFrom;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_2__.userInfoState);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(requestFrom),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5690,54 +5706,44 @@ function SearchResultUser(_ref) {
       setUserRelationship = _useState4[1];
 
   var removeFriend = function removeFriend() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_1__.customFetch)('/friend/remove-friend', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/remove-friend', 'POST', JSON.stringify({
       friendId: friendId
-    })).then(function (data) {
-      return data.json();
-    });
+    }));
     setUserRelationship('request');
     setUserRequestFrom(friendId);
   };
 
   var sendRequest = function sendRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_1__.customFetch)('/friend/send-request', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/send-request', 'POST', JSON.stringify({
       friendId: friendId
-    })).then(function (data) {
-      return data.json();
-    });
+    }));
     setUserRelationship('request');
-    setUserRequestFrom(userId);
+    setUserRequestFrom(userInfo.id);
   };
 
   var acceptRequest = function acceptRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_1__.customFetch)('/friend/accept-request', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/accept-request', 'POST', JSON.stringify({
       friendId: friendId
-    })).then(function (data) {
-      return data.json();
-    });
+    }));
     setUserRelationship('friend');
   };
 
   var declineRequest = function declineRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_1__.customFetch)('/friend/decline-friend', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/decline-friend', 'POST', JSON.stringify({
       friendId: friendId
-    })).then(function (data) {
-      return data.json();
-    });
+    }));
     setUserRelationship('no');
   };
 
   var cancelRequest = function cancelRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_1__.customFetch)('/friend/cancel-request', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/cancel-request', 'POST', JSON.stringify({
       friendId: friendId
-    })).then(function (data) {
-      return data.json();
-    });
+    }));
     setUserRelationship('no');
   };
 
   var goToMessages = function goToMessages() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_1__.customFetch)("/chat/check/".concat(friendId), 'POST').then(function (data) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)("/chat/check/".concat(friendId), 'POST').then(function (data) {
       return data.json();
     }).then(function (data) {
       if (data.error) {
@@ -5748,102 +5754,114 @@ function SearchResultUser(_ref) {
         navigate(data.url);
       }
     });
-    setUserRelationship('no');
   };
 
-  if (userRelationship === 'friend') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
-      className: "searchResultUser",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-        onClick: goToMessages,
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setUserRelationship(relationship);
+  }, [relationship]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setUserRequestFrom(requestFrom);
+  }, [requestFrom]);
+
+  if (!userInfo.id) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+      className: "searchResultUser notLoaded",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
         className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          src: picture
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
           children: username
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        className: "btns"
+      })]
+    });
+  }
+
+  if (userRelationship === 'friend') {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+      className: "searchResultUser",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+        onClick: goToMessages,
+        className: "userInfo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+          src: picture
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+          children: username
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
         className: "btns",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
           onClick: removeFriend,
           className: "btnRemove",
           children: "remove"
         })
       })]
     });
-  }
-
-  if (userRelationship === 'no') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+  } else if (userRelationship === 'no') {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
       className: "searchResultUser",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
         onClick: goToMessages,
         className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: picture
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
           children: username
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
         className: "btns",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
           onClick: sendRequest,
           className: "btnAdd",
           children: "add"
         })
       })]
     });
-  }
-
-  if (userRelationship === 'request' && userRequestFrom !== userId) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+  } else if (userRelationship === 'request' && userRequestFrom !== userInfo.id) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
       className: "searchResultUser",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
         onClick: goToMessages,
         className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: picture
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
           children: username
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
         className: "btns",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
           onClick: acceptRequest,
           className: "btnAccept",
           children: "accept"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
           onClick: declineRequest,
           className: "btnDecline",
           children: "decline"
         })]
       })]
     });
-  }
-
-  if (userRelationship === 'request' && userRequestFrom === userId) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+  } else if (userRelationship === 'request' && userRequestFrom === userInfo.id) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
       className: "searchResultUser",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
         onClick: goToMessages,
         className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: picture
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
           children: username
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
         className: "btns",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
           onClick: cancelRequest,
           className: "btnCancel",
           children: "cancel"
         })
       })]
     });
-  }
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+  } else return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "error",
     children: "error"
   });
@@ -5886,7 +5904,6 @@ __webpack_require__.r(__webpack_exports__);
 function SearchResults(_ref) {
   var type = _ref.type,
       searchResults = _ref.searchResults;
-  var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_2__.userInfoState);
 
   if (type === 'chatMembers') {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -5896,10 +5913,10 @@ function SearchResults(_ref) {
           var _result$friend, _result$friend2, _result$friend3, _result$friend4;
 
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResultChatMember__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            userId: result.friend_id || ((_result$friend = result.friend) === null || _result$friend === void 0 ? void 0 : _result$friend.id) || result.id,
+            friendId: result.friend_id || ((_result$friend = result.friend) === null || _result$friend === void 0 ? void 0 : _result$friend.id) || result.id,
             username: "".concat(((_result$friend2 = result.friend) === null || _result$friend2 === void 0 ? void 0 : _result$friend2.name) || result.name, " ").concat(((_result$friend3 = result.friend) === null || _result$friend3 === void 0 ? void 0 : _result$friend3.surname) || result.surname),
             picture: ((_result$friend4 = result.friend) === null || _result$friend4 === void 0 ? void 0 : _result$friend4.picture) || result.picture
-          }, result.id);
+          }, "chatMember-".concat(result.id));
         })
       })
     });
@@ -5914,12 +5931,11 @@ function SearchResults(_ref) {
 
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResultUser__WEBPACK_IMPORTED_MODULE_3__["default"], {
             friendId: result.friend_id || ((_result$aboutRelation = result.aboutRelationship) === null || _result$aboutRelation === void 0 ? void 0 : _result$aboutRelation.friend_id) || result.id,
-            userId: userInfo.id,
             username: "".concat(((_result$friend5 = result.friend) === null || _result$friend5 === void 0 ? void 0 : _result$friend5.name) || result.name, " ").concat(((_result$friend6 = result.friend) === null || _result$friend6 === void 0 ? void 0 : _result$friend6.surname) || result.surname),
             picture: ((_result$friend7 = result.friend) === null || _result$friend7 === void 0 ? void 0 : _result$friend7.picture) || result.picture,
             relationship: result.relationship || ((_result$aboutRelation2 = result.aboutRelationship) === null || _result$aboutRelation2 === void 0 ? void 0 : _result$aboutRelation2.relationship) || 'no',
             requestFrom: result.request_from || ((_result$aboutRelation3 = result.aboutRelationship) === null || _result$aboutRelation3 === void 0 ? void 0 : _result$aboutRelation3.request_from)
-          }, result.id);
+          }, "user-".concat(result.id));
         })
       })
     });
@@ -5930,17 +5946,15 @@ function SearchResults(_ref) {
       className: "searchResults",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         children: searchResults.map(function (result) {
-          var _result$companion;
-
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchResultChat__WEBPACK_IMPORTED_MODULE_4__["default"], {
             chatId: result.id,
             type: result.chat_type,
             name: result.name,
             pic: result.picture,
             lastMessage: result.last_message,
-            companion: (_result$companion = result.companion) === null || _result$companion === void 0 ? void 0 : _result$companion[0],
+            companion: result.companion,
             lastMessageSender: result.last_message_sender
-          }, result.id);
+          }, "chat-".concat(result.id));
         })
       })
     });
@@ -6046,11 +6060,11 @@ function Search(_ref) {
     });
   }, 200), []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (!(searchType === 'friends') && !(0,lodash__WEBPACK_IMPORTED_MODULE_2__.trim)(searchQuery)) return;
+    if (searchType === 'users' && !(0,lodash__WEBPACK_IMPORTED_MODULE_2__.trim)(searchQuery)) return;
     getSearchData(searchQuery);
   }, [searchQuery]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-    type: "text",
+    type: "search",
     value: searchQuery,
     onChange: function onChange(e) {
       return setSearchQuery(e.target.value);
@@ -6254,7 +6268,8 @@ function Sidebar() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "sidebar".concat(isActive ? ' active' : '').concat(userInfo.id ? '' : ' notLoggedIn'),
-    children: [userInfo.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [userInfo.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+      to: "/user/".concat(userInfo.id),
       className: "sidebar__userInfo",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
         src: userInfo.picture
@@ -6489,11 +6504,15 @@ function Chat() {
         setCompanionInfo((_data$companion = data.companion) === null || _data$companion === void 0 ? void 0 : _data$companion[0]);
       }
     });
-    Echo["private"]("chatbox.".concat(chatId)).listen('MessageSend', function (e) {
+    var channel = Echo["private"]("chatbox.".concat(chatId)).listen('MessageSend', function (e) {
       setMessages(function (state) {
         return [].concat(_toConsumableArray(state), [e.message]);
       });
     });
+    return function () {
+      console.log('leave');
+      Echo.leaveChannel(channel);
+    };
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     messagesBottom.current.scrollIntoView();
@@ -6613,19 +6632,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
-/* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
-/* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
+/* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
+/* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6658,58 +6693,93 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Chats(props) {
-  var chatType = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_3__.chatTypeState);
+  var chatType = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_4__.chatTypeState);
 
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_4__.searchResultChatsState),
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_5__.searchResultChatsState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
       chats = _useRecoilState2[0],
       setChats = _useRecoilState2[1];
 
-  var user = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_5__.userInfoState);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_9__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
-      return data.json();
-    }).then(function (data) {
-      if (data) {
-        setChats(data);
-      }
-    });
-  }, [chatType]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!user.id) return;
-    Echo["private"]("chats.".concat(user.id)).listen('ChatUpdate', function (e) {
-      if (chatType === e.chat.chat_type || chatType === 'all') {
-        var updatedChats = (0,lodash__WEBPACK_IMPORTED_MODULE_2__.cloneDeep)(chats);
-        updatedChats.map(function (el) {
-          if (el.id == e.chat.id) {
-            var _e$chat, _e$chat2, _e$chat3, _e$chat4, _e$chat5, _e$chat6, _e$chat7;
+  var _useRecoilState3 = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_6__.userInfoState),
+      _useRecoilState4 = _slicedToArray(_useRecoilState3, 2),
+      user = _useRecoilState4[0],
+      setUser = _useRecoilState4[1];
 
-            el.last_message = (_e$chat = e.chat) === null || _e$chat === void 0 ? void 0 : _e$chat.last_message;
-            el.last_message_sender = (_e$chat2 = e.chat) === null || _e$chat2 === void 0 ? void 0 : _e$chat2.last_message_sender;
-            el.updated_at = (_e$chat3 = e.chat) === null || _e$chat3 === void 0 ? void 0 : _e$chat3.updated_at;
-            el.created_at = (_e$chat4 = e.chat) === null || _e$chat4 === void 0 ? void 0 : _e$chat4.created_at;
-            el.status = (_e$chat5 = e.chat) === null || _e$chat5 === void 0 ? void 0 : _e$chat5.status;
-            el.name = (_e$chat6 = e.chat) === null || _e$chat6 === void 0 ? void 0 : _e$chat6.name;
-            el.picture = (_e$chat7 = e.chat) === null || _e$chat7 === void 0 ? void 0 : _e$chat7.picture;
-          }
-        });
-        setChats(updatedChats);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_10__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
+              return data.json();
+            }).then(function (data) {
+              if (data) {
+                setChats(data);
+              }
+            });
+
+          case 2:
+          case "end":
+            return _context.stop();
+        }
       }
-    });
-  }, [user.id]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+    }, _callee);
+  })), [chatType]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    var channel;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            if (user.id) {
+              _context2.next = 2;
+              break;
+            }
+
+            return _context2.abrupt("return");
+
+          case 2:
+            _context2.next = 4;
+            return Echo["private"]("chats.".concat(user.id)).listen('ChatUpdate', function (e) {
+              if (chatType === e.chat.chat_type || chatType === 'all') {
+                setChats(function (state) {
+                  var chatsClone = (0,lodash__WEBPACK_IMPORTED_MODULE_3__.cloneDeep)(state);
+                  var updatedChats = chatsClone.filter(function (el, index) {
+                    return el.id != e.chat.id;
+                  });
+                  return [e.chat].concat(_toConsumableArray(updatedChats));
+                });
+              }
+            });
+
+          case 4:
+            channel = _context2.sent;
+            return _context2.abrupt("return", function () {
+              console.log('leave');
+              Echo.leaveChannel(channel);
+            });
+
+          case 6:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  })), [user]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
     className: "page chatsPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
       searchType: "chats"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
       className: "pageRow",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
         type: "chats"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
         to: "/new-groupchat",
         children: "new groupchat"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
       searchResults: chats,
       type: "chats"
     })]
@@ -6731,15 +6801,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
-/* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var _libs_customFetch_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../libs/customFetch.js */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
+/* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _libs_customFetch_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../libs/customFetch.js */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6769,32 +6847,44 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Home() {
-  var userType = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_2__.userTypeState);
+  var userType = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_3__.userTypeState);
 
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_3__.searchResultUsersState),
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_4__.searchResultUsersState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
       users = _useRecoilState2[0],
       setUsers = _useRecoilState2[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    (0,_libs_customFetch_js__WEBPACK_IMPORTED_MODULE_7__.customFetch)("/api/friends/".concat(userType), 'POST').then(function (data) {
-      return data.json();
-    }).then(function (data) {
-      if (data) {
-        setUsers(data);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0,_libs_customFetch_js__WEBPACK_IMPORTED_MODULE_8__.customFetch)("/api/friends/".concat(userType), 'POST').then(function (data) {
+              return data.json();
+            }).then(function (data) {
+              if (data) {
+                setUsers(data);
+              }
+            });
+
+          case 2:
+          case "end":
+            return _context.stop();
+        }
       }
-    });
-  }, [userType]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+    }, _callee);
+  })), [userType]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     className: "page homePage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
       searchType: "users"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
       className: "pageRow",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
         type: "users"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
       searchResults: users,
       type: "users"
     })]
@@ -6948,13 +7038,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _SignIn_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SignIn.scss */ "./resources/js/components/pages/SignIn/SignIn.scss");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SignIn_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SignIn.scss */ "./resources/js/components/pages/SignIn/SignIn.scss");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6982,62 +7080,84 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SignIn() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       email = _useState2[0],
       setEmail = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       password = _useState4[0],
       setPassword = _useState4[1];
 
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__.userInfoState),
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_4__.userInfoState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
       userInfo = _useRecoilState2[0],
       setUserInfo = _useRecoilState2[1];
 
-  var signIn = function signIn() {
-    if (password.length >= 8 && email != '') {
-      var userData = {
-        email: email,
-        password: password
-      };
-      (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/sign-in', 'POST', JSON.stringify(userData)).then(function (response) {
-        return response.json();
-      }).then(function (response) {
-        if (response.error) {
-          console.log(response.error);
-          return;
-        }
+  var signIn = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var userData;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (!(password.length >= 8 && email != '')) {
+                _context.next = 4;
+                break;
+              }
 
-        if (response.url) {
-          if (response.user) {
-            setUserInfo(response.user);
+              userData = {
+                email: email,
+                password: password
+              };
+              _context.next = 4;
+              return (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/sign-in', 'POST', JSON.stringify(userData)).then(function (response) {
+                return response.json();
+              }).then(function (response) {
+                if (response.error) {
+                  console.log(response.error);
+                  return;
+                }
+
+                if (response.url) {
+                  if (response.user) {
+                    setUserInfo(response.user);
+                  }
+
+                  navigate(response.url);
+                }
+              });
+
+            case 4:
+            case "end":
+              return _context.stop();
           }
-
-          navigate(response.url);
         }
-      });
-    }
-  };
+      }, _callee);
+    }));
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    return function signIn() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "page loginPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "loginPage__signIn",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
         children: "sign in"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         value: email,
         onChange: function onChange(e) {
           return setEmail(e.target.value);
         },
         type: "email",
         placeholder: "email"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         value: password,
         onChange: function onChange(e) {
           return setPassword(e.target.value);
@@ -7045,7 +7165,7 @@ function SignIn() {
         type: "password",
         placeholder: "password"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
       onClick: signIn,
       children: "ok"
     })]
@@ -7067,15 +7187,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _SignUp_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SignUp.scss */ "./resources/js/components/pages/SignUp/SignUp.scss");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SignUp_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SignUp.scss */ "./resources/js/components/pages/SignUp/SignUp.scss");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SignUpAtom */ "./resources/js/recoil/SignUpAtom.js");
-/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture */ "./resources/js/components/UploadPicture/UploadPicture.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/SignUpAtom */ "./resources/js/recoil/SignUpAtom.js");
+/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture */ "./resources/js/components/UploadPicture/UploadPicture.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7098,8 +7225,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // components
 
- // libs
-
  // sign up page
 
 
@@ -7108,77 +7233,101 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function SignUp() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
 
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureFileState),
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_4__.signUpPuctureFileState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
       pictureFile = _useRecoilState2[0],
       setPictureFile = _useRecoilState2[1];
 
-  var _useRecoilState3 = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_4__.userInfoState),
+  var _useRecoilState3 = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_5__.userInfoState),
       _useRecoilState4 = _slicedToArray(_useRecoilState3, 2),
       userInfo = _useRecoilState4[0],
       setUserInfo = _useRecoilState4[1];
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       name = _useState2[0],
       setName = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       surname = _useState4[0],
       setSurname = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
       email = _useState6[0],
       setEmail = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState8 = _slicedToArray(_useState7, 2),
       password = _useState8[0],
       setPassword = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState10 = _slicedToArray(_useState9, 2),
       passwordAgain = _useState10[0],
       setPasswordAgain = _useState10[1];
 
-  var signUp = function signUp() {
-    if (password.length >= 8 && password === passwordAgain && email != '' && name != '' && surname != '') {
-      var newUserData = new FormData();
-      if (pictureFile) newUserData.append('picture', pictureFile);
-      newUserData.append('name', name);
-      newUserData.append('surname', surname);
-      newUserData.append('email', email);
-      newUserData.append('password', password);
-      fetch('/sign-up', {
-        method: "POST",
-        headers: {
-          'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
-          // "Content-Type": "multipart/form-data",
-          "Accept": 'application/json;charset=utf-8',
-          "type": "formData"
-        },
-        body: newUserData
-      }).then(function (response) {
-        return response.json();
-      }).then(function (response) {
-        if (response.error) {
-          console.log(response.error);
-          return;
-        }
+  var signUp = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var newUserData;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (!(password.length >= 8 && password === passwordAgain && email != '' && name != '' && surname != '')) {
+                _context.next = 9;
+                break;
+              }
 
-        if (response.url) {
-          if (response.user) {
-            setPictureFile('');
-            setUserInfo(response.user);
+              newUserData = new FormData();
+              if (pictureFile) newUserData.append('picture', pictureFile);
+              newUserData.append('name', name);
+              newUserData.append('surname', surname);
+              newUserData.append('email', email);
+              newUserData.append('password', password);
+              _context.next = 9;
+              return fetch('/sign-up', {
+                method: "POST",
+                headers: {
+                  'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
+                  // "Content-Type": "multipart/form-data",
+                  "Accept": 'application/json;charset=utf-8',
+                  "type": "formData"
+                },
+                body: newUserData
+              }).then(function (response) {
+                return response.json();
+              }).then(function (response) {
+                console.log(response);
+
+                if (response.error) {
+                  console.log(response.error);
+                  return;
+                }
+
+                if (response.url) {
+                  if (response.user) {
+                    setPictureFile('');
+                    setUserInfo(response.user);
+                  }
+
+                  navigate(response.url);
+                }
+              });
+
+            case 9:
+            case "end":
+              return _context.stop();
           }
-
-          navigate(response.url);
         }
-      });
-    }
-  };
+      }, _callee);
+    }));
+
+    return function signUp() {
+      return _ref.apply(this, arguments);
+    };
+  }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "page loginPage",
@@ -7188,8 +7337,8 @@ function SignUp() {
         children: "sign up"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "signUp__info",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          recoilState: _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_3__.signUpPuctureFileState
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          recoilState: _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_4__.signUpPuctureFileState
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "info__main",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
@@ -7246,6 +7395,42 @@ function SignUp() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SignUp);
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/User/User.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/pages/User/User.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _User_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User.scss */ "./resources/js/components/pages/User/User.scss");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+// styles
+ // global dependencies
+
+ // User page
+
+
+
+function User() {
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useParams)(),
+      userId = _useParams.userId; // const userInfo = useRecoilValue(userInfoState)
+
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "page userPage",
+    children: userId
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (User);
 
 /***/ }),
 
@@ -7400,19 +7585,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Sidebar/Sidebar.js */ "./resources/js/components/Sidebar/Sidebar.js");
-/* harmony import */ var _components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/pages/Home/Home.js */ "./resources/js/components/pages/Home/Home.js");
-/* harmony import */ var _components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/Chats/Chats.js */ "./resources/js/components/pages/Chats/Chats.js");
-/* harmony import */ var _components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/Chat/Chat.js */ "./resources/js/components/pages/Chat/Chat.js");
-/* harmony import */ var _components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/NewGroupchat/NewGroupchat.js */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.js");
-/* harmony import */ var _components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/SignIn/SignIn.js */ "./resources/js/components/pages/SignIn/SignIn.js");
-/* harmony import */ var _components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/pages/SignUp/SignUp.js */ "./resources/js/components/pages/SignUp/SignUp.js");
-/* harmony import */ var _libs_customFetch_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./libs/customFetch.js */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Sidebar/Sidebar.js */ "./resources/js/components/Sidebar/Sidebar.js");
+/* harmony import */ var _components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/Home/Home.js */ "./resources/js/components/pages/Home/Home.js");
+/* harmony import */ var _components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/Chats/Chats.js */ "./resources/js/components/pages/Chats/Chats.js");
+/* harmony import */ var _components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/Chat/Chat.js */ "./resources/js/components/pages/Chat/Chat.js");
+/* harmony import */ var _components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/NewGroupchat/NewGroupchat.js */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.js");
+/* harmony import */ var _components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/pages/SignIn/SignIn.js */ "./resources/js/components/pages/SignIn/SignIn.js");
+/* harmony import */ var _components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/pages/SignUp/SignUp.js */ "./resources/js/components/pages/SignUp/SignUp.js");
+/* harmony import */ var _components_pages_User_User_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/pages/User/User.js */ "./resources/js/components/pages/User/User.js");
+/* harmony import */ var _libs_customFetch_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./libs/customFetch.js */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7438,6 +7632,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
  // libs
 
 
@@ -7446,41 +7641,60 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Main() {
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_2__.userInfoState),
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_3__.userInfoState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
       userInfo = _useRecoilState2[0],
       setUserInfo = _useRecoilState2[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    (0,_libs_customFetch_js__WEBPACK_IMPORTED_MODULE_10__.customFetch)('/api/user', 'POST').then(function (data) {
-      return data.json();
-    }).then(function (data) {
-      if (data.data) {
-        setUserInfo(data.data);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0,_libs_customFetch_js__WEBPACK_IMPORTED_MODULE_12__.customFetch)('/api/user', 'POST').then(function (data) {
+              return data.json();
+            }).then(function (data) {
+              if (data.error) {
+                return console.log(data.error);
+              }
+
+              if (data.data) {
+                setUserInfo(data.data);
+              }
+            });
+
+          case 2:
+          case "end":
+            return _context.stop();
+        }
       }
-    });
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("main", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+    }, _callee);
+  })), []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("main", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Routes, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
           path: "/",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
           path: "/chats",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
           path: "/chats/:chatId",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_6__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
           path: "/new-groupchat",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_7__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
           path: "/sign-in",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
           path: "/sign-up",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_10__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+          path: "/user/:userId",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_User_User_js__WEBPACK_IMPORTED_MODULE_11__["default"], {})
         })]
       })
     })]
@@ -12655,7 +12869,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 50%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover, .searchResults ul .searchResultUser .btns button:focus {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.btnRemove, .searchResults ul .searchResultUser .btns button.btnDecline, .searchResults ul .searchResultUser .btns button.btnCancel {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.btnRemove:hover, .searchResults ul .searchResultUser .btns button.btnDecline:hover, .searchResults ul .searchResultUser .btns button.btnCancel:hover {\n  background: #C92B8A;\n}\n.searchResults ul .searchResultUser .btns button.btnAdd, .searchResults ul .searchResultUser .btns button.btnAccept {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.btnAdd:hover, .searchResults ul .searchResultUser .btns button.btnAccept:hover {\n  background: #0c408f;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:not(:checked) ~ label:hover {\n  background: #C92B8A;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n  transition: 300ms;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.searchResults ul .searchResultChat__chatInfo h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n  opacity: 0.7;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n  color: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 60%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser.notLoaded h2 {\n  background: #484C52;\n  border-radius: 0.75em;\n  opacity: 0.6;\n  color: transparent;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover, .searchResults ul .searchResultUser .btns button:focus {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.btnRemove, .searchResults ul .searchResultUser .btns button.btnDecline, .searchResults ul .searchResultUser .btns button.btnCancel {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.btnRemove:hover, .searchResults ul .searchResultUser .btns button.btnDecline:hover, .searchResults ul .searchResultUser .btns button.btnCancel:hover {\n  background: #C92B8A;\n}\n.searchResults ul .searchResultUser .btns button.btnAdd, .searchResults ul .searchResultUser .btns button.btnAccept {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.btnAdd:hover, .searchResults ul .searchResultUser .btns button.btnAccept:hover {\n  background: #0c408f;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:not(:checked) ~ label:hover {\n  background: #C92B8A;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n  transition: 300ms;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatInfo a {\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatInfo h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n  opacity: 0.7;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n  color: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2:hover {\n  text-decoration: underline;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12733,7 +12947,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  flex: none;\n  position: relative;\n  width: clamp(3rem, 8vw, 4rem);\n  gap: 0.125rem;\n  display: grid;\n  grid-template-rows: 1fr 4fr 1fr;\n  padding-block: 1.5rem;\n  background: #0a4bac;\n  transition: 300ms;\n  overflow: hidden;\n}\n.sidebar.notLoggedIn {\n  grid-template-rows: 1fr;\n}\n.sidebar.active {\n  width: 16.5rem;\n}\n.sidebar.active h3 {\n  transform: none;\n  opacity: 1;\n  pointer-events: all;\n}\n.sidebar h3 {\n  transition: 300ms;\n  transform: translateY(20px);\n  pointer-events: none;\n  opacity: 0;\n  margin: 0;\n  font-weight: 300;\n}\n.sidebar ion-icon {\n  font-size: clamp(2rem, 5vw, 2.5rem);\n  place-self: center;\n}\n.sidebar__userInfo {\n  align-self: flex-start;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  align-items: center;\n  display: grid;\n  gap: 1rem;\n  cursor: pointer;\n  transition: 300ms;\n  padding-block: 0.5rem;\n}\n.sidebar__userInfo:hover {\n  background: #0b60df;\n}\n.sidebar__userInfo h3 {\n  white-space: nowrap;\n}\n.sidebar__userInfo img {\n  place-self: center;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  width: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  height: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.sidebar nav {\n  align-self: center;\n}\n.sidebar nav ul {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n}\n.sidebar nav ul .menuBtn {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  cursor: pointer;\n}\n.sidebar nav ul li {\n  width: 100%;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar nav ul li:not(.active):hover {\n  background: #0b60df;\n}\n.sidebar nav ul li.active {\n  background: #0c408f;\n}\n.sidebar nav ul li a {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  color: white;\n  text-decoration: none;\n  outline: none;\n}\n.sidebar__exit {\n  align-self: flex-end;\n  gap: 1rem;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  cursor: pointer;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar__exit:hover {\n  background: #0b60df;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  flex: none;\n  position: relative;\n  width: clamp(3rem, 8vw, 4rem);\n  gap: 0.125rem;\n  display: grid;\n  grid-template-rows: 1fr 4fr 1fr;\n  padding-block: 1.5rem;\n  background: #0a4bac;\n  transition: 300ms;\n  overflow: hidden;\n}\n.sidebar.notLoggedIn {\n  grid-template-rows: 1fr;\n}\n.sidebar.active {\n  width: 16.5rem;\n}\n.sidebar.active h3 {\n  transform: none;\n  opacity: 1;\n  pointer-events: all;\n}\n.sidebar h3 {\n  transition: 300ms;\n  transform: translateY(20px);\n  pointer-events: none;\n  opacity: 0;\n  margin: 0;\n  font-weight: 300;\n}\n.sidebar ion-icon {\n  font-size: clamp(2rem, 5vw, 2.5rem);\n  place-self: center;\n}\n.sidebar__userInfo {\n  align-self: flex-start;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  align-items: center;\n  display: grid;\n  gap: 1rem;\n  cursor: pointer;\n  transition: 300ms;\n  padding-block: 0.5rem;\n  color: white;\n  text-decoration: none;\n}\n.sidebar__userInfo:hover {\n  background: #0b60df;\n}\n.sidebar__userInfo h3 {\n  white-space: nowrap;\n}\n.sidebar__userInfo img {\n  place-self: center;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  width: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  height: calc(clamp(3rem, 8vw, 4rem) * 0.8);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.sidebar nav {\n  align-self: center;\n}\n.sidebar nav ul {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n}\n.sidebar nav ul .menuBtn {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  cursor: pointer;\n}\n.sidebar nav ul li {\n  width: 100%;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar nav ul li:not(.active):hover {\n  background: #0b60df;\n}\n.sidebar nav ul li.active {\n  background: #0c408f;\n}\n.sidebar nav ul li a {\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  gap: 1rem;\n  color: white;\n  text-decoration: none;\n  outline: none;\n}\n.sidebar__exit {\n  align-self: flex-end;\n  gap: 1rem;\n  grid-template-columns: clamp(3rem, 8vw, 4rem) 1fr;\n  display: grid;\n  align-items: center;\n  cursor: pointer;\n  padding-block: 0.5rem;\n  transition: 300ms;\n}\n.sidebar__exit:hover {\n  background: #0b60df;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12757,7 +12971,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatPicture input {\n  display: none;\n}\n.chatPicture label {\n  display: block;\n  position: relative;\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatPicture label::before, .chatPicture label::after {\n  top: -1px;\n  left: -1px;\n  position: absolute;\n  opacity: 0;\n  transition: 300ms;\n  width: calc(100% + 2px);\n  height: calc(100% + 2px);\n  border-radius: 50%;\n  z-index: 1;\n  display: grid;\n  place-content: center;\n}\n.chatPicture label::before {\n  content: \"\";\n  background: black;\n}\n.chatPicture label::after {\n  content: \"upload picture\";\n}\n.chatPicture label:hover::before, .chatPicture label:hover::after {\n  opacity: 0.8;\n}\n.chatPicture label img {\n  background-color: white;\n  border-radius: 50%;\n  width: 150px;\n  height: 150px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatPicture input {\n  display: none;\n}\n.chatPicture label {\n  display: block;\n  position: relative;\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatPicture label::before, .chatPicture label::after {\n  top: -1px;\n  left: -1px;\n  position: absolute;\n  opacity: 0;\n  transition: 300ms;\n  width: calc(100% + 2px);\n  height: calc(100% + 2px);\n  border-radius: 50%;\n  z-index: 1;\n  display: grid;\n  place-content: center;\n}\n.chatPicture label::before {\n  content: \"\";\n  background: black;\n}\n.chatPicture label::after {\n  content: \"upload picture\";\n}\n.chatPicture label:hover::before, .chatPicture label:hover::after {\n  opacity: 0.8;\n}\n.chatPicture label img {\n  background-color: white;\n  border-radius: 50%;\n  width: 150px;\n  height: 150px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  outline: none !important;\n  border: none !important;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12781,7 +12995,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3rem;\n  height: 3rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover, .chatPage__topRow button:focus {\n  background: #0a4bac;\n}\n.chatPage__messages {\n  width: 80%;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n  padding-inline: 0.5rem;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage .message__text {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message .message__text {\n  background: #0a4bac;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  white-space: pre-line;\n  padding: 0.5em 1em;\n  border-radius: 1rem;\n  margin: 0;\n  max-width: 60%;\n  align-self: flex-start;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message .message__text {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  height: 4em;\n  border-radius: 1rem;\n  scrollbar-width: none;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover, .chatPage__bottomRow button:focus {\n  background: #0a4bac;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3rem;\n  height: 3rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover, .chatPage__topRow button:focus {\n  background: #0a4bac;\n}\n.chatPage__messages {\n  width: min(80%, 920px);\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage .message__text {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message .message__text {\n  background: #0a4bac;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  white-space: pre-line;\n  padding: 0.5em 1em;\n  border-radius: 1rem;\n  margin: 0;\n  max-width: 60%;\n  align-self: flex-start;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message .message__text {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  min-height: 1em;\n  max-height: 6em;\n  border-radius: 1rem;\n  scrollbar-width: none;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover, .chatPage__bottomRow button:focus {\n  background: #0a4bac;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12854,6 +13068,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".loginPage__signUp {\n  width: min(800px, 90%);\n  display: flex;\n  flex-direction: column;\n  justify-content: stretch;\n  align-items: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__info .info__main {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.loginPage__signUp .signUp__passwords {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  align-items: center;\n}\n.loginPage h1 {\n  font-weight: 300;\n}\n.loginPage button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  background: none;\n}\n.loginPage button:hover, .loginPage button:focus {\n  background: #0a4bac;\n}\n.loginPage input:not([type=file]) {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  width: 100%;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/components/pages/User/User.scss":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/components/pages/User/User.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -79908,6 +80146,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_SignUp_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/User/User.scss":
+/*!******************************************************!*\
+  !*** ./resources/js/components/pages/User/User.scss ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_User_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./User.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/components/pages/User/User.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_User_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_User_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 

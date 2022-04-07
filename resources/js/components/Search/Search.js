@@ -46,14 +46,14 @@ function Search({ searchType }) {
     }, 200), [])
 
     useEffect(() => {
-        if (!(searchType === 'friends') && !trim(searchQuery)) return
+        if (searchType === 'users' && !trim(searchQuery)) return
         
         getSearchData(searchQuery)
     }, [searchQuery])
 
     return (
         <input
-            type="text"
+            type="search"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             name='search' 

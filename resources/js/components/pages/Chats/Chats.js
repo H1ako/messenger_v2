@@ -18,10 +18,10 @@ import { customFetch } from '../../../libs/customFetch';
 function Chats(props) {
     const chatType = useRecoilValue(chatTypeState)
     const [chats, setChats] = useRecoilState(searchResultChatsState)
-    const user = useRecoilValue(userInfoState)
+    const [user, setUser] = useRecoilState(userInfoState)
 
-    useEffect(() => {
-        customFetch(`/api/chats-get/${chatType}`, 'POST')
+    useEffect(async () => {
+        await customFetch(`/api/chats-get/${chatType}`, 'POST')
         .then(data => data.json())
         .then(data => {
             if (data) {
@@ -30,28 +30,26 @@ function Chats(props) {
         })
     }, [chatType])
     
-    useEffect(() => {
+    useEffect(async () => {
         if (!user.id) return
-        Echo.private(`chats.${user.id}`)
+        
+        const channel = await Echo.private(`chats.${user.id}`)
         .listen('ChatUpdate', (e) => {
             if (chatType === e.chat.chat_type || chatType === 'all') {
-                const updatedChats = cloneDeep(chats)
+                setChats(state => {
+                    const chatsClone = cloneDeep(state)
+                    const updatedChats = chatsClone.filter((el, index) => el.id != e.chat.id)
 
-                updatedChats.map(el => {
-                    if (el.id == e.chat.id) {
-                        el.last_message = e.chat?.last_message
-                        el.last_message_sender = e.chat?.last_message_sender
-                        el.updated_at = e.chat?.updated_at
-                        el.created_at = e.chat?.created_at
-                        el.status = e.chat?.status
-                        el.name = e.chat?.name
-                        el.picture = e.chat?.picture
-                    }
+                    return [e.chat, ...updatedChats]
                 })
-                setChats(updatedChats)
             }
         })
-    }, [user.id])
+
+        return () => {
+            console.log('leave')
+            Echo.leaveChannel(channel)
+        }
+    }, [user])
 
     return (
         <div className="page chatsPage">

@@ -51,10 +51,15 @@ function Chat() {
                 setCompanionInfo(data.companion?.[0])
             }
         })
-        Echo.private(`chatbox.${chatId}`)
+        const channel = Echo.private(`chatbox.${chatId}`)
         .listen('MessageSend', (e) => {
             setMessages(state => ([...state, e.message]));
         })
+
+        return () => {
+            console.log('leave')
+            Echo.leaveChannel(channel)
+        }
     }, [])
 
     useEffect(() => {

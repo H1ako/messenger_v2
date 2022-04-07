@@ -12,17 +12,20 @@ import Chat from './components/pages/Chat/Chat.js'
 import NewGroupchat from './components/pages/NewGroupchat/NewGroupchat.js'
 import SignIn from './components/pages/SignIn/SignIn.js'
 import SignUp from './components/pages/SignUp/SignUp.js'
+import User from './components/pages/User/User.js'
 // libs
 import { customFetch } from './libs/customFetch.js'
-
 
 function Main() {
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
 
-    useEffect(() => {
-        customFetch('/api/user', 'POST')
+    useEffect(async () => {
+        await customFetch('/api/user', 'POST')
         .then(data => data.json())
         .then(data => {
+            if (data.error) {
+                return console.log(data.error)
+            }
             if (data.data) {
                 setUserInfo(data.data)
             }
@@ -40,6 +43,7 @@ function Main() {
                     <Route path="/new-groupchat" element={<NewGroupchat />} />
                     <Route path="/sign-in" element={<SignIn />} />
                     <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/user/:userId" element={<User />} />
                 </Routes>
             </main>
         </>

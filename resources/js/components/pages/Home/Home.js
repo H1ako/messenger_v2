@@ -16,8 +16,8 @@ function Home() {
     const userType = useRecoilValue(userTypeState)
     const [users, setUsers] = useRecoilState(searchResultUsersState)
 
-    useEffect(() => {
-        customFetch(`/api/friends/${userType}`, 'POST')
+    useEffect(async () => {
+        await customFetch(`/api/friends/${userType}`, 'POST')
         .then(data => data.json())
         .then(data => {
             if (data) {

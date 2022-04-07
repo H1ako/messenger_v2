@@ -25,7 +25,6 @@ Broadcast::channel('chatbox.{chatId}', function ($user, $chatId) {
 });
 
 Broadcast::channel('chats.{userId}', function ($user, $userId) {
-    return true;
-    if (!$user || !$user->id != $userId) return false;
+    if (!$user || $user->id != $userId) return false;
     return true;
 });

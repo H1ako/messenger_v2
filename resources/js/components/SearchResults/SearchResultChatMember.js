@@ -6,19 +6,19 @@ import { newChatMembersIdsState } from "../../recoil/NewChatAtom"
 import { getArrayWithoutElement } from "../../libs/getArrayWithoutElement"
 
 function SearchResultChatMember({
-    userId,
+    friendId,
     username,
     picture,
 }) {
     const [chatMembers, setChatMembers] = useRecoilState(newChatMembersIdsState)
 
     const handleChange = (e) => {
-        if (chatMembers.includes(userId)) {
-            const arrayWithoutUserId = getArrayWithoutElement(chatMembers, userId)
+        if (chatMembers.includes(friendId)) {
+            const arrayWithoutUserId = getArrayWithoutElement(chatMembers, friendId)
             setChatMembers(arrayWithoutUserId)
             return
         }
-        setChatMembers([...chatMembers, userId])
+        setChatMembers([...chatMembers, friendId])
     }
 
     return (
@@ -28,8 +28,8 @@ function SearchResultChatMember({
                 <h2>{username}</h2>
             </span>
             <span className="btns">
-                <input checked={chatMembers.includes(userId) ? true : false} onChange={handleChange} type="checkbox" id={`user-${userId}`} />
-                <label htmlFor={`user-${userId}`} />
+                <input checked={chatMembers.includes(friendId) ? true : false} onChange={handleChange} type="checkbox" id={`user-${friendId}`} />
+                <label htmlFor={`user-${friendId}`} />
             </span>
         </li>
     )

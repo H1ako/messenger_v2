@@ -9,8 +9,6 @@ import { signUpPuctureFileState } from '../../../recoil/SignUpAtom'
 import { userInfoState } from '../../../recoil/UserAtom'
 // components
 import UploadPicture from "../../UploadPicture/UploadPicture"
-// libs
-import { customFetch } from '../../../libs/customFetch'
 
 // sign up page
 function SignUp() {
@@ -23,7 +21,7 @@ function SignUp() {
     const [password, setPassword] = useState('')
     const [passwordAgain, setPasswordAgain] = useState('')
 
-    const signUp = () => {
+    const signUp = async () => {
         if (
             password.length >= 8 &&
             password === passwordAgain &&
@@ -38,7 +36,7 @@ function SignUp() {
             newUserData.append('email', email)
             newUserData.append('password', password)
 
-            fetch('/sign-up', {
+            await fetch('/sign-up', {
                 method: "POST",
                 headers: {
                     'X-CSRF-Token': document.querySelector('meta[name="_token"]').getAttribute('content'),
@@ -50,6 +48,7 @@ function SignUp() {
             })
             .then(response => response.json())
             .then((response) => {
+                console.log(response)
                 if (response.error) {
                     console.log(response.error)
                     return

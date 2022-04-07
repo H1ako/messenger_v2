@@ -34,10 +34,10 @@ function Sidebar() {
     return (
         <div className={`sidebar${isActive ? ' active' : ''}${userInfo.id ? '' : ' notLoggedIn'}`}>
             {userInfo.id && 
-                <div className="sidebar__userInfo">
+                <Link to={`/user/${userInfo.id}`} className="sidebar__userInfo" >
                     <img src={userInfo.picture}/>
                     <h3>{`${userInfo.name} ${userInfo.surname}`}</h3>
-                </div>
+                </Link>
             }
             
             <nav>

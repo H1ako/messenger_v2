@@ -12,13 +12,13 @@ function SearchResultChat({
 
     if (type === 'dialog') {
         return (
-            <li>
-                <Link className="searchResultChat" to={`/chats/${chatId}`}>
-                    <img src={companion.picture} className='searchResultChat__chatPic'/>
-                    <span className="searchResultChat__chatInfo">
-                        <h2>{`${companion.name} ${companion.surname}`}</h2>
-                        <h3>{lastMessage ? lastMessage: 'start dialog...'}</h3>
-                    </span>
+            <li className="searchResultChat">
+                <Link to={`/user/${companion?.id}`} >
+                    <img src={companion?.picture} className='searchResultChat__chatPic'/>
+                </Link>
+                <Link to={`/chats/${chatId}`} className="searchResultChat__chatInfo">
+                    <h2>{`${companion?.name} ${companion?.surname}`}</h2>
+                    <h3>{lastMessage ? lastMessage: 'start dialog...'}</h3>
                 </Link>
             </li>
         )
@@ -26,31 +26,37 @@ function SearchResultChat({
 
     if (type === 'groupchat') {
         return (
-            <li>
-                <Link className="searchResultChat" to={`/chats/${chatId}`}>
+            <li className="searchResultChat">
+                <Link to={`/chats/${chatId}`} >
                     <img src={pic} className='searchResultChat__chatPic'/>
-                    <span className="searchResultChat__chatInfo">
+                </Link>
+                <div className="searchResultChat__chatInfo">
+                    <Link to={`/chats/${chatId}`} >
                         <h2>{name}</h2>
-                        <div className="chatInfo__lastMessage">
-                        {lastMessage && lastMessageSender?.name ?
-                            <>
+                    </Link>
+                    <div className="chatInfo__lastMessage">
+                    {lastMessage && lastMessageSender?.name ?
+                        <>
+                            <Link to={`/user/${lastMessageSender?.id}`} >
                                 <img
                                     src={lastMessageSender?.picture}
                                     className='lastMessage__userPic'
                                 />
+                            </Link>
+                            <Link to={`/chats/${chatId}`} >
                                 <h3>{`${lastMessageSender?.name}: ${lastMessage}`}</h3>
-                            </>
-                        :
-                            <>
-                                <img
-                                    className='lastMessage__userPic'
-                                />
-                                <h3>start dialog...</h3>
-                            </>
-                        }
-                        </div>
-                    </span>
-                </Link>
+                            </Link>
+                        </>
+                    :
+                        <Link to={`/chats/${chatId}`} >
+                            <img
+                                className='lastMessage__userPic'
+                            />
+                            <h3>start dialog...</h3>
+                        </Link>
+                    }
+                    </div>
+                </div>
             </li>
         )
     }

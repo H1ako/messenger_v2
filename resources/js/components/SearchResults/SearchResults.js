@@ -10,16 +10,14 @@ import SearchResultChat from './SearchResultChat'
 import SearchResultChatMember from './SearchResultChatMember'
 
 function SearchResults({ type, searchResults }) {
-    const userInfo = useRecoilValue(userInfoState);
-
     if (type === 'chatMembers') {
         return (
             <div className="searchResults">
                 <ul>
                     {searchResults.map(result => (
                         <SearchResultChatMember
-                            key={result.id}
-                            userId={result.friend_id || result.friend?.id || result.id}
+                            key={`chatMember-${result.id}`}
+                            friendId={result.friend_id || result.friend?.id || result.id}
                             username={`${result.friend?.name || result.name} ${result.friend?.surname || result.surname}`}
                             picture={result.friend?.picture || result.picture}
                         />
@@ -35,9 +33,8 @@ function SearchResults({ type, searchResults }) {
                 <ul>
                     {searchResults.map(result => (
                         <SearchResultUser
-                            key={result.id}
+                            key={`user-${result.id}`}
                             friendId={result.friend_id || result.aboutRelationship?.friend_id || result.id}
-                            userId={userInfo.id}
                             username={`${result.friend?.name || result.name} ${result.friend?.surname || result.surname}`}
                             picture={result.friend?.picture || result.picture}
                             relationship={result.relationship || result.aboutRelationship?.relationship || 'no'}
@@ -55,13 +52,13 @@ function SearchResults({ type, searchResults }) {
                 <ul>
                     {searchResults.map(result => (
                         <SearchResultChat
-                            key={result.id}
+                            key={`chat-${result.id}`}
                             chatId={result.id}
                             type={result.chat_type}
                             name={result.name}
                             pic={result.picture}
                             lastMessage={result.last_message}
-                            companion={result.companion?.[0]}
+                            companion={result.companion}
                             lastMessageSender={result.last_message_sender}
                         />
                     ))}

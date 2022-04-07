@@ -49,6 +49,8 @@
             width: $pictureSize;
             height: $pictureSize;
             object-fit: cover;
+            outline: none !important;
+            border: none !important;
         }
     }
     

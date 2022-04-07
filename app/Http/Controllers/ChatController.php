@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\ChatUpdate;
 use App\Events\MessageSend;
 use App\Models\Chat;
+use App\Models\ChatMember;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,13 +35,19 @@ class ChatController extends Controller
             $chat->save();
         }
         $newMessage->sender = $user;
-        $chat->last_message_sender = User::find($chat->last_message_sender);
+        if ($chat->last_message_sender && $chat->chat_type === 'groupchat') {
+            $chat->last_message_sender = User::find($chat->last_message_sender);
+        }
+        if ($chat->chat_type === 'dialog') {
+            $chat->companion = $user;
+        }
         $chatMembers = $chat->members()->pluck('member_id');
-        
+
         event(new MessageSend($newMessage));
         foreach ($chatMembers as $chatMember) {
             event(new ChatUpdate($chat, $chatMember));
         }
+        error_log("$user");
     }
 
     public function checkChat($friendId, Request $request) {
