@@ -30,7 +30,7 @@
     }
 
     &__messages {
-        width: min(80%, 920px);
+        width: min(80%, 1100px);
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -56,6 +56,7 @@
                 .message__text {
                     background: $colorAccent;
                     align-self: flex-end;
+                    word-break: break-all;
                 }
 
                 time {

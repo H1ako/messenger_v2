@@ -60,6 +60,7 @@ function SearchResults({ type, searchResults }) {
                             lastMessage={result.last_message}
                             companion={result.companion}
                             lastMessageSender={result.last_message_sender}
+                            isNew={result.isNew}
                         />
                     ))}
                 </ul>

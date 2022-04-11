@@ -54,8 +54,7 @@
                 display: flex;
                 align-items: center;
                 gap: $gap;
-                cursor: pointer;
-
+                
                 img {
                     width: calc($height * 0.9);
                     height: calc($height * 0.9);
@@ -63,65 +62,16 @@
                     border-radius: 50%;
                     background: $colorLight;
                     object-fit: cover;
+                    cursor: pointer;
                 }
 
                 h2 {
                     font-weight: 300;
-                }
-            }
+                    cursor: pointer;
 
-            .btns {
-                display: flex;
-                align-items: center;
-                gap: $gap;
-                justify-content: flex-end;
-
-                button {
-                    @include btn;
-                    border: none;
-
-                    &.btnRemove,
-                    &.btnDecline,
-                    &.btnCancel {
-                        background: $colorAccent;
-                        
-                        &:hover {
-                            background: $colorAccentDark;
-                        }
+                    &:hover {
+                        text-decoration: underline;
                     }
-
-                    &.btnAdd,
-                    &.btnAccept {
-                        background: $colorMain;
-
-                        &:hover {
-                            background: $colorMainDark;
-                        }
-                    }
-                }
-
-                input {
-                    display: none;
-
-                    &:not(:checked) ~ label:hover {
-                        background: $colorAccentDark;
-                    }
-
-                    &:checked ~ label {
-                        background: $colorAccent;
-                    }
-                }
-
-                label {
-                    $size: 2rem;
-
-                    border: 1px solid $colorLight;
-                    background: none;
-                    position: relative;
-                    width: $size;
-                    height: $size;
-                    border-radius: .5rem;
-                    transition: $transition;
                 }
             }
         }
@@ -137,8 +87,14 @@
             align-items: center;
             gap: $gap;
             width: 100%;
-            height: $height;
+            // height: $height;
             text-decoration: none;
+            padding-inline: 1rem;
+            border-radius: .25rem;
+
+            &.newMessage {
+                background: $colorUpdated;
+            }
 
             &__chatPic {
                 width: $chatPicSize;
@@ -164,6 +120,11 @@
                     @include textOverflow;
                     color: $colorLight;
                     opacity: .7;
+                    border-radius: 1em;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
 
                 .chatInfo__lastMessage {

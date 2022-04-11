@@ -20,11 +20,18 @@ use App\Models\User;
 */
 
 Route::post('/user', function (Request $request) {
-    if (Auth::check()) {
-        return new UserResource(Auth::user());
-    }
+    return new UserResource(Auth::user());
+})->middleware('auth');
 
-    return ['error' => 'not logged in'];
+Route::post('/user/{userId}', function ($userId, Request $request) {
+    $myUser = Auth::user();
+    $user = User::find($userId);
+    $user->relationship = $myUser->friends()->where('friend_id', $user->id)->first();
+    $user->groupchatAmount = $user->groupchats()->count();
+    $user->dialogAmount = $user->dialogs()->count();
+    $user->friendAmount = $user->friends()->where('relationship', 'friend')->count();
+    $user->requestAmount = $user->friends()->where('relationship', 'request')->count();
+    return ["user" => $user];
 });
 
 Route::post('/search/{searchType}', function ($searchType, Request $request) {

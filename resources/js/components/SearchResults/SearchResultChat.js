@@ -7,12 +7,13 @@ function SearchResultChat({
     name,
     lastMessage,
     companion,
-    lastMessageSender
+    lastMessageSender,
+    isNew
 }) {
 
     if (type === 'dialog') {
         return (
-            <li className="searchResultChat">
+            <li className={`searchResultChat${isNew ? ' newMessage' : ''}`}>
                 <Link to={`/user/${companion?.id}`} >
                     <img src={companion?.picture} className='searchResultChat__chatPic'/>
                 </Link>
@@ -26,7 +27,7 @@ function SearchResultChat({
 
     if (type === 'groupchat') {
         return (
-            <li className="searchResultChat">
+            <li className={`searchResultChat${isNew ? ' newMessage' : ''}`}>
                 <Link to={`/chats/${chatId}`} >
                     <img src={pic} className='searchResultChat__chatPic'/>
                 </Link>

@@ -1,0 +1,58 @@
+@import '../../../sass/imports/variables.scss';
+
+.friendActionBtns {
+    $gap: clamp(.25rem, 2vw, 1rem);
+    
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    justify-content: flex-end;
+
+    button {
+        @include btn;
+        border: none;
+
+        &.btnRemove,
+        &.btnDecline,
+        &.btnCancel {
+            background: $colorAccent;
+            
+            &:hover {
+                background: $colorAccentDark;
+            }
+        }
+
+        &.btnAdd,
+        &.btnAccept {
+            background: $colorMain;
+
+            &:hover {
+                background: $colorMainDark;
+            }
+        }
+    }
+
+    input {
+        display: none;
+
+        &:not(:checked) ~ label:hover {
+            background: $colorAccentDark;
+        }
+
+        &:checked ~ label {
+            background: $colorAccent;
+        }
+    }
+
+    label {
+        $size: 2rem;
+
+        border: 1px solid $colorLight;
+        background: none;
+        position: relative;
+        width: $size;
+        height: $size;
+        border-radius: .5rem;
+        transition: $transition;
+    }
+}

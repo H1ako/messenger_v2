@@ -1,0 +1,88 @@
+@import '../../../../sass/imports/variables.scss';
+
+.userPage {
+    $picSize: 18rem;
+    flex-direction: row;
+
+    @media (max-width: $sizeScreenTablet) {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__leftSide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        
+        img {
+            @include picture;
+            height: $picSize;
+            width: $picSize;
+            object-fit: cover;
+        }
+    }
+
+    &__mainInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+
+        @media (max-width: $sizeScreenTablet) {
+            align-items: center;
+        }
+        
+        @media (min-width: calc($sizeScreenTablet + 1px)) {
+            height: 100%;
+        }
+
+        h1 {
+            font-size: $fontSizeBig1;
+        }
+
+        .mainInfo__numberData {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+
+            .numberData__amount {
+                display: grid;
+                grid-template-rows: 2fr 1fr;
+                place-items: center;
+                gap: 1rem;
+
+                .amount__name {
+                    display: flex;
+                    position: relative;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    &::after {
+                        position: absolute;
+                        content: '';
+                        background: $colorGray;
+                        width: calc(100% + 1rem);
+                        height: 1px;
+                        top: 110%;
+                    }
+
+                    ion-icon {
+                        font-size: $fontSizeBig1;
+                    }
+
+                    h2 {
+                        font-size: $fontSizeBig2;
+                    }
+                }
+
+                h3 {
+                    color: $colorAccent;
+                    font-size: $fontSizeBig3;
+                }
+            }
+        }
+    }
+}

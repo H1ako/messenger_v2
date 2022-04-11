@@ -39,7 +39,7 @@ function Chats(props) {
                 setChats(state => {
                     const chatsClone = cloneDeep(state)
                     const updatedChats = chatsClone.filter((el, index) => el.id != e.chat.id)
-
+                    e.chat.isNew = true
                     return [e.chat, ...updatedChats]
                 })
             }

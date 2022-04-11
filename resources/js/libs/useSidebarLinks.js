@@ -22,7 +22,7 @@ function useSidebarLinks(path) {
             },
             {
                 pathname: '/chats',
-                icon: 'chatbubbles-outline',
+                icon: 'chatbubble-outline',
                 name: 'chats'
             }
         ]

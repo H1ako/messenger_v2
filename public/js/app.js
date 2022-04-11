@@ -5453,6 +5453,199 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
 
 /***/ }),
 
+/***/ "./resources/js/components/FriendActionBtns/FriendActionBtns.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/FriendActionBtns/FriendActionBtns.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _FriendActionBtns_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FriendActionBtns.scss */ "./resources/js/components/FriendActionBtns/FriendActionBtns.scss");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../recoil/NewChatAtom */ "./resources/js/recoil/NewChatAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+// styles
+ // global dependencies
+
+
+ // recoil atoms
+
+ // libs
+
+
+
+
+
+function FriendActionBtns(_ref) {
+  var friendId = _ref.friendId,
+      userId = _ref.userId,
+      requestFrom = _ref.requestFrom,
+      relationship = _ref.relationship,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'friend' : _ref$type;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(requestFrom),
+      _useState2 = _slicedToArray(_useState, 2),
+      userRequestFrom = _useState2[0],
+      setUserRequestFrom = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(relationship),
+      _useState4 = _slicedToArray(_useState3, 2),
+      userRelationship = _useState4[0],
+      setUserRelationship = _useState4[1];
+
+  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_3__.newChatMembersIdsState),
+      _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
+      chatMembers = _useRecoilState2[0],
+      setChatMembers = _useRecoilState2[1];
+
+  var handleChange = function handleChange(e) {
+    if (chatMembers.includes(friendId)) {
+      var arrayWithoutUserId = _toConsumableArray(chatMembers).filter(function (el) {
+        return el != friendId;
+      });
+
+      setChatMembers(arrayWithoutUserId);
+      return;
+    }
+
+    setChatMembers([].concat(_toConsumableArray(chatMembers), [friendId]));
+  };
+
+  var removeFriend = function removeFriend() {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/remove-friend', 'POST', JSON.stringify({
+      friendId: friendId
+    }));
+    setUserRelationship('request');
+    setUserRequestFrom(friendId);
+  };
+
+  var sendRequest = function sendRequest() {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/send-request', 'POST', JSON.stringify({
+      friendId: friendId
+    }));
+    setUserRelationship('request');
+    setUserRequestFrom(userId);
+  };
+
+  var acceptRequest = function acceptRequest() {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/accept-request', 'POST', JSON.stringify({
+      friendId: friendId
+    }));
+    setUserRelationship('friend');
+  };
+
+  var declineRequest = function declineRequest() {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/decline-friend', 'POST', JSON.stringify({
+      friendId: friendId
+    }));
+    setUserRelationship('no');
+  };
+
+  var cancelRequest = function cancelRequest() {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/cancel-request', 'POST', JSON.stringify({
+      friendId: friendId
+    }));
+    setUserRelationship('no');
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setUserRelationship(relationship);
+  }, [relationship]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setUserRequestFrom(requestFrom);
+  }, [requestFrom]);
+
+  if (type === 'chatMember') {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "friendActionBtns",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        checked: chatMembers.includes(friendId) ? true : false,
+        onChange: handleChange,
+        type: "checkbox",
+        id: "user-".concat(friendId)
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "user-".concat(friendId)
+      })]
+    });
+  }
+
+  if (userRelationship === 'friend') {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "friendActionBtns",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        onClick: removeFriend,
+        className: "btnRemove",
+        children: "remove"
+      })
+    });
+  } else if (userRelationship === 'no') {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "friendActionBtns",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        onClick: sendRequest,
+        className: "btnAdd",
+        children: "add"
+      })
+    });
+  } else if (userRelationship === 'request' && userRequestFrom !== userId) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "friendActionBtns",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        onClick: acceptRequest,
+        className: "btnAccept",
+        children: "accept"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        onClick: declineRequest,
+        className: "btnDecline",
+        children: "decline"
+      })]
+    });
+  } else if (userRelationship === 'request' && userRequestFrom === userId) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "friendActionBtns",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        onClick: cancelRequest,
+        className: "btnCancel",
+        children: "cancel"
+      })
+    });
+  } else return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "error",
+    children: "error"
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FriendActionBtns);
+
+/***/ }),
+
 /***/ "./resources/js/components/SearchResults/SearchResultChat.js":
 /*!*******************************************************************!*\
   !*** ./resources/js/components/SearchResults/SearchResultChat.js ***!
@@ -5478,11 +5671,12 @@ function SearchResultChat(_ref) {
       name = _ref.name,
       lastMessage = _ref.lastMessage,
       companion = _ref.companion,
-      lastMessageSender = _ref.lastMessageSender;
+      lastMessageSender = _ref.lastMessageSender,
+      isNew = _ref.isNew;
 
   if (type === 'dialog') {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-      className: "searchResultChat",
+      className: "searchResultChat".concat(isNew ? ' newMessage' : ''),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/user/".concat(companion === null || companion === void 0 ? void 0 : companion.id),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
@@ -5503,7 +5697,7 @@ function SearchResultChat(_ref) {
 
   if (type === 'groupchat') {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-      className: "searchResultChat",
+      className: "searchResultChat".concat(isNew ? ' newMessage' : ''),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/chats/".concat(chatId),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
@@ -5566,32 +5760,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../recoil/NewChatAtom */ "./resources/js/recoil/NewChatAtom.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-// global dependencies
- // recoil atoms
-
+/* harmony import */ var _FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../FriendActionBtns/FriendActionBtns */ "./resources/js/components/FriendActionBtns/FriendActionBtns.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+// components
 
 
 
@@ -5601,57 +5772,35 @@ function SearchResultChatMember(_ref) {
       username = _ref.username,
       picture = _ref.picture;
 
-  var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.useRecoilState)(_recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_1__.newChatMembersIdsState),
-      _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
-      chatMembers = _useRecoilState2[0],
-      setChatMembers = _useRecoilState2[1];
-
-  var handleChange = function handleChange(e) {
-    if (chatMembers.includes(friendId)) {
-      var arrayWithoutUserId = _toConsumableArray(chatMembers).filter(function (el) {
-        return el != friendId;
-      });
-
-      setChatMembers(arrayWithoutUserId);
-      return;
-    }
-
-    setChatMembers([].concat(_toConsumableArray(chatMembers), [friendId]));
-  };
-
   if (!friendId || !username) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
       className: "searchResultUser notLoaded",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
         className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
           children: username
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
         className: "btns"
       })]
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
     className: "searchResultUser",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
       className: "userInfo",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
         src: picture
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
         children: username
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
       className: "btns",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-        checked: chatMembers.includes(friendId) ? true : false,
-        onChange: handleChange,
-        type: "checkbox",
-        id: "user-".concat(friendId)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-        htmlFor: "user-".concat(friendId)
-      })]
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_0__["default"], {
+        type: 'chatMember',
+        friendId: friendId
+      })
     })]
   });
 }
@@ -5671,30 +5820,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var _FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../FriendActionBtns/FriendActionBtns */ "./resources/js/components/FriendActionBtns/FriendActionBtns.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 // global dependencies
-
 
  // recoil atoms
 
  // libs
+
 
 
 
@@ -5707,57 +5845,10 @@ function SearchResultUser(_ref) {
       relationship = _ref.relationship,
       requestFrom = _ref.requestFrom;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-  var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_2__.userInfoState);
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(requestFrom),
-      _useState2 = _slicedToArray(_useState, 2),
-      userRequestFrom = _useState2[0],
-      setUserRequestFrom = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(relationship),
-      _useState4 = _slicedToArray(_useState3, 2),
-      userRelationship = _useState4[0],
-      setUserRelationship = _useState4[1];
-
-  var removeFriend = function removeFriend() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/remove-friend', 'POST', JSON.stringify({
-      friendId: friendId
-    }));
-    setUserRelationship('request');
-    setUserRequestFrom(friendId);
-  };
-
-  var sendRequest = function sendRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/send-request', 'POST', JSON.stringify({
-      friendId: friendId
-    }));
-    setUserRelationship('request');
-    setUserRequestFrom(userInfo.id);
-  };
-
-  var acceptRequest = function acceptRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/accept-request', 'POST', JSON.stringify({
-      friendId: friendId
-    }));
-    setUserRelationship('friend');
-  };
-
-  var declineRequest = function declineRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/decline-friend', 'POST', JSON.stringify({
-      friendId: friendId
-    }));
-    setUserRelationship('no');
-  };
-
-  var cancelRequest = function cancelRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)('/friend/cancel-request', 'POST', JSON.stringify({
-      friendId: friendId
-    }));
-    setUserRelationship('no');
-  };
+  var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.useRecoilValue)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_1__.userInfoState);
 
   var goToMessages = function goToMessages() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_3__.customFetch)("/chat/check/".concat(friendId), 'POST').then(function (data) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_2__.customFetch)("/chat/check/".concat(friendId), 'POST').then(function (data) {
       return data.json();
     }).then(function (data) {
       if (data.error) {
@@ -5769,13 +5860,6 @@ function SearchResultUser(_ref) {
       }
     });
   };
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setUserRelationship(relationship);
-  }, [relationship]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setUserRequestFrom(requestFrom);
-  }, [requestFrom]);
 
   if (!userInfo.id) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
@@ -5791,93 +5875,28 @@ function SearchResultUser(_ref) {
     });
   }
 
-  if (userRelationship === 'friend') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-      className: "searchResultUser",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        onClick: goToMessages,
-        className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+    className: "searchResultUser",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+      className: "userInfo",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+        to: "/user/".concat(friendId),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: picture
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          children: username
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-        className: "btns",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-          onClick: removeFriend,
-          className: "btnRemove",
-          children: "remove"
         })
-      })]
-    });
-  } else if (userRelationship === 'no') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-      className: "searchResultUser",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
         onClick: goToMessages,
-        className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-          src: picture
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          children: username
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-        className: "btns",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-          onClick: sendRequest,
-          className: "btnAdd",
-          children: "add"
-        })
+        children: username
       })]
-    });
-  } else if (userRelationship === 'request' && userRequestFrom !== userInfo.id) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-      className: "searchResultUser",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        onClick: goToMessages,
-        className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-          src: picture
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          children: username
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        className: "btns",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-          onClick: acceptRequest,
-          className: "btnAccept",
-          children: "accept"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-          onClick: declineRequest,
-          className: "btnDecline",
-          children: "decline"
-        })]
-      })]
-    });
-  } else if (userRelationship === 'request' && userRequestFrom === userInfo.id) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-      className: "searchResultUser",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        onClick: goToMessages,
-        className: "userInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-          src: picture
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          children: username
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-        className: "btns",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-          onClick: cancelRequest,
-          className: "btnCancel",
-          children: "cancel"
-        })
-      })]
-    });
-  } else return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "error",
-    children: "error"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+      className: "btns",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        userId: userInfo.id,
+        requestFrom: requestFrom,
+        relationship: relationship,
+        friendId: friendId
+      })
+    })]
   });
 }
 
@@ -5967,7 +5986,8 @@ function SearchResults(_ref) {
             pic: result.picture,
             lastMessage: result.last_message,
             companion: result.companion,
-            lastMessageSender: result.last_message_sender
+            lastMessageSender: result.last_message_sender,
+            isNew: result.isNew
           }, "chat-".concat(result.id));
         })
       })
@@ -6761,6 +6781,7 @@ function Chats(props) {
                   var updatedChats = chatsClone.filter(function (el, index) {
                     return el.id != e.chat.id;
                   });
+                  e.chat.isNew = true;
                   return [e.chat].concat(_toConsumableArray(updatedChats));
                 });
               }
@@ -7422,23 +7443,204 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _User_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User.scss */ "./resources/js/components/pages/User/User.scss");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var _FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../FriendActionBtns/FriendActionBtns */ "./resources/js/components/FriendActionBtns/FriendActionBtns.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 // styles
  // global dependencies
+
+
+
+ // recoil atoms
+
+ // libs
+
+ // components
 
  // User page
 
 
 
+
 function User() {
-  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useParams)(),
-      userId = _useParams.userId; // const userInfo = useRecoilValue(userInfoState)
+  var _user$relationship;
 
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)(),
+      userId = _useParams.userId;
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      user = _useState2[0],
+      setUser = _useState2[1];
+
+  var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__.userInfoState);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)("/api/user/".concat(userId), "POST").then(function (data) {
+      return data.json();
+    }).then(function (data) {
+      console.log(data);
+      setUser(data.user);
+    });
+  }, [userId]);
+  if (!userInfo.id) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    className: "page userPage"
+  });
+
+  if (userInfo.id == userId) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      className: "page userPage",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "userPage__leftSide",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+          src: user.picture,
+          alt: ""
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "userPage__mainInfo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+          children: user.name && user.surname && "".concat(user.name, " ").concat(user.surname)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "mainInfo__numberData",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "numberData__amount",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              className: "amount__name",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+                name: "people-outline"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+                children: "friends"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+              children: user.friendAmount
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "numberData__amount",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              className: "amount__name",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+                name: "people-circle-outline"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+                children: "requests"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+              children: user.requestAmount
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "numberData__amount",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              className: "amount__name",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+                name: "chatbubble-ellipses-outline"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+                children: "groupchats"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+              children: user.groupchatAmount
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "numberData__amount",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              className: "amount__name",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+                name: "chatbubbles-outline"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+                children: "dialogs"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+              children: user.dialogAmount
+            })]
+          })]
+        })]
+      })]
+    });
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "page userPage",
-    children: userId
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      className: "userPage__leftSide",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+        src: user.picture,
+        alt: ""
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        userId: userInfo.id,
+        friendId: user.id,
+        requestFrom: (_user$relationship = user.relationship) === null || _user$relationship === void 0 ? void 0 : _user$relationship.request_from,
+        relationship: user.relationship ? user.relationship.relationship : 'no'
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      className: "userPage__mainInfo",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+        children: user.name && user.surname && "".concat(user.name, " ").concat(user.surname)
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "mainInfo__numberData",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "numberData__amount",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "amount__name",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              name: "people-outline"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+              children: "friends"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            children: user.friendAmount
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "numberData__amount",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "amount__name",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              name: "people-circle-outline"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+              children: "requests"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            children: user.requestAmount
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "numberData__amount",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "amount__name",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              name: "chatbubbles-outline"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+              children: "groupchats"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            children: user.groupchatAmount
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "numberData__amount",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "amount__name",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              name: "chatbubbles-outline"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+              children: "dialogs"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            children: user.dialogAmount
+          })]
+        })]
+      })]
+    })]
   });
 }
 
@@ -7542,7 +7744,7 @@ function useSidebarLinks(path) {
       name: 'home'
     }, {
       pathname: '/chats',
-      icon: 'chatbubbles-outline',
+      icon: 'chatbubble-outline',
       name: 'chats'
     }];
   }
@@ -12830,6 +13032,30 @@ defineJQueryPlugin(Toast);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/components/FriendActionBtns/FriendActionBtns.scss":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/components/FriendActionBtns/FriendActionBtns.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".friendActionBtns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.friendActionBtns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.friendActionBtns button:hover, .friendActionBtns button:focus {\n  background: #0a4bac;\n}\n.friendActionBtns button.btnRemove, .friendActionBtns button.btnDecline, .friendActionBtns button.btnCancel {\n  background: #F331A6;\n}\n.friendActionBtns button.btnRemove:hover, .friendActionBtns button.btnDecline:hover, .friendActionBtns button.btnCancel:hover {\n  background: #C92B8A;\n}\n.friendActionBtns button.btnAdd, .friendActionBtns button.btnAccept {\n  background: #0a4bac;\n}\n.friendActionBtns button.btnAdd:hover, .friendActionBtns button.btnAccept:hover {\n  background: #0c408f;\n}\n.friendActionBtns input {\n  display: none;\n}\n.friendActionBtns input:not(:checked) ~ label:hover {\n  background: #C92B8A;\n}\n.friendActionBtns input:checked ~ label {\n  background: #F331A6;\n}\n.friendActionBtns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n  transition: 300ms;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/components/SearchResults/SearchResults.scss":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/components/SearchResults/SearchResults.scss ***!
@@ -12847,7 +13073,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 60%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n}\n.searchResults ul .searchResultUser .btns {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  justify-content: flex-end;\n}\n.searchResults ul .searchResultUser .btns button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  border: none;\n}\n.searchResults ul .searchResultUser .btns button:hover, .searchResults ul .searchResultUser .btns button:focus {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.btnRemove, .searchResults ul .searchResultUser .btns button.btnDecline, .searchResults ul .searchResultUser .btns button.btnCancel {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns button.btnRemove:hover, .searchResults ul .searchResultUser .btns button.btnDecline:hover, .searchResults ul .searchResultUser .btns button.btnCancel:hover {\n  background: #C92B8A;\n}\n.searchResults ul .searchResultUser .btns button.btnAdd, .searchResults ul .searchResultUser .btns button.btnAccept {\n  background: #0a4bac;\n}\n.searchResults ul .searchResultUser .btns button.btnAdd:hover, .searchResults ul .searchResultUser .btns button.btnAccept:hover {\n  background: #0c408f;\n}\n.searchResults ul .searchResultUser .btns input {\n  display: none;\n}\n.searchResults ul .searchResultUser .btns input:not(:checked) ~ label:hover {\n  background: #C92B8A;\n}\n.searchResults ul .searchResultUser .btns input:checked ~ label {\n  background: #F331A6;\n}\n.searchResults ul .searchResultUser .btns label {\n  border: 1px solid white;\n  background: none;\n  position: relative;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 0.5rem;\n  transition: 300ms;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  height: clamp(4rem, 6vw, 5rem);\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatInfo a {\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatInfo h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n  opacity: 0.7;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n  color: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2:hover {\n  text-decoration: underline;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".searchResults {\n  width: min(90%, 920px);\n  overflow-y: auto;\n  height: 60%;\n  scrollbar-gutter: stable;\n  overflow-x: hidden;\n  padding-bottom: clamp(1.5rem, 4vw, 2rem);\n}\n@media (max-width: 640px) {\n  .searchResults {\n    height: 70%;\n  }\n}\n.searchResults ul {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: clamp(1.5rem, 4vw, 2rem);\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.searchResults ul .searchResultUser {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: clamp(0.25rem, 2vw, 1rem);\n  width: 100%;\n  height: 3.5rem;\n}\n@media (max-width: 480px) {\n  .searchResults ul .searchResultUser {\n    grid-template: 3.5rem 1fr/1fr;\n    height: 6rem;\n    place-items: center;\n  }\n}\n.searchResults ul .searchResultUser:not(:last-child)::after {\n  content: \"\";\n  position: absolute;\n  top: calc(100% + 1rem);\n  background: #484C52;\n  width: 86%;\n  height: 1px;\n  left: 7%;\n}\n.searchResults ul .searchResultUser .userInfo {\n  display: flex;\n  align-items: center;\n  gap: clamp(0.25rem, 2vw, 1rem);\n}\n.searchResults ul .searchResultUser .userInfo img {\n  width: 3.15rem;\n  height: 3.15rem;\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo h2 {\n  font-weight: 300;\n  cursor: pointer;\n}\n.searchResults ul .searchResultUser .userInfo h2:hover {\n  text-decoration: underline;\n}\n.searchResults ul .searchResultChat {\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.7) 1fr;\n  align-items: center;\n  gap: 1rem;\n  width: 100%;\n  text-decoration: none;\n  padding-inline: 1rem;\n  border-radius: 0.25rem;\n}\n.searchResults ul .searchResultChat.newMessage {\n  background: rgba(72, 76, 82, 0.5);\n}\n.searchResults ul .searchResultChat__chatPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.7);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatInfo a {\n  text-decoration: none;\n}\n.searchResults ul .searchResultChat__chatInfo h3 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n  opacity: 0.7;\n  border-radius: 1em;\n}\n.searchResults ul .searchResultChat__chatInfo h3:hover {\n  text-decoration: underline;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage {\n  align-items: center;\n  gap: 0.6rem;\n  width: 100%;\n  position: relative;\n  display: grid;\n  grid-template-columns: calc(clamp(4rem, 6vw, 5rem) * 0.4) 1fr;\n}\n.searchResults ul .searchResultChat__chatInfo .chatInfo__lastMessage .lastMessage__userPic {\n  width: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  height: calc(clamp(4rem, 6vw, 5rem) * 0.4);\n  flex: none;\n  border-radius: 50%;\n  background: white;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.searchResults ul .searchResultChat__chatInfo h2 {\n  width: 100%;\n  position: relative;\n  color: white;\n}\n.searchResults ul .searchResultChat__chatInfo h2:hover {\n  text-decoration: underline;\n}\n.searchResults ul .searchResultChat__chatInfo h2::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  left: -10px;\n  top: calc(100% + 0.5rem);\n  width: 100%;\n  height: 1px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12973,7 +13199,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3rem;\n  height: 3rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover, .chatPage__topRow button:focus {\n  background: #0a4bac;\n}\n.chatPage__messages {\n  width: min(80%, 920px);\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage .message__text {\n  background: #F331A6;\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message .message__text {\n  background: #0a4bac;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  white-space: pre-line;\n  padding: 0.5em 1em;\n  border-radius: 1rem;\n  margin: 0;\n  max-width: 60%;\n  align-self: flex-start;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message .message__text {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  min-height: 1em;\n  max-height: 6em;\n  border-radius: 1rem;\n  scrollbar-width: none;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover, .chatPage__bottomRow button:focus {\n  background: #0a4bac;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatPage__topRow {\n  width: 95%;\n  gap: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.chatPage__topRow .topRow__chatInfo {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__topRow .topRow__chatInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 3rem;\n  height: 3rem;\n}\n.chatPage__topRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n  display: none;\n}\n.chatPage__topRow button:hover, .chatPage__topRow button:focus {\n  background: #0a4bac;\n}\n.chatPage__messages {\n  width: min(80%, 1100px);\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  gap: clamp(0.5rem, 2vw, 1rem);\n  overflow-y: auto;\n}\n.chatPage__messages .messages__message {\n  flex: none;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  overflow: hidden;\n  align-self: flex-start;\n  gap: 0.5rem;\n}\n.chatPage__messages .messages__message.myMessage {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message.myMessage .message__senderInfo {\n  display: none;\n}\n.chatPage__messages .messages__message.myMessage .message__text {\n  background: #F331A6;\n  align-self: flex-end;\n  word-break: break-all;\n}\n.chatPage__messages .messages__message.myMessage time {\n  align-self: flex-end;\n}\n.chatPage__messages .messages__message .message__senderInfo {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 1rem;\n}\n.chatPage__messages .messages__message .message__senderInfo img {\n  border-radius: 50%;\n  background-color: white;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.chatPage__messages .messages__message .message__text {\n  background: #0a4bac;\n  font-size: clamp(0.95rem, 1vw, 1.25rem);\n  white-space: pre-line;\n  padding: 0.5em 1em;\n  border-radius: 1rem;\n  margin: 0;\n  max-width: 60%;\n  align-self: flex-start;\n}\n@media (max-width: 960px) {\n  .chatPage__messages .messages__message .message__text {\n    max-width: 80%;\n  }\n}\n.chatPage__messages .messages__message time {\n  color: #484C52;\n}\n.chatPage__bottomRow {\n  background: black;\n  width: 80%;\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.chatPage__bottomRow textarea {\n  background: none;\n  border-radius: 9999px;\n  border: 1px solid white;\n  color: white;\n  font-weight: 300;\n  outline: none;\n  font-size: clamp(1.2rem, 3vw, 1.5rem);\n  padding-block: 0.5em;\n  padding-inline: 1.25em;\n  flex-grow: 1;\n  resize: none;\n  min-height: 1em;\n  max-height: 6em;\n  border-radius: 1rem;\n  scrollbar-width: none;\n}\n.chatPage__bottomRow button {\n  color: white;\n  border-radius: 9999px;\n  font-size: clamp(0.95rem, 2.5vw, 1.25rem);\n  font-weight: 300;\n  padding: 0.25em 1.5em;\n  white-space: nowrap;\n  transition: 300ms;\n  border: 1px solid white;\n  background: none;\n}\n.chatPage__bottomRow button:hover, .chatPage__bottomRow button:focus {\n  background: #0a4bac;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13069,7 +13295,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".userPage {\n  flex-direction: row;\n}\n@media (max-width: 960px) {\n  .userPage {\n    flex-direction: column;\n    justify-content: center;\n  }\n}\n.userPage__leftSide {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 1rem;\n}\n.userPage__leftSide img {\n  border-radius: 50%;\n  background-color: white;\n  height: 18rem;\n  width: 18rem;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.userPage__mainInfo {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: 2rem;\n}\n@media (max-width: 960px) {\n  .userPage__mainInfo {\n    align-items: center;\n  }\n}\n@media (min-width: 961px) {\n  .userPage__mainInfo {\n    height: 100%;\n  }\n}\n.userPage__mainInfo h1 {\n  font-size: clamp(1.8rem, 3.8vw, 2.6rem);\n}\n.userPage__mainInfo .mainInfo__numberData {\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n  justify-content: center;\n}\n.userPage__mainInfo .mainInfo__numberData .numberData__amount {\n  display: grid;\n  grid-template-rows: 2fr 1fr;\n  place-items: center;\n  gap: 1rem;\n}\n.userPage__mainInfo .mainInfo__numberData .numberData__amount .amount__name {\n  display: flex;\n  position: relative;\n  flex-direction: column;\n  align-items: center;\n  gap: 0.5rem;\n}\n.userPage__mainInfo .mainInfo__numberData .numberData__amount .amount__name::after {\n  position: absolute;\n  content: \"\";\n  background: #484C52;\n  width: calc(100% + 1rem);\n  height: 1px;\n  top: 110%;\n}\n.userPage__mainInfo .mainInfo__numberData .numberData__amount .amount__name ion-icon {\n  font-size: clamp(1.8rem, 3.8vw, 2.6rem);\n}\n.userPage__mainInfo .mainInfo__numberData .numberData__amount .amount__name h2 {\n  font-size: clamp(1.2rem, 2.6vw, 2rem);\n}\n.userPage__mainInfo .mainInfo__numberData .numberData__amount h3 {\n  color: #F331A6;\n  font-size: clamp(1rem, 1.7vw, 1.6rem);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -79854,6 +80080,36 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./resources/js/components/FriendActionBtns/FriendActionBtns.scss":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/FriendActionBtns/FriendActionBtns.scss ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_FriendActionBtns_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./FriendActionBtns.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/components/FriendActionBtns/FriendActionBtns.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_FriendActionBtns_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_FriendActionBtns_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 

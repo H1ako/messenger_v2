@@ -1,24 +1,11 @@
-// global dependencies
-import { useRecoilState } from "recoil"
-// recoil atoms
-import { newChatMembersIdsState } from "../../recoil/NewChatAtom"
+// components
+import FriendActionBtns from "../FriendActionBtns/FriendActionBtns"
 
 function SearchResultChatMember({
     friendId,
     username,
     picture,
 }) {
-    const [chatMembers, setChatMembers] = useRecoilState(newChatMembersIdsState)
-
-    const handleChange = (e) => {
-        if (chatMembers.includes(friendId)) {
-            const arrayWithoutUserId = [...chatMembers].filter(el => el != friendId)
-            setChatMembers(arrayWithoutUserId)
-            return
-        }
-        setChatMembers([...chatMembers, friendId])
-    }
-
     if (!friendId || !username) {
         return (
             <li className='searchResultUser notLoaded'>
@@ -39,8 +26,10 @@ function SearchResultChatMember({
                 <h2>{username}</h2>
             </span>
             <span className="btns">
-                <input checked={chatMembers.includes(friendId) ? true : false} onChange={handleChange} type="checkbox" id={`user-${friendId}`} />
-                <label htmlFor={`user-${friendId}`} />
+                <FriendActionBtns
+                    type={'chatMember'}
+                    friendId={friendId}
+                />
             </span>
         </li>
     )

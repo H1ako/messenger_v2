@@ -10,13 +10,18 @@ $sizeScreenBigTablet: 1025px;
 $sizeScreenDesktop: 1280px;
 
 // fonts
-$fontSize3: clamp(.950rem, 2.5vw, 1.25rem);
 $fontSize2: clamp(1.2rem, 3vw, 1.5rem);
+$fontSize3: clamp(.950rem, 2.5vw, 1.25rem);
 $fontSizeSidebarIcon: clamp(2rem, 5vw, 2.5rem);
+
+$fontSizeBig1: clamp(1.8rem, 3.8vw, 2.6rem);
+$fontSizeBig2: clamp(1.2rem, 2.6vw, 2rem);
+$fontSizeBig3: clamp(1rem, 1.7vw, 1.6rem);
 
 // colors
 $colorBg: black;
 $colorGray: #484C52;
+$colorUpdated: rgba(72, 76, 82, .5);
 $colorLight: white;
 $colorMain: #0a4bac; // #317FF3;
 $colorMainLight: #0b60df; // #448cf8;
