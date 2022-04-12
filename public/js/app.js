@@ -5525,7 +5525,7 @@ function FriendActionBtns(_ref) {
       chatMembers = _useRecoilState2[0],
       setChatMembers = _useRecoilState2[1];
 
-  var handleChange = function handleChange(e) {
+  var handleChange = function handleChange() {
     if (chatMembers.includes(friendId)) {
       var arrayWithoutUserId = _toConsumableArray(chatMembers).filter(function (el) {
         return el != friendId;

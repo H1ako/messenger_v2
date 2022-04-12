@@ -13,7 +13,7 @@ function FriendActionBtns({ friendId, userId, requestFrom, relationship, type='f
     const [userRelationship, setUserRelationship] = useState(relationship)
     const [chatMembers, setChatMembers] = useRecoilState(newChatMembersIdsState)
 
-    const handleChange = (e) => {
+    const handleChange = () => {
         if (chatMembers.includes(friendId)) {
             const arrayWithoutUserId = [...chatMembers].filter(el => el != friendId)
             setChatMembers(arrayWithoutUserId)
