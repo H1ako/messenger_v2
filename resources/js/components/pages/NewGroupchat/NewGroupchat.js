@@ -3,10 +3,11 @@ import './NewGroupchat.scss'
 // global dependencies
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 // recoil atoms
 import { searchResultChatMembersState } from '../../../recoil/SearchAtom'
 import { newChatMembersIdsState, newChatPictureFileState } from '../../../recoil/NewChatAtom'
+import { currentLanguageAtom } from '../../../recoil/LanguageAtom'
 // components
 import Search from '../../Search/Search.js'
 import SearchResults from '../../SearchResults/SearchResults.js'
@@ -14,6 +15,7 @@ import UploadPicture from '../../UploadPicture/UploadPicture.js'
 
 // for creating new chat
 function NewGroupchat() {
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
     const navigate = useNavigate()
     const [chatName, setChatName] = useState('')
     const [users, setUsers] = useRecoilState(searchResultChatMembersState)
@@ -53,11 +55,11 @@ function NewGroupchat() {
         <div className="page newGroupchatPage">
             <div className="mainInfo">
                 <UploadPicture recoilState={newChatPictureFileState} />
-                <input type="text" placeholder='chat name' value={chatName} onChange={e => setChatName(e.target.value)} />
+                <input type="text" placeholder={currentLanguage.keys?.chatName} value={chatName} onChange={e => setChatName(e.target.value)} />
             </div>
             <Search searchType='friends'/>
             <SearchResults searchResults={users} type='chatMembers' />
-            <button onClick={makeNewChat}>ok</button>
+            <button onClick={makeNewChat}>{currentLanguage.keys?.ok}</button>
         </div>
     )
 }

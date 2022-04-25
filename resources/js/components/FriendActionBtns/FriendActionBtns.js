@@ -2,13 +2,15 @@
 import './FriendActionBtns.scss'
 // global dependencies
 import { useState, useEffect } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 // recoil atoms
 import { newChatMembersIdsState } from '../../recoil/NewChatAtom'
+import { currentLanguageAtom } from '../../recoil/LanguageAtom'
 // libs
 import { customFetch } from '../../libs/customFetch'
 
 function FriendActionBtns({ friendId, userId, requestFrom, relationship, type='friend' }) {
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
     const [userRequestFrom, setUserRequestFrom] = useState(requestFrom)
     const [userRelationship, setUserRelationship] = useState(relationship)
     const [chatMembers, setChatMembers] = useRecoilState(newChatMembersIdsState)
@@ -69,7 +71,7 @@ function FriendActionBtns({ friendId, userId, requestFrom, relationship, type='f
     if (userRelationship === 'friend') {
         return (
             <div className="friendActionBtns">
-                <button onClick={removeFriend} className='btnRemove'>remove</button>
+                <button onClick={removeFriend} className='btnRemove'>{currentLanguage.keys?.remove}</button>
             </div>
         )
     }
@@ -77,7 +79,7 @@ function FriendActionBtns({ friendId, userId, requestFrom, relationship, type='f
     else if (userRelationship === 'no') {
         return (
             <div className="friendActionBtns">
-                <button onClick={sendRequest} className='btnAdd'>add</button>
+                <button onClick={sendRequest} className='btnAdd'>{currentLanguage.keys?.add}</button>
             </div>
         )
     }
@@ -85,8 +87,8 @@ function FriendActionBtns({ friendId, userId, requestFrom, relationship, type='f
     else if (userRelationship === 'request' && userRequestFrom !== userId) {
         return (
             <div className="friendActionBtns">
-                <button onClick={acceptRequest} className='btnAccept'>accept</button>
-                <button onClick={declineRequest} className='btnDecline'>decline</button>
+                <button onClick={acceptRequest} className='btnAccept'>{currentLanguage.keys?.accept}</button>
+                <button onClick={declineRequest} className='btnDecline'>{currentLanguage.keys?.decline}</button>
             </div>
         )
     }
@@ -94,7 +96,7 @@ function FriendActionBtns({ friendId, userId, requestFrom, relationship, type='f
     else if (userRelationship === 'request' && userRequestFrom === userId) {
         return (
             <div className="friendActionBtns">
-                <button onClick={cancelRequest} className='btnCancel'>cancel</button>
+                <button onClick={cancelRequest} className='btnCancel'>{currentLanguage.keys?.cancel}</button>
             </div>
         )
     }

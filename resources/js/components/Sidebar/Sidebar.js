@@ -3,20 +3,22 @@ import './Sidebar.scss'
 // global dependencies
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 // recoil atoms
 import { userInfoState } from '../../recoil/UserAtom';
+import { currentLanguageAtom } from '../../recoil/LanguageAtom';
 // libs
 import { useSidebarLinks } from '../../libs/useSidebarLinks'
-import { customFetch } from '../../libs/customFetch';
+import { customFetch } from '../../libs/customFetch'
 
 function Sidebar() {
     const navigate = useNavigate();
     const location = useLocation()
-    const navLinks = useSidebarLinks(location.pathname)
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
+    const navLinks = useSidebarLinks(location.pathname, currentLanguage.name)
     const [isActive, setIsActive] = useState(false)
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
-
+    
     const signOut = () => {
         customFetch('/sign-out', 'POST')
         .then(response => response.json())
@@ -44,7 +46,7 @@ function Sidebar() {
                 <ul>
                     <li className='menuBtn' onClick={() => setIsActive(!isActive)}>
                         <ion-icon name="menu-outline"></ion-icon>
-                        <h3>menu</h3>
+                        <h3>{currentLanguage.keys?.menu}</h3>
                     </li>
                     {navLinks.map(link => 
                         <li key={link.pathname} className={`${location.pathname == link.pathname ? 'active' : ''}`}>
@@ -59,7 +61,7 @@ function Sidebar() {
             {userInfo.id && 
                 <div onClick={signOut} className="sidebar__exit">
                     <ion-icon name="exit-outline"></ion-icon>
-                    <h3>log out</h3>
+                    <h3>{currentLanguage.keys?.signOut}</h3>
                 </div>
             }
         </div>

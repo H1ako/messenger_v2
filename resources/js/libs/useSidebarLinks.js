@@ -1,15 +1,19 @@
-function useSidebarLinks(path) {
+// localization
+import russian from '../../localization/ru.js'
+import english from '../../localization/en.js'
+
+function useSidebarLinks(path, lang) {
     if (['/sign-in', '/sign-up'].includes(path)) {
         return [
             {
                 pathname: '/sign-in',
                 icon: 'person-outline',
-                name: 'sign in'
+                name: lang === 'en' ? english.keys?.signIn : russian.keys?.signIn
             },
             {
                 pathname: '/sign-up',
                 icon: 'person-add-outline',
-                name: 'sign up'
+                name: lang === 'en' ? english.keys?.signUp : russian.keys?.signUp
             }
         ]
     }
@@ -18,12 +22,12 @@ function useSidebarLinks(path) {
             {
                 pathname: '/',
                 icon: 'home-outline',
-                name: 'home'
+                name: lang === 'en' ? english.keys?.home : russian.keys?.home
             },
             {
                 pathname: '/chats',
                 icon: 'chatbubble-outline',
-                name: 'chats'
+                name: lang === 'en' ? english.keys?.chats : russian.keys?.chats
             }
         ]
     }

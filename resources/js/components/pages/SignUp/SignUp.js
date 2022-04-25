@@ -3,16 +3,18 @@ import './SignUp.scss'
 // global dependencies
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { signUpPuctureFileState } from '../../../recoil/SignUpAtom'
 // recoil atoms
 import { userInfoState } from '../../../recoil/UserAtom'
+import { currentLanguageAtom } from '../../../recoil/LanguageAtom'
 // components
 import UploadPicture from "../../UploadPicture/UploadPicture"
 
 // sign up page
 function SignUp() {
-    const navigate = useNavigate();
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
+    const navigate = useNavigate()
     const [pictureFile, setPictureFile] = useRecoilState(signUpPuctureFileState)
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
     const [name, setName] = useState('')
@@ -68,21 +70,21 @@ function SignUp() {
     return (
         <div className="page loginPage">
             <div className="loginPage__signUp">
-                <h1>sign up</h1>
+                <h1>{currentLanguage.keys?.signUp}</h1>
                 <div className="signUp__info">
                     <UploadPicture  recoilState={signUpPuctureFileState} />
                     <div className="info__main">
-                        <input required value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="name" />
-                        <input required value={surname} onChange={(e) => setSurname(e.target.value)} type="text" placeholder="surname" />
-                        <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email" />
+                        <input required value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder={currentLanguage.keys?.name} />
+                        <input required value={surname} onChange={(e) => setSurname(e.target.value)} type="text" placeholder={currentLanguage.keys?.surname} />
+                        <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder={currentLanguage.keys?.email} />
                     </div>
                 </div>
                 <div className="signUp__passwords">
-                    <input required value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" />
-                    <input required value={passwordAgain} onChange={(e) => setPasswordAgain(e.target.value)} type="password" placeholder="password again" />
+                    <input required value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder={currentLanguage.keys?.password} />
+                    <input required value={passwordAgain} onChange={(e) => setPasswordAgain(e.target.value)} type="password" placeholder={currentLanguage.keys?.passwordAgain} />
                 </div>
             </div>
-            <button onClick={signUp}>ok</button>
+            <button onClick={signUp}>{currentLanguage.keys?.ok}</button>
         </div>
     )
 }

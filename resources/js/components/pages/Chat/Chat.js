@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useRecoilValue } from 'recoil'
 // recoil atoms
 import { userInfoState } from '../../../recoil/UserAtom.js'
+import { currentLanguageAtom } from '../../../recoil/LanguageAtom'
 // libs
 import { customFetch } from '../../../libs/customFetch'
 // components
@@ -13,6 +14,7 @@ import ChatMessage from './ChatMessage'
 
 // Chat page
 function Chat() {
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
     const { chatId } = useParams()
     const [chatInfo, setChatInfo] = useState({})
     const [messages, setMessages] = useState([])
@@ -73,7 +75,7 @@ function Chat() {
                      <img src={chatInfo.picture} alt="" />
                      <h3>{chatInfo.name}</h3>
                 </div>
-                <button>settings</button>
+                <button>{currentLanguage.keys?.settings}</button>
             </div>
             :
             <div className="chatPage__topRow">
@@ -100,11 +102,10 @@ function Chat() {
                     autoFocus
                     value={messageText}
                     onChange={(e) => setMessageText(e.target.value)}
-                    placeholder='your message...'
+                    placeholder={currentLanguage.keys?.yourMessage}
                 />
-                <button
-                    onClick={sendMessage}
-                >send
+                <button onClick={sendMessage} >
+                    {currentLanguage.keys?.send}
                 </button>
             </div>
         </div>

@@ -7,6 +7,7 @@ import { cloneDeep } from 'lodash'
 import { chatTypeState } from '../../../recoil/SelectorAtom.js'
 import { searchResultChatsState } from '../../../recoil/SearchAtom.js'
 import { userInfoState } from '../../../recoil/UserAtom.js'
+import { currentLanguageAtom } from '../../../recoil/LanguageAtom.js'
 // components
 import Search from '../../Search/Search.js'
 import Selector from '../../Selector/Selector.js'
@@ -16,6 +17,7 @@ import { customFetch } from '../../../libs/customFetch';
 
 // chats page
 function Chats(props) {
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
     const chatType = useRecoilValue(chatTypeState)
     const [chats, setChats] = useRecoilState(searchResultChatsState)
     const [user, setUser] = useRecoilState(userInfoState)
@@ -55,7 +57,7 @@ function Chats(props) {
             <Search searchType='chats'/>
             <div className="pageRow">
                 <Selector type='chats'/>
-                <Link to='/new-groupchat'>new groupchat</Link>
+                <Link to='/new-groupchat'>{currentLanguage.keys?.newGroupchat}</Link>
             </div>
             <SearchResults searchResults={chats} type='chats'/>
         </div>

@@ -5468,8 +5468,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../recoil/NewChatAtom */ "./resources/js/recoil/NewChatAtom.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5496,6 +5497,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // libs
 
 
@@ -5509,6 +5511,7 @@ function FriendActionBtns(_ref) {
       relationship = _ref.relationship,
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? 'friend' : _ref$type;
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_4__.currentLanguageAtom);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(requestFrom),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5539,7 +5542,7 @@ function FriendActionBtns(_ref) {
   };
 
   var removeFriend = function removeFriend() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/remove-friend', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/friend/remove-friend', 'POST', JSON.stringify({
       friendId: friendId
     }));
     setUserRelationship('request');
@@ -5547,7 +5550,7 @@ function FriendActionBtns(_ref) {
   };
 
   var sendRequest = function sendRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/send-request', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/friend/send-request', 'POST', JSON.stringify({
       friendId: friendId
     }));
     setUserRelationship('request');
@@ -5555,21 +5558,21 @@ function FriendActionBtns(_ref) {
   };
 
   var acceptRequest = function acceptRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/accept-request', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/friend/accept-request', 'POST', JSON.stringify({
       friendId: friendId
     }));
     setUserRelationship('friend');
   };
 
   var declineRequest = function declineRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/decline-friend', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/friend/decline-friend', 'POST', JSON.stringify({
       friendId: friendId
     }));
     setUserRelationship('no');
   };
 
   var cancelRequest = function cancelRequest() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)('/friend/cancel-request', 'POST', JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/friend/cancel-request', 'POST', JSON.stringify({
       friendId: friendId
     }));
     setUserRelationship('no');
@@ -5583,60 +5586,68 @@ function FriendActionBtns(_ref) {
   }, [requestFrom]);
 
   if (type === 'chatMember') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "friendActionBtns",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         checked: chatMembers.includes(friendId) ? true : false,
         onChange: handleChange,
         type: "checkbox",
         id: "user-".concat(friendId)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
         htmlFor: "user-".concat(friendId)
       })]
     });
   }
 
   if (userRelationship === 'friend') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    var _currentLanguage$keys;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "friendActionBtns",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         onClick: removeFriend,
         className: "btnRemove",
-        children: "remove"
+        children: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.remove
       })
     });
   } else if (userRelationship === 'no') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    var _currentLanguage$keys2;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "friendActionBtns",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         onClick: sendRequest,
         className: "btnAdd",
-        children: "add"
+        children: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.add
       })
     });
   } else if (userRelationship === 'request' && userRequestFrom !== userId) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    var _currentLanguage$keys3, _currentLanguage$keys4;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "friendActionBtns",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         onClick: acceptRequest,
         className: "btnAccept",
-        children: "accept"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        children: (_currentLanguage$keys3 = currentLanguage.keys) === null || _currentLanguage$keys3 === void 0 ? void 0 : _currentLanguage$keys3.accept
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         onClick: declineRequest,
         className: "btnDecline",
-        children: "decline"
+        children: (_currentLanguage$keys4 = currentLanguage.keys) === null || _currentLanguage$keys4 === void 0 ? void 0 : _currentLanguage$keys4.decline
       })]
     });
   } else if (userRelationship === 'request' && userRequestFrom === userId) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    var _currentLanguage$keys5;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "friendActionBtns",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         onClick: cancelRequest,
         className: "btnCancel",
-        children: "cancel"
+        children: (_currentLanguage$keys5 = currentLanguage.keys) === null || _currentLanguage$keys5 === void 0 ? void 0 : _currentLanguage$keys5.cancel
       })
     });
-  } else return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  } else return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
     className: "error",
     children: "error"
   });
@@ -5657,8 +5668,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+ // recoil atoms
+
 
 
 
@@ -5673,65 +5689,70 @@ function SearchResultChat(_ref) {
       companion = _ref.companion,
       lastMessageSender = _ref.lastMessageSender,
       isNew = _ref.isNew;
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_1__.currentLanguageAtom);
 
   if (type === 'dialog') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+    var _currentLanguage$keys;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
       className: "searchResultChat".concat(isNew ? ' newMessage' : ''),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "/user/".concat(companion === null || companion === void 0 ? void 0 : companion.id),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
           src: companion === null || companion === void 0 ? void 0 : companion.picture,
           className: "searchResultChat__chatPic"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "/chats/".concat(chatId),
         className: "searchResultChat__chatInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
           children: "".concat(companion === null || companion === void 0 ? void 0 : companion.name, " ").concat(companion === null || companion === void 0 ? void 0 : companion.surname)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-          children: lastMessage ? lastMessage : 'start dialog...'
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: lastMessage ? lastMessage : (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.startDialog
         })]
       })]
     });
   }
 
   if (type === 'groupchat') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+    var _currentLanguage$keys2;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
       className: "searchResultChat".concat(isNew ? ' newMessage' : ''),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "/chats/".concat(chatId),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
           src: pic,
           className: "searchResultChat__chatPic"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "searchResultChat__chatInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
           to: "/chats/".concat(chatId),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
             children: name
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "chatInfo__lastMessage",
-          children: lastMessage && lastMessageSender !== null && lastMessageSender !== void 0 && lastMessageSender.name ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+          children: lastMessage && lastMessageSender !== null && lastMessageSender !== void 0 && lastMessageSender.name ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
               to: "/user/".concat(lastMessageSender === null || lastMessageSender === void 0 ? void 0 : lastMessageSender.id),
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
                 src: lastMessageSender === null || lastMessageSender === void 0 ? void 0 : lastMessageSender.picture,
                 className: "lastMessage__userPic"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
               to: "/chats/".concat(chatId),
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
                 children: "".concat(lastMessageSender === null || lastMessageSender === void 0 ? void 0 : lastMessageSender.name, ": ").concat(lastMessage)
               })
             })]
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
             to: "/chats/".concat(chatId),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
               className: "lastMessage__userPic"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-              children: "start dialog..."
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+              children: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.startDialog
             })]
           })
         })]
@@ -5739,7 +5760,7 @@ function SearchResultChat(_ref) {
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "error",
     children: "error"
   });
@@ -6016,8 +6037,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../recoil/SearchAtom */ "./resources/js/recoil/SearchAtom.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6037,13 +6059,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // libs
 
 
 
 
 function Search(_ref) {
+  var _currentLanguage$keys;
+
   var searchType = _ref.searchType;
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_5__.currentLanguageAtom);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6065,7 +6091,7 @@ function Search(_ref) {
       chatMembers = _useRecoilState6[0],
       setChatMembers = _useRecoilState6[1];
 
-  if (!searchType) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+  if (!searchType) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
     type: "text",
     name: "search",
     disabled: true,
@@ -6073,7 +6099,7 @@ function Search(_ref) {
     placeholder: "something went wrong..."
   });
   var getSearchData = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((0,lodash__WEBPACK_IMPORTED_MODULE_2__.debounce)(function (query) {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)("/api/search/".concat(searchType), "POST", JSON.stringify({
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_6__.customFetch)("/api/search/".concat(searchType), "POST", JSON.stringify({
       searchQuery: query
     })).then(function (request) {
       return request.json();
@@ -6097,7 +6123,7 @@ function Search(_ref) {
     if (searchType === 'users' && !(0,lodash__WEBPACK_IMPORTED_MODULE_2__.trim)(searchQuery)) return;
     getSearchData(searchQuery);
   }, [searchQuery]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
     type: "search",
     value: searchQuery,
     onChange: function onChange(e) {
@@ -6105,7 +6131,7 @@ function Search(_ref) {
     },
     name: "search",
     className: "search",
-    placeholder: "search"
+    placeholder: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.search
   });
 }
 
@@ -6127,7 +6153,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Selector_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Selector.scss */ "./resources/js/components/Selector/Selector.scss");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_SelectorAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../recoil/SelectorAtom */ "./resources/js/recoil/SelectorAtom.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6145,6 +6172,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // home page
 
 
@@ -6152,6 +6180,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Selector(_ref) {
   var type = _ref.type;
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_3__.currentLanguageAtom);
 
   var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_recoil_SelectorAtom__WEBPACK_IMPORTED_MODULE_2__.chatTypeState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
@@ -6164,56 +6193,60 @@ function Selector(_ref) {
       setUserType = _useRecoilState4[1];
 
   if (type === 'users') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    var _currentLanguage$keys, _currentLanguage$keys2, _currentLanguage$keys3;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "selector",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         onClick: function onClick() {
           return setUserType('all');
         },
         className: userType === 'all' ? 'active' : '',
-        children: "all"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        children: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.all
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         onClick: function onClick() {
           return setUserType('friends');
         },
         className: userType === 'friends' ? 'active' : '',
-        children: "friends"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        children: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.friends
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         onClick: function onClick() {
           return setUserType('requests');
         },
         className: userType === 'requests' ? 'active' : '',
-        children: "requests"
+        children: (_currentLanguage$keys3 = currentLanguage.keys) === null || _currentLanguage$keys3 === void 0 ? void 0 : _currentLanguage$keys3.requests
       })]
     });
   }
 
   if (type === 'chats') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    var _currentLanguage$keys4, _currentLanguage$keys5, _currentLanguage$keys6;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "selector",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         onClick: function onClick() {
           return setChatType('all');
         },
         className: chatType === 'all' ? 'active' : '',
-        children: "all"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        children: (_currentLanguage$keys4 = currentLanguage.keys) === null || _currentLanguage$keys4 === void 0 ? void 0 : _currentLanguage$keys4.all
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         onClick: function onClick() {
           return setChatType('dialogs');
         },
         className: chatType === 'dialogs' ? 'active' : '',
-        children: "dialogs"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        children: (_currentLanguage$keys5 = currentLanguage.keys) === null || _currentLanguage$keys5 === void 0 ? void 0 : _currentLanguage$keys5.dialogs
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         onClick: function onClick() {
           return setChatType('groupchats');
         },
         className: chatType === 'groupchats' ? 'active' : '',
-        children: "groupchats"
+        children: (_currentLanguage$keys6 = currentLanguage.keys) === null || _currentLanguage$keys6 === void 0 ? void 0 : _currentLanguage$keys6.groupchats
       })]
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "error",
     children: "error"
   });
@@ -6235,14 +6268,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Sidebar_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Sidebar.scss */ "./resources/js/components/Sidebar/Sidebar.scss");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _libs_useSidebarLinks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../libs/useSidebarLinks */ "./resources/js/libs/useSidebarLinks.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _libs_useSidebarLinks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../libs/useSidebarLinks */ "./resources/js/libs/useSidebarLinks.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6262,6 +6296,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // libs
 
 
@@ -6270,9 +6305,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Sidebar() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useLocation)();
-  var navLinks = (0,_libs_useSidebarLinks__WEBPACK_IMPORTED_MODULE_4__.useSidebarLinks)(location.pathname);
+  var _currentLanguage$keys, _currentLanguage$keys2;
+
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useLocation)();
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_4__.currentLanguageAtom);
+  var navLinks = (0,_libs_useSidebarLinks__WEBPACK_IMPORTED_MODULE_5__.useSidebarLinks)(location.pathname, currentLanguage.name);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6285,7 +6323,7 @@ function Sidebar() {
       setUserInfo = _useRecoilState2[1];
 
   var signOut = function signOut() {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/sign-out', 'POST').then(function (response) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_6__.customFetch)('/sign-out', 'POST').then(function (response) {
       return response.json();
     }).then(function (response) {
       if (response.error) {
@@ -6300,49 +6338,49 @@ function Sidebar() {
     });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "sidebar".concat(isActive ? ' active' : '').concat(userInfo.id ? '' : ' notLoggedIn'),
-    children: [userInfo.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+    children: [userInfo.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
       to: "/user/".concat(userInfo.id),
       className: "sidebar__userInfo",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
         src: userInfo.picture
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
         children: "".concat(userInfo.name, " ").concat(userInfo.surname)
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("nav", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ul", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("nav", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("ul", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("li", {
           className: "menuBtn",
           onClick: function onClick() {
             return setIsActive(!isActive);
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
             name: "menu-outline"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-            children: "menu"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+            children: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.menu
           })]
         }), navLinks.map(function (link) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("li", {
             className: "".concat(location.pathname == link.pathname ? 'active' : ''),
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
               to: link.pathname,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
                 name: link.icon
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
                 children: link.name
               })]
             })
           }, link.pathname);
         })]
       })
-    }), userInfo.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    }), userInfo.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       onClick: signOut,
       className: "sidebar__exit",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
         name: "exit-outline"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-        children: "log out"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+        children: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.signOut
       })]
     })]
   });
@@ -6366,7 +6404,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UploadPicture_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UploadPicture.scss */ "./resources/js/components/UploadPicture/UploadPicture.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6383,12 +6422,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  // global dependencies
 
 
+ // recoil atoms
+
 
 
 
 
 function UploadPicture(_ref) {
   var recoilState = _ref.recoilState;
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_3__.currentLanguageAtom);
 
   var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(recoilState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
@@ -6407,16 +6449,16 @@ function UploadPicture(_ref) {
     setPicture(value);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "chatPicture",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
       onChange: pictureHandler,
       id: "chatPictureUpload",
       type: "file",
       accept: ".png, .jpg, .jpeg"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
       htmlFor: "chatPictureUpload",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
         src: picture
       })
     })]
@@ -6439,13 +6481,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Chat_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Chat.scss */ "./resources/js/components/pages/Chat/Chat.scss");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var _ChatMessage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatMessage */ "./resources/js/components/pages/Chat/ChatMessage.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var _ChatMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChatMessage */ "./resources/js/components/pages/Chat/ChatMessage.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6473,6 +6516,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // libs
 
  // components
@@ -6483,7 +6527,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Chat() {
-  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)(),
+  var _currentLanguage$keys, _currentLanguage$keys2, _currentLanguage$keys3;
+
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_4__.currentLanguageAtom);
+
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)(),
       chatId = _useParams.chatId;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
@@ -6515,7 +6563,7 @@ function Chat() {
       text: messageText
     };
     setMessageText("");
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)("/chats/".concat(chatId, "/new-message"), "POST", JSON.stringify(messageData));
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)("/chats/".concat(chatId, "/new-message"), "POST", JSON.stringify(messageData));
   };
 
   var handeEnter = function handeEnter(e) {
@@ -6525,7 +6573,7 @@ function Chat() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)("/api/chats/".concat(chatId), "POST").then(function (data) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)("/api/chats/".concat(chatId), "POST").then(function (data) {
       return data.json();
     }).then(function (data) {
       if (data.error) {
@@ -6550,58 +6598,58 @@ function Chat() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     messagesBottom.current.scrollIntoView();
   }, [messages]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "page chatPage",
     onKeyUp: handeEnter,
-    children: [chatInfo.chat_type === 'groupchat' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [chatInfo.chat_type === 'groupchat' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "chatPage__topRow",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "topRow__chatInfo".concat(!chatInfo.name ? ' notLoaded' : ''),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
           src: chatInfo.picture,
           alt: ""
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
           children: chatInfo.name
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-        children: "settings"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        children: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.settings
       })]
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       className: "chatPage__topRow",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "topRow__chatInfo".concat(!(companionInfo !== null && companionInfo !== void 0 && companionInfo.name) || !(companionInfo !== null && companionInfo !== void 0 && companionInfo.surname) ? ' notLoaded' : ''),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
           src: companionInfo === null || companionInfo === void 0 ? void 0 : companionInfo.picture,
           alt: ""
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
           children: "".concat(companionInfo === null || companionInfo === void 0 ? void 0 : companionInfo.name, " ").concat(companionInfo === null || companionInfo === void 0 ? void 0 : companionInfo.surname)
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "chatPage__messages",
       children: [messages.map(function (message) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ChatMessage__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ChatMessage__WEBPACK_IMPORTED_MODULE_6__["default"], {
           currentUserId: userInfo.id,
           sender: message.sender,
           text: message.text,
           time: message.updated_at
         }, message.id);
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         ref: messagesBottom,
         className: "messages__bottom"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "chatPage__bottomRow",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("textarea", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("textarea", {
         autoFocus: true,
         value: messageText,
         onChange: function onChange(e) {
           return setMessageText(e.target.value);
         },
-        placeholder: "your message..."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+        placeholder: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.yourMessage
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         onClick: sendMessage,
-        children: "send"
+        children: (_currentLanguage$keys3 = currentLanguage.keys) === null || _currentLanguage$keys3 === void 0 ? void 0 : _currentLanguage$keys3.send
       })]
     })]
   });
@@ -6667,7 +6715,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
@@ -6675,11 +6723,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/SelectorAtom.js */ "./resources/js/recoil/SelectorAtom.js");
 /* harmony import */ var _recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../recoil/SearchAtom.js */ "./resources/js/recoil/SearchAtom.js");
 /* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../recoil/LanguageAtom.js */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _Selector_Selector_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Selector/Selector.js */ "./resources/js/components/Selector/Selector.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6714,6 +6763,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
  // components
 
 
@@ -6726,6 +6776,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Chats(props) {
+  var _currentLanguage$keys;
+
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_LanguageAtom_js__WEBPACK_IMPORTED_MODULE_7__.currentLanguageAtom);
   var chatType = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_SelectorAtom_js__WEBPACK_IMPORTED_MODULE_4__.chatTypeState);
 
   var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_SearchAtom_js__WEBPACK_IMPORTED_MODULE_5__.searchResultChatsState),
@@ -6744,7 +6797,7 @@ function Chats(props) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_10__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
+            return (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_11__.customFetch)("/api/chats-get/".concat(chatType), 'POST').then(function (data) {
               return data.json();
             }).then(function (data) {
               if (data) {
@@ -6800,19 +6853,19 @@ function Chats(props) {
       }
     }, _callee2);
   })), [user]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
     className: "page chatsPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
       searchType: "chats"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
       className: "pageRow",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Selector_Selector_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
         type: "chats"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Link, {
         to: "/new-groupchat",
-        children: "new groupchat"
+        children: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.newGroupchat
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
       searchResults: chats,
       type: "chats"
     })]
@@ -6941,14 +6994,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _NewGroupchat_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewGroupchat.scss */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_SearchAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/SearchAtom */ "./resources/js/recoil/SearchAtom.js");
 /* harmony import */ var _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/NewChatAtom */ "./resources/js/recoil/NewChatAtom.js");
-/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
-/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
-/* harmony import */ var _UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture.js */ "./resources/js/components/UploadPicture/UploadPicture.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _Search_Search_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Search/Search.js */ "./resources/js/components/Search/Search.js");
+/* harmony import */ var _SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../SearchResults/SearchResults.js */ "./resources/js/components/SearchResults/SearchResults.js");
+/* harmony import */ var _UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture.js */ "./resources/js/components/UploadPicture/UploadPicture.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6969,6 +7023,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  // recoil atoms
 
 
+
  // components
 
 
@@ -6979,7 +7034,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function NewGroupchat() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useNavigate)();
+  var _currentLanguage$keys, _currentLanguage$keys2;
+
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_5__.currentLanguageAtom);
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useNavigate)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7030,28 +7088,28 @@ function NewGroupchat() {
     });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     className: "page newGroupchatPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
       className: "mainInfo",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_UploadPicture_UploadPicture_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
         recoilState: _recoil_NewChatAtom__WEBPACK_IMPORTED_MODULE_4__.newChatPictureFileState
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
         type: "text",
-        placeholder: "chat name",
+        placeholder: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.chatName,
         value: chatName,
         onChange: function onChange(e) {
           return setChatName(e.target.value);
         }
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Search_Search_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       searchType: "friends"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_SearchResults_SearchResults_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
       searchResults: users,
       type: "chatMembers"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
       onClick: makeNewChat,
-      children: "ok"
+      children: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.ok
     })]
   });
 }
@@ -7075,11 +7133,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SignIn_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SignIn.scss */ "./resources/js/components/pages/SignIn/SignIn.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -7105,6 +7164,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // libs
 
  // home page
@@ -7113,7 +7173,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SignIn() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
+  var _currentLanguage$keys, _currentLanguage$keys2, _currentLanguage$keys3, _currentLanguage$keys4;
+
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_5__.currentLanguageAtom);
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7147,7 +7210,7 @@ function SignIn() {
                 password: password
               };
               _context.next = 4;
-              return (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)('/sign-in', 'POST', JSON.stringify(userData)).then(function (response) {
+              return (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_6__.customFetch)('/sign-in', 'POST', JSON.stringify(userData)).then(function (response) {
                 return response.json();
               }).then(function (response) {
                 if (response.error) {
@@ -7177,30 +7240,30 @@ function SignIn() {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "page loginPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "loginPage__signIn",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
-        children: "sign in"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+        children: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.signIn
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
         value: email,
         onChange: function onChange(e) {
           return setEmail(e.target.value);
         },
         type: "email",
-        placeholder: "email"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+        placeholder: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.email
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
         value: password,
         onChange: function onChange(e) {
           return setPassword(e.target.value);
         },
         type: "password",
-        placeholder: "password"
+        placeholder: (_currentLanguage$keys3 = currentLanguage.keys) === null || _currentLanguage$keys3 === void 0 ? void 0 : _currentLanguage$keys3.password
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
       onClick: signIn,
-      children: "ok"
+      children: (_currentLanguage$keys4 = currentLanguage.keys) === null || _currentLanguage$keys4 === void 0 ? void 0 : _currentLanguage$keys4.ok
     })]
   });
 }
@@ -7224,12 +7287,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SignUp_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SignUp.scss */ "./resources/js/components/pages/SignUp/SignUp.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/SignUpAtom */ "./resources/js/recoil/SignUpAtom.js");
 /* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture */ "./resources/js/components/UploadPicture/UploadPicture.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../UploadPicture/UploadPicture */ "./resources/js/components/UploadPicture/UploadPicture.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -7256,6 +7320,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // components
 
  // sign up page
@@ -7264,7 +7329,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SignUp() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
+  var _currentLanguage$keys, _currentLanguage$keys2, _currentLanguage$keys3, _currentLanguage$keys4, _currentLanguage$keys5, _currentLanguage$keys6, _currentLanguage$keys7;
+
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_6__.currentLanguageAtom);
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useNavigate)();
 
   var _useRecoilState = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_4__.signUpPuctureFileState),
       _useRecoilState2 = _slicedToArray(_useRecoilState, 2),
@@ -7362,67 +7430,67 @@ function SignUp() {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "page loginPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "loginPage__signUp",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
-        children: "sign up"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
+        children: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.signUp
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "signUp__info",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_UploadPicture_UploadPicture__WEBPACK_IMPORTED_MODULE_7__["default"], {
           recoilState: _recoil_SignUpAtom__WEBPACK_IMPORTED_MODULE_4__.signUpPuctureFileState
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "info__main",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
             required: true,
             value: name,
             onChange: function onChange(e) {
               return setName(e.target.value);
             },
             type: "text",
-            placeholder: "name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+            placeholder: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
             required: true,
             value: surname,
             onChange: function onChange(e) {
               return setSurname(e.target.value);
             },
             type: "text",
-            placeholder: "surname"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+            placeholder: (_currentLanguage$keys3 = currentLanguage.keys) === null || _currentLanguage$keys3 === void 0 ? void 0 : _currentLanguage$keys3.surname
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
             required: true,
             value: email,
             onChange: function onChange(e) {
               return setEmail(e.target.value);
             },
             type: "email",
-            placeholder: "email"
+            placeholder: (_currentLanguage$keys4 = currentLanguage.keys) === null || _currentLanguage$keys4 === void 0 ? void 0 : _currentLanguage$keys4.email
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "signUp__passwords",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
           required: true,
           value: password,
           onChange: function onChange(e) {
             return setPassword(e.target.value);
           },
           type: "password",
-          placeholder: "password"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+          placeholder: (_currentLanguage$keys5 = currentLanguage.keys) === null || _currentLanguage$keys5 === void 0 ? void 0 : _currentLanguage$keys5.password
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
           required: true,
           value: passwordAgain,
           onChange: function onChange(e) {
             return setPasswordAgain(e.target.value);
           },
           type: "password",
-          placeholder: "password again"
+          placeholder: (_currentLanguage$keys6 = currentLanguage.keys) === null || _currentLanguage$keys6 === void 0 ? void 0 : _currentLanguage$keys6.passwordAgain
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
       onClick: signUp,
-      children: "ok"
+      children: (_currentLanguage$keys7 = currentLanguage.keys) === null || _currentLanguage$keys7 === void 0 ? void 0 : _currentLanguage$keys7.ok
     })]
   });
 }
@@ -7443,13 +7511,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _User_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User.scss */ "./resources/js/components/pages/User/User.scss");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../recoil/UserAtom */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var _FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../FriendActionBtns/FriendActionBtns */ "./resources/js/components/FriendActionBtns/FriendActionBtns.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../recoil/LanguageAtom */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _libs_customFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../libs/customFetch */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var _FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../FriendActionBtns/FriendActionBtns */ "./resources/js/components/FriendActionBtns/FriendActionBtns.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7469,6 +7538,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // libs
 
  // components
@@ -7479,9 +7549,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function User() {
-  var _user$relationship;
+  var _user$relationship, _currentLanguage$keys5, _currentLanguage$keys6, _currentLanguage$keys7, _currentLanguage$keys8;
 
-  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)(),
+  var currentLanguage = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_LanguageAtom__WEBPACK_IMPORTED_MODULE_4__.currentLanguageAtom);
+
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)(),
       userId = _useParams.userId;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
@@ -7491,78 +7563,80 @@ function User() {
 
   var userInfo = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_recoil_UserAtom__WEBPACK_IMPORTED_MODULE_3__.userInfoState);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_4__.customFetch)("/api/user/".concat(userId), "POST").then(function (data) {
+    (0,_libs_customFetch__WEBPACK_IMPORTED_MODULE_5__.customFetch)("/api/user/".concat(userId), "POST").then(function (data) {
       return data.json();
     }).then(function (data) {
       console.log(data);
       setUser(data.user);
     });
   }, [userId]);
-  if (!userInfo.id) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+  if (!userInfo.id) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "page userPage"
   });
 
   if (userInfo.id == userId) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    var _currentLanguage$keys, _currentLanguage$keys2, _currentLanguage$keys3, _currentLanguage$keys4;
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "page userPage",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         className: "userPage__leftSide",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
           src: user.picture,
           alt: ""
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "userPage__mainInfo",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
           children: user.name && user.surname && "".concat(user.name, " ").concat(user.surname)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "mainInfo__numberData",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "numberData__amount",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "amount__name",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
                 name: "people-outline"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-                children: "friends"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+                children: (_currentLanguage$keys = currentLanguage.keys) === null || _currentLanguage$keys === void 0 ? void 0 : _currentLanguage$keys.friends
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
               children: user.friendAmount
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "numberData__amount",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "amount__name",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
                 name: "people-circle-outline"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-                children: "requests"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+                children: (_currentLanguage$keys2 = currentLanguage.keys) === null || _currentLanguage$keys2 === void 0 ? void 0 : _currentLanguage$keys2.requests
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
               children: user.requestAmount
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "numberData__amount",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "amount__name",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
                 name: "chatbubble-ellipses-outline"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-                children: "groupchats"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+                children: (_currentLanguage$keys3 = currentLanguage.keys) === null || _currentLanguage$keys3 === void 0 ? void 0 : _currentLanguage$keys3.groupchats
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
               children: user.groupchatAmount
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "numberData__amount",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "amount__name",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
                 name: "chatbubbles-outline"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-                children: "dialogs"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+                children: (_currentLanguage$keys4 = currentLanguage.keys) === null || _currentLanguage$keys4 === void 0 ? void 0 : _currentLanguage$keys4.dialogs
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
               children: user.dialogAmount
             })]
           })]
@@ -7571,71 +7645,71 @@ function User() {
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "page userPage",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "userPage__leftSide",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
         src: user.picture,
         alt: ""
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_FriendActionBtns_FriendActionBtns__WEBPACK_IMPORTED_MODULE_6__["default"], {
         userId: userInfo.id,
         friendId: user.id,
         requestFrom: (_user$relationship = user.relationship) === null || _user$relationship === void 0 ? void 0 : _user$relationship.request_from,
         relationship: user.relationship ? user.relationship.relationship : 'no'
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "userPage__mainInfo",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
         children: user.name && user.surname && "".concat(user.name, " ").concat(user.surname)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "mainInfo__numberData",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "numberData__amount",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "amount__name",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
               name: "people-outline"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-              children: "friends"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+              children: (_currentLanguage$keys5 = currentLanguage.keys) === null || _currentLanguage$keys5 === void 0 ? void 0 : _currentLanguage$keys5.friends
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
             children: user.friendAmount
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "numberData__amount",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "amount__name",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
               name: "people-circle-outline"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-              children: "requests"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+              children: (_currentLanguage$keys6 = currentLanguage.keys) === null || _currentLanguage$keys6 === void 0 ? void 0 : _currentLanguage$keys6.requests
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
             children: user.requestAmount
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "numberData__amount",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "amount__name",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
               name: "chatbubbles-outline"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-              children: "groupchats"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+              children: (_currentLanguage$keys7 = currentLanguage.keys) === null || _currentLanguage$keys7 === void 0 ? void 0 : _currentLanguage$keys7.groupchats
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
             children: user.groupchatAmount
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "numberData__amount",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "amount__name",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ion-icon", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ion-icon", {
               name: "chatbubbles-outline"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-              children: "dialogs"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+              children: (_currentLanguage$keys8 = currentLanguage.keys) === null || _currentLanguage$keys8 === void 0 ? void 0 : _currentLanguage$keys8.dialogs
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
             children: user.dialogAmount
           })]
         })]
@@ -7726,26 +7800,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "useSidebarLinks": () => (/* binding */ useSidebarLinks)
 /* harmony export */ });
-function useSidebarLinks(path) {
+/* harmony import */ var _localization_ru_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../localization/ru.js */ "./resources/localization/ru.js");
+/* harmony import */ var _localization_en_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../localization/en.js */ "./resources/localization/en.js");
+// localization
+
+
+
+function useSidebarLinks(path, lang) {
   if (['/sign-in', '/sign-up'].includes(path)) {
+    var _english$keys, _russian$keys, _english$keys2, _russian$keys2;
+
     return [{
       pathname: '/sign-in',
       icon: 'person-outline',
-      name: 'sign in'
+      name: lang === 'en' ? (_english$keys = _localization_en_js__WEBPACK_IMPORTED_MODULE_1__["default"].keys) === null || _english$keys === void 0 ? void 0 : _english$keys.signIn : (_russian$keys = _localization_ru_js__WEBPACK_IMPORTED_MODULE_0__["default"].keys) === null || _russian$keys === void 0 ? void 0 : _russian$keys.signIn
     }, {
       pathname: '/sign-up',
       icon: 'person-add-outline',
-      name: 'sign up'
+      name: lang === 'en' ? (_english$keys2 = _localization_en_js__WEBPACK_IMPORTED_MODULE_1__["default"].keys) === null || _english$keys2 === void 0 ? void 0 : _english$keys2.signUp : (_russian$keys2 = _localization_ru_js__WEBPACK_IMPORTED_MODULE_0__["default"].keys) === null || _russian$keys2 === void 0 ? void 0 : _russian$keys2.signUp
     }];
   } else {
+    var _english$keys3, _russian$keys3, _english$keys4, _russian$keys4;
+
     return [{
       pathname: '/',
       icon: 'home-outline',
-      name: 'home'
+      name: lang === 'en' ? (_english$keys3 = _localization_en_js__WEBPACK_IMPORTED_MODULE_1__["default"].keys) === null || _english$keys3 === void 0 ? void 0 : _english$keys3.home : (_russian$keys3 = _localization_ru_js__WEBPACK_IMPORTED_MODULE_0__["default"].keys) === null || _russian$keys3 === void 0 ? void 0 : _russian$keys3.home
     }, {
       pathname: '/chats',
       icon: 'chatbubble-outline',
-      name: 'chats'
+      name: lang === 'en' ? (_english$keys4 = _localization_en_js__WEBPACK_IMPORTED_MODULE_1__["default"].keys) === null || _english$keys4 === void 0 ? void 0 : _english$keys4.chats : (_russian$keys4 = _localization_ru_js__WEBPACK_IMPORTED_MODULE_0__["default"].keys) === null || _russian$keys4 === void 0 ? void 0 : _russian$keys4.chats
     }];
   }
 }
@@ -7768,19 +7852,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
 /* harmony import */ var _recoil_UserAtom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./recoil/UserAtom.js */ "./resources/js/recoil/UserAtom.js");
-/* harmony import */ var _components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Sidebar/Sidebar.js */ "./resources/js/components/Sidebar/Sidebar.js");
-/* harmony import */ var _components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/Home/Home.js */ "./resources/js/components/pages/Home/Home.js");
-/* harmony import */ var _components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/Chats/Chats.js */ "./resources/js/components/pages/Chats/Chats.js");
-/* harmony import */ var _components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/Chat/Chat.js */ "./resources/js/components/pages/Chat/Chat.js");
-/* harmony import */ var _components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/NewGroupchat/NewGroupchat.js */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.js");
-/* harmony import */ var _components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/pages/SignIn/SignIn.js */ "./resources/js/components/pages/SignIn/SignIn.js");
-/* harmony import */ var _components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/pages/SignUp/SignUp.js */ "./resources/js/components/pages/SignUp/SignUp.js");
-/* harmony import */ var _components_pages_User_User_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/pages/User/User.js */ "./resources/js/components/pages/User/User.js");
-/* harmony import */ var _libs_customFetch_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./libs/customFetch.js */ "./resources/js/libs/customFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _recoil_LanguageAtom_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./recoil/LanguageAtom.js */ "./resources/js/recoil/LanguageAtom.js");
+/* harmony import */ var _components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Sidebar/Sidebar.js */ "./resources/js/components/Sidebar/Sidebar.js");
+/* harmony import */ var _components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/Home/Home.js */ "./resources/js/components/pages/Home/Home.js");
+/* harmony import */ var _components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/Chats/Chats.js */ "./resources/js/components/pages/Chats/Chats.js");
+/* harmony import */ var _components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/Chat/Chat.js */ "./resources/js/components/pages/Chat/Chat.js");
+/* harmony import */ var _components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/pages/NewGroupchat/NewGroupchat.js */ "./resources/js/components/pages/NewGroupchat/NewGroupchat.js");
+/* harmony import */ var _components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/pages/SignIn/SignIn.js */ "./resources/js/components/pages/SignIn/SignIn.js");
+/* harmony import */ var _components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/pages/SignUp/SignUp.js */ "./resources/js/components/pages/SignUp/SignUp.js");
+/* harmony import */ var _components_pages_User_User_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/pages/User/User.js */ "./resources/js/components/pages/User/User.js");
+/* harmony import */ var _libs_customFetch_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./libs/customFetch.js */ "./resources/js/libs/customFetch.js");
+/* harmony import */ var _localization_ru_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../localization/ru.js */ "./resources/localization/ru.js");
+/* harmony import */ var _localization_en_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../localization/en.js */ "./resources/localization/en.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -7804,6 +7891,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // recoil atoms
 
+
  // components
 
 
@@ -7814,6 +7902,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  // libs
+
+ // localization
+
 
 
 
@@ -7826,13 +7917,20 @@ function Main() {
       userInfo = _useRecoilState2[0],
       setUserInfo = _useRecoilState2[1];
 
+  var _useRecoilState3 = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_recoil_LanguageAtom_js__WEBPACK_IMPORTED_MODULE_4__.currentLanguageAtom),
+      _useRecoilState4 = _slicedToArray(_useRecoilState3, 2),
+      currentLanguage = _useRecoilState4[0],
+      setCurrentLanguage = _useRecoilState4[1];
+
+  var language = _localization_ru_js__WEBPACK_IMPORTED_MODULE_14__["default"];
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return (0,_libs_customFetch_js__WEBPACK_IMPORTED_MODULE_12__.customFetch)('/api/user', 'POST').then(function (data) {
+            setCurrentLanguage(language);
+            _context.next = 3;
+            return (0,_libs_customFetch_js__WEBPACK_IMPORTED_MODULE_13__.customFetch)('/api/user', 'POST').then(function (data) {
               return data.json();
             }).then(function (data) {
               if (data.error) {
@@ -7844,37 +7942,37 @@ function Main() {
               }
             });
 
-          case 2:
+          case 3:
           case "end":
             return _context.stop();
         }
       }
     }, _callee);
   })), []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("main", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Routes, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Sidebar_Sidebar_js__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("main", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Routes, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
           path: "/",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_pages_Home_Home_js__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
           path: "/chats",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_6__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_pages_Chats_Chats_js__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
           path: "/chats/:chatId",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_7__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_pages_Chat_Chat_js__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
           path: "/new-groupchat",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_pages_NewGroupchat_NewGroupchat_js__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
           path: "/sign-in",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_9__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_pages_SignIn_SignIn_js__WEBPACK_IMPORTED_MODULE_10__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
           path: "/sign-up",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_10__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_pages_SignUp_SignUp_js__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
           path: "/user/:userId",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_pages_User_User_js__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_pages_User_User_js__WEBPACK_IMPORTED_MODULE_12__["default"], {})
         })]
       })
     })]
@@ -7882,6 +7980,28 @@ function Main() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
+
+/***/ }),
+
+/***/ "./resources/js/recoil/LanguageAtom.js":
+/*!*********************************************!*\
+  !*** ./resources/js/recoil/LanguageAtom.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "currentLanguageAtom": () => (/* binding */ currentLanguageAtom)
+/* harmony export */ });
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/recoil.js");
+/* harmony import */ var _localization_en_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../localization/en.js */ "./resources/localization/en.js");
+
+
+var currentLanguageAtom = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
+  key: 'currentLanguageAtom',
+  "default": _localization_en_js__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
 
 /***/ }),
 
@@ -8001,6 +8121,104 @@ __webpack_require__.r(__webpack_exports__);
 var userInfoState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
   key: 'userInfoState',
   "default": {}
+});
+
+/***/ }),
+
+/***/ "./resources/localization/en.js":
+/*!**************************************!*\
+  !*** ./resources/localization/en.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'en',
+  keys: {
+    dialogs: "dialogs",
+    groupchats: "groupchats",
+    newGroupchat: "new groupchat",
+    signIn: "sign in",
+    signUp: "sign up",
+    signOut: "sign out",
+    ok: "ok",
+    email: "email",
+    password: "password",
+    passwordAgain: "password again",
+    name: "name",
+    surname: "surname",
+    uploadPicture: "upload picture",
+    menu: "menu",
+    remove: "remove",
+    add: "add",
+    cancel: "cancel",
+    all: "all",
+    friends: "friends",
+    requests: "requests",
+    search: "search",
+    home: "home",
+    chats: "chats",
+    chatName: "chat name",
+    startDialog: 'start dialog...',
+    settings: 'settings',
+    send: 'send',
+    yourMessage: 'your message...',
+    accept: 'accept',
+    decline: 'decline'
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/localization/ru.js":
+/*!**************************************!*\
+  !*** ./resources/localization/ru.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'ru',
+  keys: {
+    dialogs: "диалоги",
+    groupchats: "групчаты",
+    newGroupchat: "новый групчат",
+    signIn: "вход",
+    signUp: "регистрация",
+    signOut: "выйти",
+    ok: "готово",
+    email: "почта",
+    password: "пароль",
+    passwordAgain: "пароль вновь",
+    name: "имя",
+    surname: "фамилия",
+    uploadPicture: "загрузить фотографию",
+    menu: "меню",
+    remove: "удалить",
+    add: "добавить",
+    cancel: "отменить",
+    all: "все",
+    friends: "друзья",
+    requests: "заявки",
+    search: "поиск",
+    home: "главная",
+    chats: "чаты",
+    chatName: "название чата",
+    startDialog: 'начать диалог...',
+    settings: 'настройки',
+    send: 'отправить',
+    yourMessage: 'твоё сообщение...',
+    accept: 'принять',
+    decline: 'отклонить'
+  }
 });
 
 /***/ }),

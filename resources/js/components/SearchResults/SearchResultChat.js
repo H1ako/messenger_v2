@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom"
+import { useRecoilValue } from "recoil"
+// recoil atoms
+import { currentLanguageAtom } from "../../recoil/LanguageAtom"
 
 function SearchResultChat({
     chatId,
@@ -10,6 +13,7 @@ function SearchResultChat({
     lastMessageSender,
     isNew
 }) {
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
 
     if (type === 'dialog') {
         return (
@@ -19,7 +23,7 @@ function SearchResultChat({
                 </Link>
                 <Link to={`/chats/${chatId}`} className="searchResultChat__chatInfo">
                     <h2>{`${companion?.name} ${companion?.surname}`}</h2>
-                    <h3>{lastMessage ? lastMessage: 'start dialog...'}</h3>
+                    <h3>{lastMessage ? lastMessage: currentLanguage.keys?.startDialog}</h3>
                 </Link>
             </li>
         )
@@ -53,7 +57,7 @@ function SearchResultChat({
                             <img
                                 className='lastMessage__userPic'
                             />
-                            <h3>start dialog...</h3>
+                            <h3>{currentLanguage.keys?.startDialog}</h3>
                         </Link>
                     }
                     </div>

@@ -2,10 +2,12 @@
 import './UploadPicture.scss'
 // global dependencies
 import { useState } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
+// recoil atoms
+import { currentLanguageAtom } from '../../recoil/LanguageAtom'
 
 function UploadPicture({ recoilState }) {
-
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
     const [pictureFile, setPictureFile] = useRecoilState(recoilState)
     const [picture, setPicture] = useState('')
 

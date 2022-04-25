@@ -3,13 +3,15 @@ import './Search.scss'
 // global dependencies
 import { useCallback, useEffect,useState } from 'react'
 import { debounce, trim } from 'lodash'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 // recoil atoms
 import { searchResultChatMembersState, searchResultChatsState, searchResultUsersState } from '../../recoil/SearchAtom'
+import { currentLanguageAtom } from '../../recoil/LanguageAtom'
 // libs
 import { customFetch } from '../../libs/customFetch'
 
 function Search({ searchType }) {
+    const currentLanguage = useRecoilValue(currentLanguageAtom)
     const [searchQuery, setSearchQuery] = useState('')
     const [chats, setChats] = useRecoilState(searchResultChatsState)
     const [users, setUsers] = useRecoilState(searchResultUsersState)
@@ -58,7 +60,7 @@ function Search({ searchType }) {
             onChange={e => setSearchQuery(e.target.value)}
             name='search' 
             className='search'
-            placeholder='search'
+            placeholder={currentLanguage.keys?.search}
         />
     )
 }

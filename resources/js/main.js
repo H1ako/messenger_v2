@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 // recoil atoms
 import { userInfoState } from './recoil/UserAtom.js'
+import { currentLanguageAtom } from './recoil/LanguageAtom.js'
 // components
 import Sidebar from './components/Sidebar/Sidebar.js'
 import Home from './components/pages/Home/Home.js'
@@ -15,11 +16,18 @@ import SignUp from './components/pages/SignUp/SignUp.js'
 import User from './components/pages/User/User.js'
 // libs
 import { customFetch } from './libs/customFetch.js'
+// localization
+import russian from '../localization/ru.js'
+import english from '../localization/en.js'
 
 function Main() {
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
+    const [currentLanguage, setCurrentLanguage] = useRecoilState(currentLanguageAtom)
+    const language = russian
 
     useEffect(async () => {
+        setCurrentLanguage(language)
+        
         await customFetch('/api/user', 'POST')
         .then(data => data.json())
         .then(data => {
@@ -29,7 +37,7 @@ function Main() {
             if (data.data) {
                 setUserInfo(data.data)
             }
-        })    
+        })
     }, [])
     
     return (
