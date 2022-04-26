@@ -14,13 +14,31 @@
     background: $colorMain;
     transition: $transition;
     overflow: hidden;
+    
+    @media screen and (max-width: $sizeScreenBigPhone) {
+        place-items: center;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 4fr 1fr;
+        height: $sizeSidebar;
+        width: auto;
+        padding-block: 0;
+        order: 2;
+    }
 
     &.notLoggedIn {
         grid-template-rows: 1fr;
+
+        @media screen and (max-width: $sizeScreenBigPhone) {
+            grid-template-columns: 1fr;
+        }
     }
 
     &.active {
         width: $sizeSidebarActive;
+
+        @media screen and (max-width: $sizeScreenBigPhone) {
+            width: auto;
+        }
 
         h3 {
             transform: none;
@@ -36,6 +54,10 @@
         opacity: 0;
         margin: 0;
         font-weight: 300;
+
+        @media screen and (max-width: $sizeScreenBigPhone) {
+            display: none;
+        }
     }
 
     ion-icon {
@@ -54,6 +76,14 @@
         padding-block: .5rem;
         color: $colorLight;
         text-decoration: none;
+
+        @media screen and (max-width: $sizeScreenBigPhone) {
+            padding-block: 0;
+            height: $sizeSidebar;
+            grid-template-columns: 1fr;
+            margin-right: auto;
+            padding-inline: .5rem;
+        }
 
         &:hover {
             background: $colorMainLight;
@@ -81,6 +111,10 @@
             padding: 0;
             margin: 0;
             list-style: none;
+            
+            @media screen and (max-width: $sizeScreenBigPhone) {
+                display: flex;
+            }
 
             .menuBtn {
                 grid-template-columns: $gridTemplate;
@@ -88,12 +122,22 @@
                 align-items: center;
                 gap: $gridGap;
                 cursor: pointer;
+
+                @media screen and (max-width: $sizeScreenBigPhone) {
+                    display: none;
+                }
             }
 
             li {
                 width: 100%;
                 padding-block: .5rem;
                 transition: $transition;
+
+                @media screen and (max-width: $sizeScreenBigPhone) {
+                    padding-block: 0;
+                    padding-inline: .5rem;
+                    height: $sizeSidebar;
+                }
 
                 &:not(.active):hover {
                     background: $colorMainLight;
@@ -111,6 +155,12 @@
                     color: $colorLight;
                     text-decoration: none;
                     outline: none;
+                    
+                    @media screen and (max-width: $sizeScreenBigPhone) {
+                        grid-template-columns: 1fr;
+                        place-items: center;
+                        height: $sizeSidebar;
+                    }
                 }
             }
         }
@@ -125,6 +175,15 @@
         cursor: pointer;
         padding-block: .5rem;
         transition: $transition;
+
+        @media screen and (max-width: $sizeScreenBigPhone) {
+            padding-block: 0;
+            padding-inline: .5rem;
+            align-self: flex-start;
+            height: $sizeSidebar;
+            grid-template-columns: 1fr;
+            margin-left: auto;
+        }
 
         &:hover {
             background: $colorMainLight;

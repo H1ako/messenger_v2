@@ -60,6 +60,10 @@ button {
     font-family: 'Roboto', sans-serif;
     overflow: hidden;
     align-items: stretch;
+
+    @media screen and (max-width: $sizeScreenBigPhone) {
+        flex-direction: column;
+    }
 }
 
 main {
@@ -68,6 +72,11 @@ main {
     align-items: center;
     width: calc(100vw - $sizeSidebar);
     flex-shrink: 0;
+
+    @media screen and (max-width: $sizeScreenBigPhone) {
+        width: 100vw;
+        height: calc(100% - $sizeSidebar);
+    }
 }
 
 .page {
